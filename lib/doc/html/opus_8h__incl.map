@@ -1,0 +1,8 @@
+<map id="opus.h" name="opus.h">
+<area shape="rect" id="Node000001" title="Opus reference implementation API." alt="" coords="27,5,91,33"/>
+<area shape="rect" id="Node000002" href="$opus__types_8h.html" title="Opus reference implementation types." alt="" coords="5,157,113,184"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="55,34,39,81,39,108,49,142,44,144,34,109,34,81,50,33"/>
+<area shape="rect" id="Node000003" href="$opus__defines_8h.html" title="Opus reference implementation constants." alt="" coords="48,81,166,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="70,32,93,67,88,70,65,35"/>
+<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="101,111,78,146,73,143,96,108"/>
+</map>

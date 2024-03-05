@@ -1,0 +1,168 @@
+\doxysection{opus\+\_\+types.\+h}
+\hypertarget{opus__types_8h_source}{}\label{opus__types_8h_source}\index{opus\_types.h@{opus\_types.h}}
+\mbox{\hyperlink{opus__types_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*\ (C)\ COPYRIGHT\ 1994-\/2002\ Xiph.Org\ Foundation\ */}}
+\DoxyCodeLine{00002\ \textcolor{comment}{/*\ Modified\ by\ Jean-\/Marc\ Valin\ */}}
+\DoxyCodeLine{00003\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ \ \ Redistribution\ and\ use\ in\ source\ and\ binary\ forms,\ with\ or\ without}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ \ \ modification,\ are\ permitted\ provided\ that\ the\ following\ conditions}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ \ \ are\ met:}}
+\DoxyCodeLine{00007\ \textcolor{comment}{}}
+\DoxyCodeLine{00008\ \textcolor{comment}{\ \ \ -\/\ Redistributions\ of\ source\ code\ must\ retain\ the\ above\ copyright}}
+\DoxyCodeLine{00009\ \textcolor{comment}{\ \ \ notice,\ this\ list\ of\ conditions\ and\ the\ following\ disclaimer.}}
+\DoxyCodeLine{00010\ \textcolor{comment}{}}
+\DoxyCodeLine{00011\ \textcolor{comment}{\ \ \ -\/\ Redistributions\ in\ binary\ form\ must\ reproduce\ the\ above\ copyright}}
+\DoxyCodeLine{00012\ \textcolor{comment}{\ \ \ notice,\ this\ list\ of\ conditions\ and\ the\ following\ disclaimer\ in\ the}}
+\DoxyCodeLine{00013\ \textcolor{comment}{\ \ \ documentation\ and/or\ other\ materials\ provided\ with\ the\ distribution.}}
+\DoxyCodeLine{00014\ \textcolor{comment}{}}
+\DoxyCodeLine{00015\ \textcolor{comment}{\ \ \ THIS\ SOFTWARE\ IS\ PROVIDED\ BY\ THE\ COPYRIGHT\ HOLDERS\ AND\ CONTRIBUTORS}}
+\DoxyCodeLine{00016\ \textcolor{comment}{\ \ \ \`{}\`{}AS\ IS''\ AND\ ANY\ EXPRESS\ OR\ IMPLIED\ WARRANTIES,\ INCLUDING,\ BUT\ NOT}}
+\DoxyCodeLine{00017\ \textcolor{comment}{\ \ \ LIMITED\ TO,\ THE\ IMPLIED\ WARRANTIES\ OF\ MERCHANTABILITY\ AND\ FITNESS\ FOR}}
+\DoxyCodeLine{00018\ \textcolor{comment}{\ \ \ A\ PARTICULAR\ PURPOSE\ ARE\ DISCLAIMED.\ IN\ NO\ EVENT\ SHALL\ THE\ COPYRIGHT\ OWNER}}
+\DoxyCodeLine{00019\ \textcolor{comment}{\ \ \ OR\ CONTRIBUTORS\ BE\ LIABLE\ FOR\ ANY\ DIRECT,\ INDIRECT,\ INCIDENTAL,\ SPECIAL,}}
+\DoxyCodeLine{00020\ \textcolor{comment}{\ \ \ EXEMPLARY,\ OR\ CONSEQUENTIAL\ DAMAGES\ (INCLUDING,\ BUT\ NOT\ LIMITED\ TO,}}
+\DoxyCodeLine{00021\ \textcolor{comment}{\ \ \ PROCUREMENT\ OF\ SUBSTITUTE\ GOODS\ OR\ SERVICES;\ LOSS\ OF\ USE,\ DATA,\ OR}}
+\DoxyCodeLine{00022\ \textcolor{comment}{\ \ \ PROFITS;\ OR\ BUSINESS\ INTERRUPTION)\ HOWEVER\ CAUSED\ AND\ ON\ ANY\ THEORY\ OF}}
+\DoxyCodeLine{00023\ \textcolor{comment}{\ \ \ LIABILITY,\ WHETHER\ IN\ CONTRACT,\ STRICT\ LIABILITY,\ OR\ TORT\ (INCLUDING}}
+\DoxyCodeLine{00024\ \textcolor{comment}{\ \ \ NEGLIGENCE\ OR\ OTHERWISE)\ ARISING\ IN\ ANY\ WAY\ OUT\ OF\ THE\ USE\ OF\ THIS}}
+\DoxyCodeLine{00025\ \textcolor{comment}{\ \ \ SOFTWARE,\ EVEN\ IF\ ADVISED\ OF\ THE\ POSSIBILITY\ OF\ SUCH\ DAMAGE.}}
+\DoxyCodeLine{00026\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00027\ \textcolor{comment}{/*\ opus\_types.h\ based\ on\ ogg\_types.h\ from\ libogg\ */}}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00033\ \textcolor{preprocessor}{\#ifndef\ OPUS\_TYPES\_H}}
+\DoxyCodeLine{00034\ \textcolor{preprocessor}{\#define\ OPUS\_TYPES\_H}}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \textcolor{preprocessor}{\#define\ opus\_int\ \ \ \ \ \ \ \ \ int\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\textcolor{comment}{/*\ used\ for\ counters\ etc;\ at\ least\ 16\ bits\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00037\ \textcolor{preprocessor}{\#define\ opus\_int64\ \ \ \ \ \ \ long\ long}}
+\DoxyCodeLine{00038\ \textcolor{preprocessor}{\#define\ opus\_int8\ \ \ \ \ \ \ \ signed\ char}}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \textcolor{preprocessor}{\#define\ opus\_uint\ \ \ \ \ \ \ \ unsigned\ int\ \ \ \ \ \ \ \ \ \ \ \ }\textcolor{comment}{/*\ used\ for\ counters\ etc;\ at\ least\ 16\ bits\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00041\ \textcolor{preprocessor}{\#define\ opus\_uint64\ \ \ \ \ \ unsigned\ long\ long}}
+\DoxyCodeLine{00042\ \textcolor{preprocessor}{\#define\ opus\_uint8\ \ \ \ \ \ \ unsigned\ char}}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \textcolor{comment}{/*\ Use\ the\ real\ stdint.h\ if\ it's\ there\ (taken\ from\ Paul\ Hsieh's\ pstdint.h)\ */}}
+\DoxyCodeLine{00045\ \textcolor{preprocessor}{\#if\ (defined(\_\_STDC\_\_)\ \&\&\ \_\_STDC\_\_\ \&\&\ defined(\_\_STDC\_VERSION\_\_)\ \&\&\ \_\_STDC\_VERSION\_\_\ >=\ 199901L)\ ||\ (defined(\_\_GNUC\_\_)\ \&\&\ (defined(\_STDINT\_H)\ ||\ defined(\_STDINT\_H\_))\ ||\ defined\ (HAVE\_STDINT\_H))}}
+\DoxyCodeLine{00046\ \textcolor{preprocessor}{\#include\ <stdint.h>}}
+\DoxyCodeLine{00047\ \textcolor{preprocessor}{\#\ \ undef\ opus\_int64}}
+\DoxyCodeLine{00048\ \textcolor{preprocessor}{\#\ \ undef\ opus\_int8}}
+\DoxyCodeLine{00049\ \textcolor{preprocessor}{\#\ \ undef\ opus\_uint64}}
+\DoxyCodeLine{00050\ \textcolor{preprocessor}{\#\ \ undef\ opus\_uint8}}
+\DoxyCodeLine{00051\ \ \ \ \textcolor{keyword}{typedef}\ int8\_t\ \mbox{\hyperlink{opus__types_8h_aa3680a0b88ed316512ba749abe4c11c5}{opus\_int8}};}
+\DoxyCodeLine{00052\ \ \ \ \textcolor{keyword}{typedef}\ uint8\_t\ \mbox{\hyperlink{opus__types_8h_a40a7748a424a3453dc79f3838c5dbddc}{opus\_uint8}};}
+\DoxyCodeLine{00053\ \ \ \ \textcolor{keyword}{typedef}\ int16\_t\ \mbox{\hyperlink{opus__types_8h_acc9ed7cf60479eb81f9648c6ec27dc26}{opus\_int16}};}
+\DoxyCodeLine{00054\ \ \ \ \textcolor{keyword}{typedef}\ uint16\_t\ \mbox{\hyperlink{opus__types_8h_a0ab2b1deead8e222cfc659cd855bd8d0}{opus\_uint16}};}
+\DoxyCodeLine{00055\ \ \ \ \textcolor{keyword}{typedef}\ int32\_t\ \mbox{\hyperlink{opus__types_8h_aa4d309d6f80b99dbabebc8f98879ab9a}{opus\_int32}};}
+\DoxyCodeLine{00056\ \ \ \ \textcolor{keyword}{typedef}\ uint32\_t\ \mbox{\hyperlink{opus__types_8h_a643eaaadb9ef6cd44308e0299d8cd8ce}{opus\_uint32}};}
+\DoxyCodeLine{00057\ \ \ \ \textcolor{keyword}{typedef}\ int64\_t\ \mbox{\hyperlink{opus__types_8h_ab6742070cf9d0ccffca2b80522b4f41a}{opus\_int64}};}
+\DoxyCodeLine{00058\ \ \ \ \textcolor{keyword}{typedef}\ uint64\_t\ \mbox{\hyperlink{opus__types_8h_a8291e2e41535338d13cd74868cb8e86d}{opus\_uint64}};}
+\DoxyCodeLine{00059\ \textcolor{preprocessor}{\#elif\ defined(\_WIN32)}}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00061\ \textcolor{preprocessor}{\#\ \ if\ defined(\_\_CYGWIN\_\_)}}
+\DoxyCodeLine{00062\ \textcolor{preprocessor}{\#\ \ \ \ include\ <\_G\_config.h>}}
+\DoxyCodeLine{00063\ \ \ \ \ \ \textcolor{keyword}{typedef}\ \_G\_int32\_t\ \mbox{\hyperlink{opus__types_8h_aa4d309d6f80b99dbabebc8f98879ab9a}{opus\_int32}};}
+\DoxyCodeLine{00064\ \ \ \ \ \ \textcolor{keyword}{typedef}\ \_G\_uint32\_t\ \mbox{\hyperlink{opus__types_8h_a643eaaadb9ef6cd44308e0299d8cd8ce}{opus\_uint32}};}
+\DoxyCodeLine{00065\ \ \ \ \ \ \textcolor{keyword}{typedef}\ \_G\_int16\ \mbox{\hyperlink{opus__types_8h_acc9ed7cf60479eb81f9648c6ec27dc26}{opus\_int16}};}
+\DoxyCodeLine{00066\ \ \ \ \ \ \textcolor{keyword}{typedef}\ \_G\_uint16\ \mbox{\hyperlink{opus__types_8h_a0ab2b1deead8e222cfc659cd855bd8d0}{opus\_uint16}};}
+\DoxyCodeLine{00067\ \textcolor{preprocessor}{\#\ \ elif\ defined(\_\_MINGW32\_\_)}}
+\DoxyCodeLine{00068\ \ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{short}\ \mbox{\hyperlink{opus__types_8h_acc9ed7cf60479eb81f9648c6ec27dc26}{opus\_int16}};}
+\DoxyCodeLine{00069\ \ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{short}\ \mbox{\hyperlink{opus__types_8h_a0ab2b1deead8e222cfc659cd855bd8d0}{opus\_uint16}};}
+\DoxyCodeLine{00070\ \ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{opus__types_8h_aa4d309d6f80b99dbabebc8f98879ab9a}{opus\_int32}};}
+\DoxyCodeLine{00071\ \ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{opus__types_8h_a643eaaadb9ef6cd44308e0299d8cd8ce}{opus\_uint32}};}
+\DoxyCodeLine{00072\ \textcolor{preprocessor}{\#\ \ elif\ defined(\_\_MWERKS\_\_)}}
+\DoxyCodeLine{00073\ \ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{opus__types_8h_aa4d309d6f80b99dbabebc8f98879ab9a}{opus\_int32}};}
+\DoxyCodeLine{00074\ \ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{opus__types_8h_a643eaaadb9ef6cd44308e0299d8cd8ce}{opus\_uint32}};}
+\DoxyCodeLine{00075\ \ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{short}\ \mbox{\hyperlink{opus__types_8h_acc9ed7cf60479eb81f9648c6ec27dc26}{opus\_int16}};}
+\DoxyCodeLine{00076\ \ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{short}\ \mbox{\hyperlink{opus__types_8h_a0ab2b1deead8e222cfc659cd855bd8d0}{opus\_uint16}};}
+\DoxyCodeLine{00077\ \textcolor{preprocessor}{\#\ \ else}}
+\DoxyCodeLine{00078\ \ \ \ \ \ \textcolor{comment}{/*\ MSVC/Borland\ */}}
+\DoxyCodeLine{00079\ \ \ \ \ \ \textcolor{keyword}{typedef}\ \_\_int32\ \mbox{\hyperlink{opus__types_8h_aa4d309d6f80b99dbabebc8f98879ab9a}{opus\_int32}};}
+\DoxyCodeLine{00080\ \ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{unsigned}\ \_\_int32\ \mbox{\hyperlink{opus__types_8h_a643eaaadb9ef6cd44308e0299d8cd8ce}{opus\_uint32}};}
+\DoxyCodeLine{00081\ \ \ \ \ \ \textcolor{keyword}{typedef}\ \_\_int16\ \mbox{\hyperlink{opus__types_8h_acc9ed7cf60479eb81f9648c6ec27dc26}{opus\_int16}};}
+\DoxyCodeLine{00082\ \ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{unsigned}\ \_\_int16\ \mbox{\hyperlink{opus__types_8h_a0ab2b1deead8e222cfc659cd855bd8d0}{opus\_uint16}};}
+\DoxyCodeLine{00083\ \textcolor{preprocessor}{\#\ \ endif}}
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00085\ \textcolor{preprocessor}{\#elif\ defined(\_\_MACOS\_\_)}}
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00087\ \textcolor{preprocessor}{\#\ \ include\ <sys/types.h>}}
+\DoxyCodeLine{00088\ \ \ \ \textcolor{keyword}{typedef}\ SInt16\ \mbox{\hyperlink{opus__types_8h_acc9ed7cf60479eb81f9648c6ec27dc26}{opus\_int16}};}
+\DoxyCodeLine{00089\ \ \ \ \textcolor{keyword}{typedef}\ UInt16\ \mbox{\hyperlink{opus__types_8h_a0ab2b1deead8e222cfc659cd855bd8d0}{opus\_uint16}};}
+\DoxyCodeLine{00090\ \ \ \ \textcolor{keyword}{typedef}\ SInt32\ \mbox{\hyperlink{opus__types_8h_aa4d309d6f80b99dbabebc8f98879ab9a}{opus\_int32}};}
+\DoxyCodeLine{00091\ \ \ \ \textcolor{keyword}{typedef}\ UInt32\ \mbox{\hyperlink{opus__types_8h_a643eaaadb9ef6cd44308e0299d8cd8ce}{opus\_uint32}};}
+\DoxyCodeLine{00092\ }
+\DoxyCodeLine{00093\ \textcolor{preprocessor}{\#elif\ (defined(\_\_APPLE\_\_)\ \&\&\ defined(\_\_MACH\_\_))\ }\textcolor{comment}{/*\ MacOS\ X\ Framework\ build\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00094\ }
+\DoxyCodeLine{00095\ \textcolor{preprocessor}{\#\ \ include\ <sys/types.h>}}
+\DoxyCodeLine{00096\ \ \ \ \textcolor{keyword}{typedef}\ int16\_t\ \mbox{\hyperlink{opus__types_8h_acc9ed7cf60479eb81f9648c6ec27dc26}{opus\_int16}};}
+\DoxyCodeLine{00097\ \ \ \ \textcolor{keyword}{typedef}\ u\_int16\_t\ \mbox{\hyperlink{opus__types_8h_a0ab2b1deead8e222cfc659cd855bd8d0}{opus\_uint16}};}
+\DoxyCodeLine{00098\ \ \ \ \textcolor{keyword}{typedef}\ int32\_t\ \mbox{\hyperlink{opus__types_8h_aa4d309d6f80b99dbabebc8f98879ab9a}{opus\_int32}};}
+\DoxyCodeLine{00099\ \ \ \ \textcolor{keyword}{typedef}\ u\_int32\_t\ \mbox{\hyperlink{opus__types_8h_a643eaaadb9ef6cd44308e0299d8cd8ce}{opus\_uint32}};}
+\DoxyCodeLine{00100\ }
+\DoxyCodeLine{00101\ \textcolor{preprocessor}{\#elif\ defined(\_\_BEOS\_\_)}}
+\DoxyCodeLine{00102\ }
+\DoxyCodeLine{00103\ \ \ \ \textcolor{comment}{/*\ Be\ */}}
+\DoxyCodeLine{00104\ \textcolor{preprocessor}{\#\ \ include\ <inttypes.h>}}
+\DoxyCodeLine{00105\ \ \ \ \textcolor{keyword}{typedef}\ int16\ \mbox{\hyperlink{opus__types_8h_acc9ed7cf60479eb81f9648c6ec27dc26}{opus\_int16}};}
+\DoxyCodeLine{00106\ \ \ \ \textcolor{keyword}{typedef}\ u\_int16\ \mbox{\hyperlink{opus__types_8h_a0ab2b1deead8e222cfc659cd855bd8d0}{opus\_uint16}};}
+\DoxyCodeLine{00107\ \ \ \ \textcolor{keyword}{typedef}\ int32\_t\ \mbox{\hyperlink{opus__types_8h_aa4d309d6f80b99dbabebc8f98879ab9a}{opus\_int32}};}
+\DoxyCodeLine{00108\ \ \ \ \textcolor{keyword}{typedef}\ u\_int32\_t\ \mbox{\hyperlink{opus__types_8h_a643eaaadb9ef6cd44308e0299d8cd8ce}{opus\_uint32}};}
+\DoxyCodeLine{00109\ }
+\DoxyCodeLine{00110\ \textcolor{preprocessor}{\#elif\ defined\ (\_\_EMX\_\_)}}
+\DoxyCodeLine{00111\ }
+\DoxyCodeLine{00112\ \ \ \ \textcolor{comment}{/*\ OS/2\ GCC\ */}}
+\DoxyCodeLine{00113\ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{short}\ \mbox{\hyperlink{opus__types_8h_acc9ed7cf60479eb81f9648c6ec27dc26}{opus\_int16}};}
+\DoxyCodeLine{00114\ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{short}\ \mbox{\hyperlink{opus__types_8h_a0ab2b1deead8e222cfc659cd855bd8d0}{opus\_uint16}};}
+\DoxyCodeLine{00115\ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{opus__types_8h_aa4d309d6f80b99dbabebc8f98879ab9a}{opus\_int32}};}
+\DoxyCodeLine{00116\ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{opus__types_8h_a643eaaadb9ef6cd44308e0299d8cd8ce}{opus\_uint32}};}
+\DoxyCodeLine{00117\ }
+\DoxyCodeLine{00118\ \textcolor{preprocessor}{\#elif\ defined\ (DJGPP)}}
+\DoxyCodeLine{00119\ }
+\DoxyCodeLine{00120\ \ \ \ \textcolor{comment}{/*\ DJGPP\ */}}
+\DoxyCodeLine{00121\ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{short}\ \mbox{\hyperlink{opus__types_8h_acc9ed7cf60479eb81f9648c6ec27dc26}{opus\_int16}};}
+\DoxyCodeLine{00122\ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{short}\ \mbox{\hyperlink{opus__types_8h_a0ab2b1deead8e222cfc659cd855bd8d0}{opus\_uint16}};}
+\DoxyCodeLine{00123\ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{opus__types_8h_aa4d309d6f80b99dbabebc8f98879ab9a}{opus\_int32}};}
+\DoxyCodeLine{00124\ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{opus__types_8h_a643eaaadb9ef6cd44308e0299d8cd8ce}{opus\_uint32}};}
+\DoxyCodeLine{00125\ }
+\DoxyCodeLine{00126\ \textcolor{preprocessor}{\#elif\ defined(R5900)}}
+\DoxyCodeLine{00127\ }
+\DoxyCodeLine{00128\ \ \ \ \textcolor{comment}{/*\ PS2\ EE\ */}}
+\DoxyCodeLine{00129\ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{opus__types_8h_aa4d309d6f80b99dbabebc8f98879ab9a}{opus\_int32}};}
+\DoxyCodeLine{00130\ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{unsigned}\ \mbox{\hyperlink{opus__types_8h_a643eaaadb9ef6cd44308e0299d8cd8ce}{opus\_uint32}};}
+\DoxyCodeLine{00131\ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{short}\ \mbox{\hyperlink{opus__types_8h_acc9ed7cf60479eb81f9648c6ec27dc26}{opus\_int16}};}
+\DoxyCodeLine{00132\ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{short}\ \mbox{\hyperlink{opus__types_8h_a0ab2b1deead8e222cfc659cd855bd8d0}{opus\_uint16}};}
+\DoxyCodeLine{00133\ }
+\DoxyCodeLine{00134\ \textcolor{preprocessor}{\#elif\ defined(\_\_SYMBIAN32\_\_)}}
+\DoxyCodeLine{00135\ }
+\DoxyCodeLine{00136\ \ \ \ \textcolor{comment}{/*\ Symbian\ GCC\ */}}
+\DoxyCodeLine{00137\ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{signed}\ \textcolor{keywordtype}{short}\ \mbox{\hyperlink{opus__types_8h_acc9ed7cf60479eb81f9648c6ec27dc26}{opus\_int16}};}
+\DoxyCodeLine{00138\ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{short}\ \mbox{\hyperlink{opus__types_8h_a0ab2b1deead8e222cfc659cd855bd8d0}{opus\_uint16}};}
+\DoxyCodeLine{00139\ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{signed}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{opus__types_8h_aa4d309d6f80b99dbabebc8f98879ab9a}{opus\_int32}};}
+\DoxyCodeLine{00140\ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{opus__types_8h_a643eaaadb9ef6cd44308e0299d8cd8ce}{opus\_uint32}};}
+\DoxyCodeLine{00141\ }
+\DoxyCodeLine{00142\ \textcolor{preprocessor}{\#elif\ defined(CONFIG\_TI\_C54X)\ ||\ defined\ (CONFIG\_TI\_C55X)}}
+\DoxyCodeLine{00143\ }
+\DoxyCodeLine{00144\ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{short}\ \mbox{\hyperlink{opus__types_8h_acc9ed7cf60479eb81f9648c6ec27dc26}{opus\_int16}};}
+\DoxyCodeLine{00145\ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{short}\ \mbox{\hyperlink{opus__types_8h_a0ab2b1deead8e222cfc659cd855bd8d0}{opus\_uint16}};}
+\DoxyCodeLine{00146\ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{long}\ \mbox{\hyperlink{opus__types_8h_aa4d309d6f80b99dbabebc8f98879ab9a}{opus\_int32}};}
+\DoxyCodeLine{00147\ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ \mbox{\hyperlink{opus__types_8h_a643eaaadb9ef6cd44308e0299d8cd8ce}{opus\_uint32}};}
+\DoxyCodeLine{00148\ }
+\DoxyCodeLine{00149\ \textcolor{preprocessor}{\#elif\ defined(CONFIG\_TI\_C6X)}}
+\DoxyCodeLine{00150\ }
+\DoxyCodeLine{00151\ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{short}\ \mbox{\hyperlink{opus__types_8h_acc9ed7cf60479eb81f9648c6ec27dc26}{opus\_int16}};}
+\DoxyCodeLine{00152\ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{short}\ \mbox{\hyperlink{opus__types_8h_a0ab2b1deead8e222cfc659cd855bd8d0}{opus\_uint16}};}
+\DoxyCodeLine{00153\ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{opus__types_8h_aa4d309d6f80b99dbabebc8f98879ab9a}{opus\_int32}};}
+\DoxyCodeLine{00154\ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{opus__types_8h_a643eaaadb9ef6cd44308e0299d8cd8ce}{opus\_uint32}};}
+\DoxyCodeLine{00155\ }
+\DoxyCodeLine{00156\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00157\ }
+\DoxyCodeLine{00158\ \ \ \ \textcolor{comment}{/*\ Give\ up,\ take\ a\ reasonable\ guess\ */}}
+\DoxyCodeLine{00159\ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{short}\ \mbox{\hyperlink{opus__types_8h_acc9ed7cf60479eb81f9648c6ec27dc26}{opus\_int16}};}
+\DoxyCodeLine{00160\ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{short}\ \mbox{\hyperlink{opus__types_8h_a0ab2b1deead8e222cfc659cd855bd8d0}{opus\_uint16}};}
+\DoxyCodeLine{00161\ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{opus__types_8h_aa4d309d6f80b99dbabebc8f98879ab9a}{opus\_int32}};}
+\DoxyCodeLine{00162\ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{opus__types_8h_a643eaaadb9ef6cd44308e0299d8cd8ce}{opus\_uint32}};}
+\DoxyCodeLine{00163\ }
+\DoxyCodeLine{00164\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00165\ }
+\DoxyCodeLine{00166\ \textcolor{preprocessor}{\#endif\ \ }\textcolor{comment}{/*\ OPUS\_TYPES\_H\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

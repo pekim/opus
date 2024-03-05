@@ -1,0 +1,66 @@
+\doxysection{Multistream specific encoder and decoder CTLs}
+\hypertarget{group__opus__multistream__ctls}{}\label{group__opus__multistream__ctls}\index{Multistream specific encoder and decoder CTLs@{Multistream specific encoder and decoder CTLs}}
+
+
+These are convenience macros that are specific to the \doxylink{group__opus__multistream_gae14328330c548dede66c494f51e33707}{opus\+\_\+multistream\+\_\+encoder\+\_\+ctl()} and \doxylink{group__opus__multistream_ga4b3dca8d46e5868cc133f3f6d2b57688}{opus\+\_\+multistream\+\_\+decoder\+\_\+ctl()} interface.  
+
+
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{group__opus__multistream__ctls_ga4e67607eb691c4314a5de90d8c58aff0}{OPUS\+\_\+\+MULTISTREAM\+\_\+\+GET\+\_\+\+ENCODER\+\_\+\+STATE}}(x,  y)
+\begin{DoxyCompactList}\small\item\em Gets the encoder state for an individual stream of a multistream encoder. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group__opus__multistream__ctls_gaf0843831519b4d9b9d73391afef04a53}{OPUS\+\_\+\+MULTISTREAM\+\_\+\+GET\+\_\+\+DECODER\+\_\+\+STATE}}(x,  y)
+\begin{DoxyCompactList}\small\item\em Gets the decoder state for an individual stream of a multistream decoder. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+These are convenience macros that are specific to the \doxylink{group__opus__multistream_gae14328330c548dede66c494f51e33707}{opus\+\_\+multistream\+\_\+encoder\+\_\+ctl()} and \doxylink{group__opus__multistream_ga4b3dca8d46e5868cc133f3f6d2b57688}{opus\+\_\+multistream\+\_\+decoder\+\_\+ctl()} interface. 
+
+The CTLs from \doxylink{group__opus__genericctls}{Generic CTLs}, \doxylink{group__opus__encoderctls}{Encoder related CTLs}, and \doxylink{group__opus__decoderctls}{Decoder related CTLs} may be applied to a multistream encoder or decoder as well. In addition, you may retrieve the encoder or decoder state for an specific stream via \doxylink{group__opus__multistream__ctls_ga4e67607eb691c4314a5de90d8c58aff0}{OPUS\+\_\+\+MULTISTREAM\+\_\+\+GET\+\_\+\+ENCODER\+\_\+\+STATE} or \doxylink{group__opus__multistream__ctls_gaf0843831519b4d9b9d73391afef04a53}{OPUS\+\_\+\+MULTISTREAM\+\_\+\+GET\+\_\+\+DECODER\+\_\+\+STATE} and apply CTLs to it individually. 
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{group__opus__multistream__ctls_gaf0843831519b4d9b9d73391afef04a53}\label{group__opus__multistream__ctls_gaf0843831519b4d9b9d73391afef04a53} 
+\index{Multistream specific encoder and decoder CTLs@{Multistream specific encoder and decoder CTLs}!OPUS\_MULTISTREAM\_GET\_DECODER\_STATE@{OPUS\_MULTISTREAM\_GET\_DECODER\_STATE}}
+\index{OPUS\_MULTISTREAM\_GET\_DECODER\_STATE@{OPUS\_MULTISTREAM\_GET\_DECODER\_STATE}!Multistream specific encoder and decoder CTLs@{Multistream specific encoder and decoder CTLs}}
+\doxysubsubsection{\texorpdfstring{OPUS\_MULTISTREAM\_GET\_DECODER\_STATE}{OPUS\_MULTISTREAM\_GET\_DECODER\_STATE}}
+{\footnotesize\ttfamily \#define OPUS\+\_\+\+MULTISTREAM\+\_\+\+GET\+\_\+\+DECODER\+\_\+\+STATE(\begin{DoxyParamCaption}\item[{}]{x,  }\item[{}]{y }\end{DoxyParamCaption})}
+
+
+
+Gets the decoder state for an individual stream of a multistream decoder. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em x} & {\ttfamily opus\+\_\+int32}\+: The index of the stream whose decoder you wish to retrieve. This must be non-\/negative and less than the {\ttfamily streams} parameter used to initialize the decoder. \\
+\hline
+\mbox{\texttt{ out}}  & {\em y} & {\ttfamily Opus\+Decoder\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}\+: Returns a pointer to the given decoder state. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em OPUS\+\_\+\+BAD\+\_\+\+ARG} & The index of the requested stream was out of range. \\
+\hline
+\end{DoxyRetVals}
+\Hypertarget{group__opus__multistream__ctls_ga4e67607eb691c4314a5de90d8c58aff0}\label{group__opus__multistream__ctls_ga4e67607eb691c4314a5de90d8c58aff0} 
+\index{Multistream specific encoder and decoder CTLs@{Multistream specific encoder and decoder CTLs}!OPUS\_MULTISTREAM\_GET\_ENCODER\_STATE@{OPUS\_MULTISTREAM\_GET\_ENCODER\_STATE}}
+\index{OPUS\_MULTISTREAM\_GET\_ENCODER\_STATE@{OPUS\_MULTISTREAM\_GET\_ENCODER\_STATE}!Multistream specific encoder and decoder CTLs@{Multistream specific encoder and decoder CTLs}}
+\doxysubsubsection{\texorpdfstring{OPUS\_MULTISTREAM\_GET\_ENCODER\_STATE}{OPUS\_MULTISTREAM\_GET\_ENCODER\_STATE}}
+{\footnotesize\ttfamily \#define OPUS\+\_\+\+MULTISTREAM\+\_\+\+GET\+\_\+\+ENCODER\+\_\+\+STATE(\begin{DoxyParamCaption}\item[{}]{x,  }\item[{}]{y }\end{DoxyParamCaption})}
+
+
+
+Gets the encoder state for an individual stream of a multistream encoder. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em x} & {\ttfamily opus\+\_\+int32}\+: The index of the stream whose encoder you wish to retrieve. This must be non-\/negative and less than the {\ttfamily streams} parameter used to initialize the encoder. \\
+\hline
+\mbox{\texttt{ out}}  & {\em y} & {\ttfamily Opus\+Encoder\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}\+: Returns a pointer to the given encoder state. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em OPUS\+\_\+\+BAD\+\_\+\+ARG} & The index of the requested stream was out of range. \\
+\hline
+\end{DoxyRetVals}

@@ -1,0 +1,5 @@
+silk/debug.lo: silk/debug.c /usr/include/stdc-predef.h config.h \
+ silk/debug.h
+/usr/include/stdc-predef.h:
+config.h:
+silk/debug.h:

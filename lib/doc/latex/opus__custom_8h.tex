@@ -1,0 +1,85 @@
+\doxysection{opus\+\_\+custom.\+h File Reference}
+\hypertarget{opus__custom_8h}{}\label{opus__custom_8h}\index{opus\_custom.h@{opus\_custom.h}}
+
+
+Opus-\/\+Custom reference implementation API.  
+
+
+{\ttfamily \#include \"{}opus\+\_\+defines.\+h\"{}}\newline
+Include dependency graph for opus\+\_\+custom.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=170pt]{opus__custom_8h__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{opus__custom_8h_a92c66b86b701421b674984559e79bbf0}{OPUS\+\_\+\+CUSTOM\+\_\+\+EXPORT}}
+\item 
+\#define \mbox{\hyperlink{opus__custom_8h_a83ea1aac7766a02abc5c666516b2e622}{OPUS\+\_\+\+CUSTOM\+\_\+\+EXPORT\+\_\+\+STATIC}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \mbox{\hyperlink{group__opus__custom_ga7abe6a7afc599667950251c987feb439}{Opus\+Custom\+Encoder}} \mbox{\hyperlink{group__opus__custom_ga7abe6a7afc599667950251c987feb439}{Opus\+Custom\+Encoder}}
+\begin{DoxyCompactList}\small\item\em Contains the state of an encoder. \end{DoxyCompactList}\item 
+typedef struct \mbox{\hyperlink{group__opus__custom_gacae60f89c5ce7aeea69503451b9e2e6f}{Opus\+Custom\+Decoder}} \mbox{\hyperlink{group__opus__custom_gacae60f89c5ce7aeea69503451b9e2e6f}{Opus\+Custom\+Decoder}}
+\begin{DoxyCompactList}\small\item\em State of the decoder. \end{DoxyCompactList}\item 
+typedef struct \mbox{\hyperlink{group__opus__custom_gaf33847c711195b9edef896b73c96ec4f}{Opus\+Custom\+Mode}} \mbox{\hyperlink{group__opus__custom_gaf33847c711195b9edef896b73c96ec4f}{Opus\+Custom\+Mode}}
+\begin{DoxyCompactList}\small\item\em The mode contains all the information necessary to create an encoder. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{group__opus__custom_gaf33847c711195b9edef896b73c96ec4f}{Opus\+Custom\+Mode}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{group__opus__custom_gac248b6f0c693ba2f4cf99f3487974400}{opus\+\_\+custom\+\_\+mode\+\_\+create}} (\mbox{\hyperlink{opus__types_8h_aa4d309d6f80b99dbabebc8f98879ab9a}{opus\+\_\+int32}} Fs, int frame\+\_\+size, int \texorpdfstring{$\ast$}{*}error)
+\begin{DoxyCompactList}\small\item\em Creates a new mode struct. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__opus__custom_ga1333ad19db2acd8edf558ac6365741de}{opus\+\_\+custom\+\_\+mode\+\_\+destroy}} (\mbox{\hyperlink{group__opus__custom_gaf33847c711195b9edef896b73c96ec4f}{Opus\+Custom\+Mode}} \texorpdfstring{$\ast$}{*}mode)
+\begin{DoxyCompactList}\small\item\em Destroys a mode struct. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group__opus__custom_ga42f50e7f2942144c18c321f00f358ba0}{opus\+\_\+custom\+\_\+encoder\+\_\+get\+\_\+size}} (const \mbox{\hyperlink{group__opus__custom_gaf33847c711195b9edef896b73c96ec4f}{Opus\+Custom\+Mode}} \texorpdfstring{$\ast$}{*}mode, int channels)
+\begin{DoxyCompactList}\small\item\em Gets the size of an Opus\+Custom\+Encoder structure. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__opus__custom_ga7abe6a7afc599667950251c987feb439}{Opus\+Custom\+Encoder}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{group__opus__custom_ga759613361dc3cf5b648b42fa53254d6f}{opus\+\_\+custom\+\_\+encoder\+\_\+create}} (const \mbox{\hyperlink{group__opus__custom_gaf33847c711195b9edef896b73c96ec4f}{Opus\+Custom\+Mode}} \texorpdfstring{$\ast$}{*}mode, int channels, int \texorpdfstring{$\ast$}{*}error)
+\begin{DoxyCompactList}\small\item\em Creates a new encoder state. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__opus__custom_ga5ed5b55bccdc141632d8ba65b8228e7d}{opus\+\_\+custom\+\_\+encoder\+\_\+destroy}} (\mbox{\hyperlink{group__opus__custom_ga7abe6a7afc599667950251c987feb439}{Opus\+Custom\+Encoder}} \texorpdfstring{$\ast$}{*}st)
+\begin{DoxyCompactList}\small\item\em Destroys an encoder state. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group__opus__custom_ga9403d7a1fc09a0e49692a7f93decee21}{opus\+\_\+custom\+\_\+encode\+\_\+float}} (\mbox{\hyperlink{group__opus__custom_ga7abe6a7afc599667950251c987feb439}{Opus\+Custom\+Encoder}} \texorpdfstring{$\ast$}{*}st, const float \texorpdfstring{$\ast$}{*}pcm, int frame\+\_\+size, unsigned char \texorpdfstring{$\ast$}{*}compressed, int max\+Compressed\+Bytes)
+\begin{DoxyCompactList}\small\item\em Encodes a frame of audio. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group__opus__custom_ga21d6b0c4106ed5777a8632eed97d4cdc}{opus\+\_\+custom\+\_\+encode}} (\mbox{\hyperlink{group__opus__custom_ga7abe6a7afc599667950251c987feb439}{Opus\+Custom\+Encoder}} \texorpdfstring{$\ast$}{*}st, const \mbox{\hyperlink{opus__types_8h_acc9ed7cf60479eb81f9648c6ec27dc26}{opus\+\_\+int16}} \texorpdfstring{$\ast$}{*}pcm, int frame\+\_\+size, unsigned char \texorpdfstring{$\ast$}{*}compressed, int max\+Compressed\+Bytes)
+\begin{DoxyCompactList}\small\item\em Encodes a frame of audio. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group__opus__custom_gacf3d854e681cae3b693ee56b54459226}{opus\+\_\+custom\+\_\+encoder\+\_\+ctl}} (\mbox{\hyperlink{group__opus__custom_ga7abe6a7afc599667950251c987feb439}{Opus\+Custom\+Encoder}} \texorpdfstring{$\ast$}{*}OPUS\+\_\+\+RESTRICT st, int request,...)
+\begin{DoxyCompactList}\small\item\em Perform a CTL function on an Opus custom encoder. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group__opus__custom_gabe5d6f5f85dcad3ce8b88fe4b2642d2b}{opus\+\_\+custom\+\_\+decoder\+\_\+get\+\_\+size}} (const \mbox{\hyperlink{group__opus__custom_gaf33847c711195b9edef896b73c96ec4f}{Opus\+Custom\+Mode}} \texorpdfstring{$\ast$}{*}mode, int channels)
+\begin{DoxyCompactList}\small\item\em Gets the size of an Opus\+Custom\+Decoder structure. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group__opus__custom_gad4cb362035313c8f77c24cd29dd0932b}{opus\+\_\+custom\+\_\+decoder\+\_\+init}} (\mbox{\hyperlink{group__opus__custom_gacae60f89c5ce7aeea69503451b9e2e6f}{Opus\+Custom\+Decoder}} \texorpdfstring{$\ast$}{*}st, const \mbox{\hyperlink{group__opus__custom_gaf33847c711195b9edef896b73c96ec4f}{Opus\+Custom\+Mode}} \texorpdfstring{$\ast$}{*}mode, int channels)
+\begin{DoxyCompactList}\small\item\em Initializes a previously allocated decoder state The memory pointed to by st must be the size returned by opus\+\_\+custom\+\_\+decoder\+\_\+get\+\_\+size. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__opus__custom_gacae60f89c5ce7aeea69503451b9e2e6f}{Opus\+Custom\+Decoder}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{group__opus__custom_ga6c7daa35f13053844ebc2101fd7ec703}{opus\+\_\+custom\+\_\+decoder\+\_\+create}} (const \mbox{\hyperlink{group__opus__custom_gaf33847c711195b9edef896b73c96ec4f}{Opus\+Custom\+Mode}} \texorpdfstring{$\ast$}{*}mode, int channels, int \texorpdfstring{$\ast$}{*}error)
+\begin{DoxyCompactList}\small\item\em Creates a new decoder state. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__opus__custom_ga0e59e6389bd6478e9c3be48aff4459e1}{opus\+\_\+custom\+\_\+decoder\+\_\+destroy}} (\mbox{\hyperlink{group__opus__custom_gacae60f89c5ce7aeea69503451b9e2e6f}{Opus\+Custom\+Decoder}} \texorpdfstring{$\ast$}{*}st)
+\begin{DoxyCompactList}\small\item\em Destroys a decoder state. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group__opus__custom_gac2c34002d4f546a535125e2780c81656}{opus\+\_\+custom\+\_\+decode\+\_\+float}} (\mbox{\hyperlink{group__opus__custom_gacae60f89c5ce7aeea69503451b9e2e6f}{Opus\+Custom\+Decoder}} \texorpdfstring{$\ast$}{*}st, const unsigned char \texorpdfstring{$\ast$}{*}data, int len, float \texorpdfstring{$\ast$}{*}pcm, int frame\+\_\+size)
+\begin{DoxyCompactList}\small\item\em Decode an opus custom frame with floating point output. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group__opus__custom_gafb6d3b90eed41b938009f4a32d633363}{opus\+\_\+custom\+\_\+decode}} (\mbox{\hyperlink{group__opus__custom_gacae60f89c5ce7aeea69503451b9e2e6f}{Opus\+Custom\+Decoder}} \texorpdfstring{$\ast$}{*}st, const unsigned char \texorpdfstring{$\ast$}{*}data, int len, \mbox{\hyperlink{opus__types_8h_acc9ed7cf60479eb81f9648c6ec27dc26}{opus\+\_\+int16}} \texorpdfstring{$\ast$}{*}pcm, int frame\+\_\+size)
+\begin{DoxyCompactList}\small\item\em Decode an opus custom frame. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group__opus__custom_ga88b9248e497f3c1b894f035011c569a9}{opus\+\_\+custom\+\_\+decoder\+\_\+ctl}} (\mbox{\hyperlink{group__opus__custom_gacae60f89c5ce7aeea69503451b9e2e6f}{Opus\+Custom\+Decoder}} \texorpdfstring{$\ast$}{*}OPUS\+\_\+\+RESTRICT st, int request,...)
+\begin{DoxyCompactList}\small\item\em Perform a CTL function on an Opus custom decoder. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Opus-\/\+Custom reference implementation API. 
+
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{opus__custom_8h_a92c66b86b701421b674984559e79bbf0}\label{opus__custom_8h_a92c66b86b701421b674984559e79bbf0} 
+\index{opus\_custom.h@{opus\_custom.h}!OPUS\_CUSTOM\_EXPORT@{OPUS\_CUSTOM\_EXPORT}}
+\index{OPUS\_CUSTOM\_EXPORT@{OPUS\_CUSTOM\_EXPORT}!opus\_custom.h@{opus\_custom.h}}
+\doxysubsubsection{\texorpdfstring{OPUS\_CUSTOM\_EXPORT}{OPUS\_CUSTOM\_EXPORT}}
+{\footnotesize\ttfamily \#define OPUS\+\_\+\+CUSTOM\+\_\+\+EXPORT}
+
+\Hypertarget{opus__custom_8h_a83ea1aac7766a02abc5c666516b2e622}\label{opus__custom_8h_a83ea1aac7766a02abc5c666516b2e622} 
+\index{opus\_custom.h@{opus\_custom.h}!OPUS\_CUSTOM\_EXPORT\_STATIC@{OPUS\_CUSTOM\_EXPORT\_STATIC}}
+\index{OPUS\_CUSTOM\_EXPORT\_STATIC@{OPUS\_CUSTOM\_EXPORT\_STATIC}!opus\_custom.h@{opus\_custom.h}}
+\doxysubsubsection{\texorpdfstring{OPUS\_CUSTOM\_EXPORT\_STATIC}{OPUS\_CUSTOM\_EXPORT\_STATIC}}
+{\footnotesize\ttfamily \#define OPUS\+\_\+\+CUSTOM\+\_\+\+EXPORT\+\_\+\+STATIC}
+

@@ -1,0 +1,140 @@
+\doxysection{opus.\+h File Reference}
+\hypertarget{opus_8h}{}\label{opus_8h}\index{opus.h@{opus.h}}
+
+
+Opus reference implementation API.  
+
+
+{\ttfamily \#include \"{}opus\+\_\+types.\+h\"{}}\newline
+{\ttfamily \#include \"{}opus\+\_\+defines.\+h\"{}}\newline
+Include dependency graph for opus.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=201pt]{opus_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=194pt]{opus_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \mbox{\hyperlink{group__opus__encoder_gaf461a3ef2f10c2fe8b994a176f06c9bd}{Opus\+Encoder}} \mbox{\hyperlink{group__opus__encoder_gaf461a3ef2f10c2fe8b994a176f06c9bd}{Opus\+Encoder}}
+\begin{DoxyCompactList}\small\item\em Opus encoder state. \end{DoxyCompactList}\item 
+typedef struct \mbox{\hyperlink{group__opus__decoder_ga401d8579958d36094715a6b90cd159a6}{Opus\+Decoder}} \mbox{\hyperlink{group__opus__decoder_ga401d8579958d36094715a6b90cd159a6}{Opus\+Decoder}}
+\begin{DoxyCompactList}\small\item\em Opus decoder state. \end{DoxyCompactList}\item 
+typedef struct \mbox{\hyperlink{group__opus__decoder_gaa306779b7ccaf41a3034df368477782c}{Opus\+DREDDecoder}} \mbox{\hyperlink{group__opus__decoder_gaa306779b7ccaf41a3034df368477782c}{Opus\+DREDDecoder}}
+\begin{DoxyCompactList}\small\item\em Opus DRED decoder. \end{DoxyCompactList}\item 
+typedef struct \mbox{\hyperlink{group__opus__decoder_ga5b9093a1d0e104dbd1eb3a7ec836d81b}{Opus\+DRED}} \mbox{\hyperlink{group__opus__decoder_ga5b9093a1d0e104dbd1eb3a7ec836d81b}{Opus\+DRED}}
+\begin{DoxyCompactList}\small\item\em Opus DRED state. \end{DoxyCompactList}\item 
+typedef struct \mbox{\hyperlink{group__opus__repacketizer_ga1f85070a64bcbf5bf24f5ccb80323e7b}{Opus\+Repacketizer}} \mbox{\hyperlink{group__opus__repacketizer_ga1f85070a64bcbf5bf24f5ccb80323e7b}{Opus\+Repacketizer}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{group__opus__encoder_gaefeb7dc1d6e3b59dea5ea674c86e9c18}{opus\+\_\+encoder\+\_\+get\+\_\+size}} (int channels)
+\begin{DoxyCompactList}\small\item\em Gets the size of an {\ttfamily Opus\+Encoder} structure. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__opus__encoder_gaf461a3ef2f10c2fe8b994a176f06c9bd}{Opus\+Encoder}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{group__opus__encoder_ga0720d9d1efff65b905a64226a81070ff}{opus\+\_\+encoder\+\_\+create}} (\mbox{\hyperlink{opus__types_8h_aa4d309d6f80b99dbabebc8f98879ab9a}{opus\+\_\+int32}} Fs, int channels, int application, int \texorpdfstring{$\ast$}{*}error)
+\begin{DoxyCompactList}\small\item\em Allocates and initializes an encoder state. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group__opus__encoder_ga515db1c267a7421dacaad3610f79eb79}{opus\+\_\+encoder\+\_\+init}} (\mbox{\hyperlink{group__opus__encoder_gaf461a3ef2f10c2fe8b994a176f06c9bd}{Opus\+Encoder}} \texorpdfstring{$\ast$}{*}st, \mbox{\hyperlink{opus__types_8h_aa4d309d6f80b99dbabebc8f98879ab9a}{opus\+\_\+int32}} Fs, int channels, int application)
+\begin{DoxyCompactList}\small\item\em Initializes a previously allocated encoder state The memory pointed to by st must be at least the size returned by \doxylink{group__opus__encoder_gaefeb7dc1d6e3b59dea5ea674c86e9c18}{opus\+\_\+encoder\+\_\+get\+\_\+size()}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{opus__types_8h_aa4d309d6f80b99dbabebc8f98879ab9a}{opus\+\_\+int32}} \mbox{\hyperlink{group__opus__encoder_gad2d6bf6a9ffb6674879d7605ed073e25}{opus\+\_\+encode}} (\mbox{\hyperlink{group__opus__encoder_gaf461a3ef2f10c2fe8b994a176f06c9bd}{Opus\+Encoder}} \texorpdfstring{$\ast$}{*}st, const \mbox{\hyperlink{opus__types_8h_acc9ed7cf60479eb81f9648c6ec27dc26}{opus\+\_\+int16}} \texorpdfstring{$\ast$}{*}pcm, int frame\+\_\+size, unsigned char \texorpdfstring{$\ast$}{*}data, \mbox{\hyperlink{opus__types_8h_aa4d309d6f80b99dbabebc8f98879ab9a}{opus\+\_\+int32}} max\+\_\+data\+\_\+bytes)
+\begin{DoxyCompactList}\small\item\em Encodes an Opus frame. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{opus__types_8h_aa4d309d6f80b99dbabebc8f98879ab9a}{opus\+\_\+int32}} \mbox{\hyperlink{group__opus__encoder_ga4ae9905859cd241ef4bb5c59cd5e5309}{opus\+\_\+encode\+\_\+float}} (\mbox{\hyperlink{group__opus__encoder_gaf461a3ef2f10c2fe8b994a176f06c9bd}{Opus\+Encoder}} \texorpdfstring{$\ast$}{*}st, const float \texorpdfstring{$\ast$}{*}pcm, int frame\+\_\+size, unsigned char \texorpdfstring{$\ast$}{*}data, \mbox{\hyperlink{opus__types_8h_aa4d309d6f80b99dbabebc8f98879ab9a}{opus\+\_\+int32}} max\+\_\+data\+\_\+bytes)
+\begin{DoxyCompactList}\small\item\em Encodes an Opus frame from floating point input. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__opus__encoder_ga5f4c05b4b51cdffec5a55dbf17bbfa1c}{opus\+\_\+encoder\+\_\+destroy}} (\mbox{\hyperlink{group__opus__encoder_gaf461a3ef2f10c2fe8b994a176f06c9bd}{Opus\+Encoder}} \texorpdfstring{$\ast$}{*}st)
+\begin{DoxyCompactList}\small\item\em Frees an {\ttfamily Opus\+Encoder} allocated by \doxylink{group__opus__encoder_ga0720d9d1efff65b905a64226a81070ff}{opus\+\_\+encoder\+\_\+create()}. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group__opus__encoder_ga164cbb0425238961919adf1db67949df}{opus\+\_\+encoder\+\_\+ctl}} (\mbox{\hyperlink{group__opus__encoder_gaf461a3ef2f10c2fe8b994a176f06c9bd}{Opus\+Encoder}} \texorpdfstring{$\ast$}{*}st, int request,...)
+\begin{DoxyCompactList}\small\item\em Perform a CTL function on an Opus encoder. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group__opus__decoder_gac918415b2ee21add75b7f867ce235011}{opus\+\_\+decoder\+\_\+get\+\_\+size}} (int channels)
+\begin{DoxyCompactList}\small\item\em Gets the size of an {\ttfamily Opus\+Decoder} structure. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__opus__decoder_ga401d8579958d36094715a6b90cd159a6}{Opus\+Decoder}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{group__opus__decoder_ga6c1829854bf2de7b58adae1894ad1e27}{opus\+\_\+decoder\+\_\+create}} (\mbox{\hyperlink{opus__types_8h_aa4d309d6f80b99dbabebc8f98879ab9a}{opus\+\_\+int32}} Fs, int channels, int \texorpdfstring{$\ast$}{*}error)
+\begin{DoxyCompactList}\small\item\em Allocates and initializes a decoder state. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group__opus__decoder_ga939156d1f561c4273d5c62fa9c235a01}{opus\+\_\+decoder\+\_\+init}} (\mbox{\hyperlink{group__opus__decoder_ga401d8579958d36094715a6b90cd159a6}{Opus\+Decoder}} \texorpdfstring{$\ast$}{*}st, \mbox{\hyperlink{opus__types_8h_aa4d309d6f80b99dbabebc8f98879ab9a}{opus\+\_\+int32}} Fs, int channels)
+\begin{DoxyCompactList}\small\item\em Initializes a previously allocated decoder state. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group__opus__decoder_ga7d1111f64c36027ddcb81799df9b3fc9}{opus\+\_\+decode}} (\mbox{\hyperlink{group__opus__decoder_ga401d8579958d36094715a6b90cd159a6}{Opus\+Decoder}} \texorpdfstring{$\ast$}{*}st, const unsigned char \texorpdfstring{$\ast$}{*}data, \mbox{\hyperlink{opus__types_8h_aa4d309d6f80b99dbabebc8f98879ab9a}{opus\+\_\+int32}} len, \mbox{\hyperlink{opus__types_8h_acc9ed7cf60479eb81f9648c6ec27dc26}{opus\+\_\+int16}} \texorpdfstring{$\ast$}{*}pcm, int frame\+\_\+size, int decode\+\_\+fec)
+\begin{DoxyCompactList}\small\item\em Decode an Opus packet. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group__opus__decoder_ga9c554b8c0214e24733a299fe53bb3bd2}{opus\+\_\+decode\+\_\+float}} (\mbox{\hyperlink{group__opus__decoder_ga401d8579958d36094715a6b90cd159a6}{Opus\+Decoder}} \texorpdfstring{$\ast$}{*}st, const unsigned char \texorpdfstring{$\ast$}{*}data, \mbox{\hyperlink{opus__types_8h_aa4d309d6f80b99dbabebc8f98879ab9a}{opus\+\_\+int32}} len, float \texorpdfstring{$\ast$}{*}pcm, int frame\+\_\+size, int decode\+\_\+fec)
+\begin{DoxyCompactList}\small\item\em Decode an Opus packet with floating point output. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group__opus__decoder_ga2d492844b4f66e7f34d85870f13d4846}{opus\+\_\+decoder\+\_\+ctl}} (\mbox{\hyperlink{group__opus__decoder_ga401d8579958d36094715a6b90cd159a6}{Opus\+Decoder}} \texorpdfstring{$\ast$}{*}st, int request,...)
+\begin{DoxyCompactList}\small\item\em Perform a CTL function on an Opus decoder. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__opus__decoder_gafebf4cb3c29c9317cac385446a76e36e}{opus\+\_\+decoder\+\_\+destroy}} (\mbox{\hyperlink{group__opus__decoder_ga401d8579958d36094715a6b90cd159a6}{Opus\+Decoder}} \texorpdfstring{$\ast$}{*}st)
+\begin{DoxyCompactList}\small\item\em Frees an {\ttfamily Opus\+Decoder} allocated by \doxylink{group__opus__decoder_ga6c1829854bf2de7b58adae1894ad1e27}{opus\+\_\+decoder\+\_\+create()}. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group__opus__decoder_ga58665700bd65a64b4cb811dbd4db1e2a}{opus\+\_\+dred\+\_\+decoder\+\_\+get\+\_\+size}} (void)
+\begin{DoxyCompactList}\small\item\em Gets the size of an {\ttfamily Opus\+DREDDecoder} structure. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__opus__decoder_gaa306779b7ccaf41a3034df368477782c}{Opus\+DREDDecoder}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{group__opus__decoder_gaab0b546b5e1bc78da815ff880b410f97}{opus\+\_\+dred\+\_\+decoder\+\_\+create}} (int \texorpdfstring{$\ast$}{*}error)
+\begin{DoxyCompactList}\small\item\em Allocates and initializes an Opus\+DREDDecoder state. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group__opus__decoder_gaefbe97140acff521c3b2d4a1b00b33d5}{opus\+\_\+dred\+\_\+decoder\+\_\+init}} (\mbox{\hyperlink{group__opus__decoder_gaa306779b7ccaf41a3034df368477782c}{Opus\+DREDDecoder}} \texorpdfstring{$\ast$}{*}dec)
+\begin{DoxyCompactList}\small\item\em Initializes an {\ttfamily Opus\+DREDDecoder} state. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__opus__decoder_ga21ef5755a25762a69665b1883382292e}{opus\+\_\+dred\+\_\+decoder\+\_\+destroy}} (\mbox{\hyperlink{group__opus__decoder_gaa306779b7ccaf41a3034df368477782c}{Opus\+DREDDecoder}} \texorpdfstring{$\ast$}{*}dec)
+\begin{DoxyCompactList}\small\item\em Frees an {\ttfamily Opus\+DREDDecoder} allocated by \doxylink{group__opus__decoder_gaab0b546b5e1bc78da815ff880b410f97}{opus\+\_\+dred\+\_\+decoder\+\_\+create()}. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group__opus__decoder_ga2d964d7a37ed634ff6d135c40b05d75f}{opus\+\_\+dred\+\_\+decoder\+\_\+ctl}} (\mbox{\hyperlink{group__opus__decoder_gaa306779b7ccaf41a3034df368477782c}{Opus\+DREDDecoder}} \texorpdfstring{$\ast$}{*}dred\+\_\+dec, int request,...)
+\begin{DoxyCompactList}\small\item\em Perform a CTL function on an Opus DRED decoder. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group__opus__decoder_gaa7c7210fda039d466bcbd28c9a9b081f}{opus\+\_\+dred\+\_\+get\+\_\+size}} (void)
+\begin{DoxyCompactList}\small\item\em Gets the size of an {\ttfamily Opus\+DRED} structure. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__opus__decoder_ga5b9093a1d0e104dbd1eb3a7ec836d81b}{Opus\+DRED}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{group__opus__decoder_ga28952b35cc367f2a334789042f8b378b}{opus\+\_\+dred\+\_\+alloc}} (int \texorpdfstring{$\ast$}{*}error)
+\begin{DoxyCompactList}\small\item\em Allocates and initializes a DRED state. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__opus__decoder_ga935b58a831738b44afd2ed42096f0ee9}{opus\+\_\+dred\+\_\+free}} (\mbox{\hyperlink{group__opus__decoder_ga5b9093a1d0e104dbd1eb3a7ec836d81b}{Opus\+DRED}} \texorpdfstring{$\ast$}{*}dec)
+\begin{DoxyCompactList}\small\item\em Frees an {\ttfamily Opus\+DRED} allocated by opus\+\_\+dred\+\_\+create(). \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group__opus__decoder_ga6674a62897092f51183a792669b99c6e}{opus\+\_\+dred\+\_\+parse}} (\mbox{\hyperlink{group__opus__decoder_gaa306779b7ccaf41a3034df368477782c}{Opus\+DREDDecoder}} \texorpdfstring{$\ast$}{*}dred\+\_\+dec, \mbox{\hyperlink{group__opus__decoder_ga5b9093a1d0e104dbd1eb3a7ec836d81b}{Opus\+DRED}} \texorpdfstring{$\ast$}{*}dred, const unsigned char \texorpdfstring{$\ast$}{*}data, \mbox{\hyperlink{opus__types_8h_aa4d309d6f80b99dbabebc8f98879ab9a}{opus\+\_\+int32}} len, \mbox{\hyperlink{opus__types_8h_aa4d309d6f80b99dbabebc8f98879ab9a}{opus\+\_\+int32}} max\+\_\+dred\+\_\+samples, \mbox{\hyperlink{opus__types_8h_aa4d309d6f80b99dbabebc8f98879ab9a}{opus\+\_\+int32}} sampling\+\_\+rate, int \texorpdfstring{$\ast$}{*}dred\+\_\+end, int defer\+\_\+processing)
+\begin{DoxyCompactList}\small\item\em Decode an Opus DRED packet. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group__opus__decoder_gaf25125c27783db366f239b7ab3633601}{opus\+\_\+dred\+\_\+process}} (\mbox{\hyperlink{group__opus__decoder_gaa306779b7ccaf41a3034df368477782c}{Opus\+DREDDecoder}} \texorpdfstring{$\ast$}{*}dred\+\_\+dec, const \mbox{\hyperlink{group__opus__decoder_ga5b9093a1d0e104dbd1eb3a7ec836d81b}{Opus\+DRED}} \texorpdfstring{$\ast$}{*}src, \mbox{\hyperlink{group__opus__decoder_ga5b9093a1d0e104dbd1eb3a7ec836d81b}{Opus\+DRED}} \texorpdfstring{$\ast$}{*}dst)
+\begin{DoxyCompactList}\small\item\em Finish decoding an Opus DRED packet. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group__opus__decoder_gabae9495fe3fb0750d42b7b85705c12ca}{opus\+\_\+decoder\+\_\+dred\+\_\+decode}} (\mbox{\hyperlink{group__opus__decoder_ga401d8579958d36094715a6b90cd159a6}{Opus\+Decoder}} \texorpdfstring{$\ast$}{*}st, const \mbox{\hyperlink{group__opus__decoder_ga5b9093a1d0e104dbd1eb3a7ec836d81b}{Opus\+DRED}} \texorpdfstring{$\ast$}{*}dred, \mbox{\hyperlink{opus__types_8h_aa4d309d6f80b99dbabebc8f98879ab9a}{opus\+\_\+int32}} dred\+\_\+offset, \mbox{\hyperlink{opus__types_8h_acc9ed7cf60479eb81f9648c6ec27dc26}{opus\+\_\+int16}} \texorpdfstring{$\ast$}{*}pcm, \mbox{\hyperlink{opus__types_8h_aa4d309d6f80b99dbabebc8f98879ab9a}{opus\+\_\+int32}} frame\+\_\+size)
+\begin{DoxyCompactList}\small\item\em Decode audio from an Opus DRED packet with floating point output. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group__opus__decoder_gaa2957ee03a4aadc6eda52c040c5d4ac6}{opus\+\_\+decoder\+\_\+dred\+\_\+decode\+\_\+float}} (\mbox{\hyperlink{group__opus__decoder_ga401d8579958d36094715a6b90cd159a6}{Opus\+Decoder}} \texorpdfstring{$\ast$}{*}st, const \mbox{\hyperlink{group__opus__decoder_ga5b9093a1d0e104dbd1eb3a7ec836d81b}{Opus\+DRED}} \texorpdfstring{$\ast$}{*}dred, \mbox{\hyperlink{opus__types_8h_aa4d309d6f80b99dbabebc8f98879ab9a}{opus\+\_\+int32}} dred\+\_\+offset, float \texorpdfstring{$\ast$}{*}pcm, \mbox{\hyperlink{opus__types_8h_aa4d309d6f80b99dbabebc8f98879ab9a}{opus\+\_\+int32}} frame\+\_\+size)
+\begin{DoxyCompactList}\small\item\em Decode audio from an Opus DRED packet with floating point output. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group__opus__decoder_ga9d0054936a3345865632b04729cd368c}{opus\+\_\+packet\+\_\+parse}} (const unsigned char \texorpdfstring{$\ast$}{*}data, \mbox{\hyperlink{opus__types_8h_aa4d309d6f80b99dbabebc8f98879ab9a}{opus\+\_\+int32}} len, unsigned char \texorpdfstring{$\ast$}{*}out\+\_\+toc, const unsigned char \texorpdfstring{$\ast$}{*}frames\mbox{[}48\mbox{]}, \mbox{\hyperlink{opus__types_8h_acc9ed7cf60479eb81f9648c6ec27dc26}{opus\+\_\+int16}} size\mbox{[}48\mbox{]}, int \texorpdfstring{$\ast$}{*}payload\+\_\+offset)
+\begin{DoxyCompactList}\small\item\em Parse an opus packet into one or more frames. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group__opus__decoder_ga89b9375b6ff5e15f07fdc5d0cf4f0053}{opus\+\_\+packet\+\_\+get\+\_\+bandwidth}} (const unsigned char \texorpdfstring{$\ast$}{*}data)
+\begin{DoxyCompactList}\small\item\em Gets the bandwidth of an Opus packet. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group__opus__decoder_gab2a955acced631c6cb7876bbdc7953d4}{opus\+\_\+packet\+\_\+get\+\_\+samples\+\_\+per\+\_\+frame}} (const unsigned char \texorpdfstring{$\ast$}{*}data, \mbox{\hyperlink{opus__types_8h_aa4d309d6f80b99dbabebc8f98879ab9a}{opus\+\_\+int32}} Fs)
+\begin{DoxyCompactList}\small\item\em Gets the number of samples per frame from an Opus packet. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group__opus__decoder_ga4209376ddf8cc3379767e1749e1ef26d}{opus\+\_\+packet\+\_\+get\+\_\+nb\+\_\+channels}} (const unsigned char \texorpdfstring{$\ast$}{*}data)
+\begin{DoxyCompactList}\small\item\em Gets the number of channels from an Opus packet. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group__opus__decoder_ga064cb2ed9e77a934cd7db6c13b02c584}{opus\+\_\+packet\+\_\+get\+\_\+nb\+\_\+frames}} (const unsigned char packet\mbox{[}$\,$\mbox{]}, \mbox{\hyperlink{opus__types_8h_aa4d309d6f80b99dbabebc8f98879ab9a}{opus\+\_\+int32}} len)
+\begin{DoxyCompactList}\small\item\em Gets the number of frames in an Opus packet. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group__opus__decoder_ga3cfec8b0bed7789ebd88c3b3370d337b}{opus\+\_\+packet\+\_\+get\+\_\+nb\+\_\+samples}} (const unsigned char packet\mbox{[}$\,$\mbox{]}, \mbox{\hyperlink{opus__types_8h_aa4d309d6f80b99dbabebc8f98879ab9a}{opus\+\_\+int32}} len, \mbox{\hyperlink{opus__types_8h_aa4d309d6f80b99dbabebc8f98879ab9a}{opus\+\_\+int32}} Fs)
+\begin{DoxyCompactList}\small\item\em Gets the number of samples of an Opus packet. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group__opus__decoder_gae142ef5b2a6c228f8b329646c9403101}{opus\+\_\+packet\+\_\+has\+\_\+lbrr}} (const unsigned char packet\mbox{[}$\,$\mbox{]}, \mbox{\hyperlink{opus__types_8h_aa4d309d6f80b99dbabebc8f98879ab9a}{opus\+\_\+int32}} len)
+\begin{DoxyCompactList}\small\item\em Checks whether an Opus packet has LBRR. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group__opus__decoder_ga659135a16060f85908f63443a2325118}{opus\+\_\+decoder\+\_\+get\+\_\+nb\+\_\+samples}} (const \mbox{\hyperlink{group__opus__decoder_ga401d8579958d36094715a6b90cd159a6}{Opus\+Decoder}} \texorpdfstring{$\ast$}{*}dec, const unsigned char packet\mbox{[}$\,$\mbox{]}, \mbox{\hyperlink{opus__types_8h_aa4d309d6f80b99dbabebc8f98879ab9a}{opus\+\_\+int32}} len)
+\begin{DoxyCompactList}\small\item\em Gets the number of samples of an Opus packet. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__opus__decoder_gaff99598b352e8939dded08d96e125e0b}{opus\+\_\+pcm\+\_\+soft\+\_\+clip}} (float \texorpdfstring{$\ast$}{*}pcm, int frame\+\_\+size, int channels, float \texorpdfstring{$\ast$}{*}softclip\+\_\+mem)
+\begin{DoxyCompactList}\small\item\em Applies soft-\/clipping to bring a float signal within the \mbox{[}-\/1,1\mbox{]} range. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group__opus__repacketizer_ga35c8fc05764748d187c62fc50e812d06}{opus\+\_\+repacketizer\+\_\+get\+\_\+size}} (void)
+\begin{DoxyCompactList}\small\item\em Gets the size of an {\ttfamily Opus\+Repacketizer} structure. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__opus__repacketizer_ga1f85070a64bcbf5bf24f5ccb80323e7b}{Opus\+Repacketizer}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{group__opus__repacketizer_ga9635441d1421370743e453c992b309cf}{opus\+\_\+repacketizer\+\_\+init}} (\mbox{\hyperlink{group__opus__repacketizer_ga1f85070a64bcbf5bf24f5ccb80323e7b}{Opus\+Repacketizer}} \texorpdfstring{$\ast$}{*}rp)
+\begin{DoxyCompactList}\small\item\em (Re)initializes a previously allocated repacketizer state. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__opus__repacketizer_ga1f85070a64bcbf5bf24f5ccb80323e7b}{Opus\+Repacketizer}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{group__opus__repacketizer_gae300b62314fb49c1ab3123b5927e836c}{opus\+\_\+repacketizer\+\_\+create}} (void)
+\begin{DoxyCompactList}\small\item\em Allocates memory and initializes the new repacketizer with \doxylink{group__opus__repacketizer_ga9635441d1421370743e453c992b309cf}{opus\+\_\+repacketizer\+\_\+init()}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__opus__repacketizer_gadb08b25d2a29a559c35774cfe2a1b886}{opus\+\_\+repacketizer\+\_\+destroy}} (\mbox{\hyperlink{group__opus__repacketizer_ga1f85070a64bcbf5bf24f5ccb80323e7b}{Opus\+Repacketizer}} \texorpdfstring{$\ast$}{*}rp)
+\begin{DoxyCompactList}\small\item\em Frees an {\ttfamily Opus\+Repacketizer} allocated by \doxylink{group__opus__repacketizer_gae300b62314fb49c1ab3123b5927e836c}{opus\+\_\+repacketizer\+\_\+create()}. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group__opus__repacketizer_ga2840dd56bfa37f8c6874355b9ce8fb46}{opus\+\_\+repacketizer\+\_\+cat}} (\mbox{\hyperlink{group__opus__repacketizer_ga1f85070a64bcbf5bf24f5ccb80323e7b}{Opus\+Repacketizer}} \texorpdfstring{$\ast$}{*}rp, const unsigned char \texorpdfstring{$\ast$}{*}data, \mbox{\hyperlink{opus__types_8h_aa4d309d6f80b99dbabebc8f98879ab9a}{opus\+\_\+int32}} len)
+\begin{DoxyCompactList}\small\item\em Add a packet to the current repacketizer state. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{opus__types_8h_aa4d309d6f80b99dbabebc8f98879ab9a}{opus\+\_\+int32}} \mbox{\hyperlink{group__opus__repacketizer_gac591b550d92125b4abfa11a4b609f51f}{opus\+\_\+repacketizer\+\_\+out\+\_\+range}} (\mbox{\hyperlink{group__opus__repacketizer_ga1f85070a64bcbf5bf24f5ccb80323e7b}{Opus\+Repacketizer}} \texorpdfstring{$\ast$}{*}rp, int begin, int end, unsigned char \texorpdfstring{$\ast$}{*}data, \mbox{\hyperlink{opus__types_8h_aa4d309d6f80b99dbabebc8f98879ab9a}{opus\+\_\+int32}} maxlen)
+\begin{DoxyCompactList}\small\item\em Construct a new packet from data previously submitted to the repacketizer state via \doxylink{group__opus__repacketizer_ga2840dd56bfa37f8c6874355b9ce8fb46}{opus\+\_\+repacketizer\+\_\+cat()}. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group__opus__repacketizer_ga2cad98d04458aafdf6bb9f22f34ea7c0}{opus\+\_\+repacketizer\+\_\+get\+\_\+nb\+\_\+frames}} (\mbox{\hyperlink{group__opus__repacketizer_ga1f85070a64bcbf5bf24f5ccb80323e7b}{Opus\+Repacketizer}} \texorpdfstring{$\ast$}{*}rp)
+\begin{DoxyCompactList}\small\item\em Return the total number of frames contained in packet data submitted to the repacketizer state so far via \doxylink{group__opus__repacketizer_ga2840dd56bfa37f8c6874355b9ce8fb46}{opus\+\_\+repacketizer\+\_\+cat()} since the last call to \doxylink{group__opus__repacketizer_ga9635441d1421370743e453c992b309cf}{opus\+\_\+repacketizer\+\_\+init()} or \doxylink{group__opus__repacketizer_gae300b62314fb49c1ab3123b5927e836c}{opus\+\_\+repacketizer\+\_\+create()}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{opus__types_8h_aa4d309d6f80b99dbabebc8f98879ab9a}{opus\+\_\+int32}} \mbox{\hyperlink{group__opus__repacketizer_ga19ff1e91a8fa652380f972a224a26481}{opus\+\_\+repacketizer\+\_\+out}} (\mbox{\hyperlink{group__opus__repacketizer_ga1f85070a64bcbf5bf24f5ccb80323e7b}{Opus\+Repacketizer}} \texorpdfstring{$\ast$}{*}rp, unsigned char \texorpdfstring{$\ast$}{*}data, \mbox{\hyperlink{opus__types_8h_aa4d309d6f80b99dbabebc8f98879ab9a}{opus\+\_\+int32}} maxlen)
+\begin{DoxyCompactList}\small\item\em Construct a new packet from data previously submitted to the repacketizer state via \doxylink{group__opus__repacketizer_ga2840dd56bfa37f8c6874355b9ce8fb46}{opus\+\_\+repacketizer\+\_\+cat()}. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group__opus__repacketizer_ga62eb1a9b887de0ce50f52eacb3609f13}{opus\+\_\+packet\+\_\+pad}} (unsigned char \texorpdfstring{$\ast$}{*}data, \mbox{\hyperlink{opus__types_8h_aa4d309d6f80b99dbabebc8f98879ab9a}{opus\+\_\+int32}} len, \mbox{\hyperlink{opus__types_8h_aa4d309d6f80b99dbabebc8f98879ab9a}{opus\+\_\+int32}} new\+\_\+len)
+\begin{DoxyCompactList}\small\item\em Pads a given Opus packet to a larger size (possibly changing the TOC sequence). \end{DoxyCompactList}\item 
+\mbox{\hyperlink{opus__types_8h_aa4d309d6f80b99dbabebc8f98879ab9a}{opus\+\_\+int32}} \mbox{\hyperlink{group__opus__repacketizer_ga0f0d860cce598033814071327b626ecf}{opus\+\_\+packet\+\_\+unpad}} (unsigned char \texorpdfstring{$\ast$}{*}data, \mbox{\hyperlink{opus__types_8h_aa4d309d6f80b99dbabebc8f98879ab9a}{opus\+\_\+int32}} len)
+\begin{DoxyCompactList}\small\item\em Remove all padding from a given Opus packet and rewrite the TOC sequence to minimize space usage. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group__opus__repacketizer_gad3559b66569ca4561fe4ba8f3b1cb336}{opus\+\_\+multistream\+\_\+packet\+\_\+pad}} (unsigned char \texorpdfstring{$\ast$}{*}data, \mbox{\hyperlink{opus__types_8h_aa4d309d6f80b99dbabebc8f98879ab9a}{opus\+\_\+int32}} len, \mbox{\hyperlink{opus__types_8h_aa4d309d6f80b99dbabebc8f98879ab9a}{opus\+\_\+int32}} new\+\_\+len, int nb\+\_\+streams)
+\begin{DoxyCompactList}\small\item\em Pads a given Opus multi-\/stream packet to a larger size (possibly changing the TOC sequence). \end{DoxyCompactList}\item 
+\mbox{\hyperlink{opus__types_8h_aa4d309d6f80b99dbabebc8f98879ab9a}{opus\+\_\+int32}} \mbox{\hyperlink{group__opus__repacketizer_gaa0f0e05884b48b2f901977478e74e067}{opus\+\_\+multistream\+\_\+packet\+\_\+unpad}} (unsigned char \texorpdfstring{$\ast$}{*}data, \mbox{\hyperlink{opus__types_8h_aa4d309d6f80b99dbabebc8f98879ab9a}{opus\+\_\+int32}} len, int nb\+\_\+streams)
+\begin{DoxyCompactList}\small\item\em Remove all padding from a given Opus multi-\/stream packet and rewrite the TOC sequence to minimize space usage. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Opus reference implementation API. 
+

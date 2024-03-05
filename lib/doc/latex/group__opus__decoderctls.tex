@@ -1,0 +1,93 @@
+\doxysection{Decoder related CTLs}
+\hypertarget{group__opus__decoderctls}{}\label{group__opus__decoderctls}\index{Decoder related CTLs@{Decoder related CTLs}}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{group__opus__decoderctls_ga8ddb6fa694efa2c7e95ef51addc70dac}{OPUS\+\_\+\+SET\+\_\+\+GAIN}}(x)
+\begin{DoxyCompactList}\small\item\em Configures decoder gain adjustment. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group__opus__decoderctls_ga00ca8b4bd753a837f143ebd8ed63d247}{OPUS\+\_\+\+GET\+\_\+\+GAIN}}(x)
+\begin{DoxyCompactList}\small\item\em Gets the decoder\textquotesingle{}s configured gain adjustment. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group__opus__decoderctls_ga8f3d070f56b75f2a7af54e5776b387fa}{OPUS\+\_\+\+GET\+\_\+\+LAST\+\_\+\+PACKET\+\_\+\+DURATION}}(x)
+\begin{DoxyCompactList}\small\item\em Gets the duration (in samples) of the last packet successfully decoded or concealed. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group__opus__decoderctls_gaa89fc25eb35fc31a02b508562dd83820}{OPUS\+\_\+\+GET\+\_\+\+PITCH}}(x)
+\begin{DoxyCompactList}\small\item\em Gets the pitch of the last decoded frame, if available. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxySeeAlso}{See also}
+\doxylink{group__opus__genericctls}{Generic CTLs}, \doxylink{group__opus__encoderctls}{Encoder related CTLs}, \doxylink{group__opus__decoder}{Opus Decoder} 
+\end{DoxySeeAlso}
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{group__opus__decoderctls_ga00ca8b4bd753a837f143ebd8ed63d247}\label{group__opus__decoderctls_ga00ca8b4bd753a837f143ebd8ed63d247} 
+\index{Decoder related CTLs@{Decoder related CTLs}!OPUS\_GET\_GAIN@{OPUS\_GET\_GAIN}}
+\index{OPUS\_GET\_GAIN@{OPUS\_GET\_GAIN}!Decoder related CTLs@{Decoder related CTLs}}
+\doxysubsubsection{\texorpdfstring{OPUS\_GET\_GAIN}{OPUS\_GET\_GAIN}}
+{\footnotesize\ttfamily \#define OPUS\+\_\+\+GET\+\_\+\+GAIN(\begin{DoxyParamCaption}\item[{}]{x }\end{DoxyParamCaption})}
+
+
+
+Gets the decoder\textquotesingle{}s configured gain adjustment. 
+
+\begin{DoxySeeAlso}{See also}
+\doxylink{group__opus__decoderctls_ga8ddb6fa694efa2c7e95ef51addc70dac}{OPUS\+\_\+\+SET\+\_\+\+GAIN}
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ out}}  & {\em x} & {\ttfamily opus\+\_\+int32 \texorpdfstring{$\ast$}{*}}\+: Amount to scale PCM signal by in Q8 dB units. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{group__opus__decoderctls_ga8f3d070f56b75f2a7af54e5776b387fa}\label{group__opus__decoderctls_ga8f3d070f56b75f2a7af54e5776b387fa} 
+\index{Decoder related CTLs@{Decoder related CTLs}!OPUS\_GET\_LAST\_PACKET\_DURATION@{OPUS\_GET\_LAST\_PACKET\_DURATION}}
+\index{OPUS\_GET\_LAST\_PACKET\_DURATION@{OPUS\_GET\_LAST\_PACKET\_DURATION}!Decoder related CTLs@{Decoder related CTLs}}
+\doxysubsubsection{\texorpdfstring{OPUS\_GET\_LAST\_PACKET\_DURATION}{OPUS\_GET\_LAST\_PACKET\_DURATION}}
+{\footnotesize\ttfamily \#define OPUS\+\_\+\+GET\+\_\+\+LAST\+\_\+\+PACKET\+\_\+\+DURATION(\begin{DoxyParamCaption}\item[{}]{x }\end{DoxyParamCaption})}
+
+
+
+Gets the duration (in samples) of the last packet successfully decoded or concealed. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ out}}  & {\em x} & {\ttfamily opus\+\_\+int32 \texorpdfstring{$\ast$}{*}}\+: Number of samples (at current sampling rate). \\
+\hline
+\end{DoxyParams}
+\Hypertarget{group__opus__decoderctls_gaa89fc25eb35fc31a02b508562dd83820}\label{group__opus__decoderctls_gaa89fc25eb35fc31a02b508562dd83820} 
+\index{Decoder related CTLs@{Decoder related CTLs}!OPUS\_GET\_PITCH@{OPUS\_GET\_PITCH}}
+\index{OPUS\_GET\_PITCH@{OPUS\_GET\_PITCH}!Decoder related CTLs@{Decoder related CTLs}}
+\doxysubsubsection{\texorpdfstring{OPUS\_GET\_PITCH}{OPUS\_GET\_PITCH}}
+{\footnotesize\ttfamily \#define OPUS\+\_\+\+GET\+\_\+\+PITCH(\begin{DoxyParamCaption}\item[{}]{x }\end{DoxyParamCaption})}
+
+
+
+Gets the pitch of the last decoded frame, if available. 
+
+This can be used for any post-\/processing algorithm requiring the use of pitch, e.\+g. time stretching/shortening. If the last frame was not voiced, or if the pitch was not coded in the frame, then zero is returned.
+
+This CTL is only implemented for decoder instances.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ out}}  & {\em x} & {\ttfamily opus\+\_\+int32 \texorpdfstring{$\ast$}{*}}\+: pitch period at 48 k\+Hz (or 0 if not available) \\
+\hline
+\end{DoxyParams}
+\Hypertarget{group__opus__decoderctls_ga8ddb6fa694efa2c7e95ef51addc70dac}\label{group__opus__decoderctls_ga8ddb6fa694efa2c7e95ef51addc70dac} 
+\index{Decoder related CTLs@{Decoder related CTLs}!OPUS\_SET\_GAIN@{OPUS\_SET\_GAIN}}
+\index{OPUS\_SET\_GAIN@{OPUS\_SET\_GAIN}!Decoder related CTLs@{Decoder related CTLs}}
+\doxysubsubsection{\texorpdfstring{OPUS\_SET\_GAIN}{OPUS\_SET\_GAIN}}
+{\footnotesize\ttfamily \#define OPUS\+\_\+\+SET\+\_\+\+GAIN(\begin{DoxyParamCaption}\item[{}]{x }\end{DoxyParamCaption})}
+
+
+
+Configures decoder gain adjustment. 
+
+Scales the decoded output by a factor specified in Q8 dB units. This has a maximum range of -\/32768 to 32767 inclusive, and returns OPUS\+\_\+\+BAD\+\_\+\+ARG otherwise. The default is zero indicating no adjustment. This setting survives decoder reset.
+
+gain = pow(10, x/(20.\+0\texorpdfstring{$\ast$}{*}256))
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em x} & {\ttfamily opus\+\_\+int32}\+: Amount to scale PCM signal by in Q8 dB units. \\
+\hline
+\end{DoxyParams}

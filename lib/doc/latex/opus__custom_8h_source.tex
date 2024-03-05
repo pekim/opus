@@ -1,0 +1,161 @@
+\doxysection{opus\+\_\+custom.\+h}
+\hypertarget{opus__custom_8h_source}{}\label{opus__custom_8h_source}\index{opus\_custom.h@{opus\_custom.h}}
+\mbox{\hyperlink{opus__custom_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*\ Copyright\ (c)\ 2007-\/2008\ CSIRO}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ \ \ Copyright\ (c)\ 2007-\/2009\ Xiph.Org\ Foundation}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ \ \ Copyright\ (c)\ 2008-\/2012\ Gregory\ Maxwell}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ \ \ Written\ by\ Jean-\/Marc\ Valin\ and\ Gregory\ Maxwell\ */}}
+\DoxyCodeLine{00005\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ \ \ Redistribution\ and\ use\ in\ source\ and\ binary\ forms,\ with\ or\ without}}
+\DoxyCodeLine{00007\ \textcolor{comment}{\ \ \ modification,\ are\ permitted\ provided\ that\ the\ following\ conditions}}
+\DoxyCodeLine{00008\ \textcolor{comment}{\ \ \ are\ met:}}
+\DoxyCodeLine{00009\ \textcolor{comment}{}}
+\DoxyCodeLine{00010\ \textcolor{comment}{\ \ \ -\/\ Redistributions\ of\ source\ code\ must\ retain\ the\ above\ copyright}}
+\DoxyCodeLine{00011\ \textcolor{comment}{\ \ \ notice,\ this\ list\ of\ conditions\ and\ the\ following\ disclaimer.}}
+\DoxyCodeLine{00012\ \textcolor{comment}{}}
+\DoxyCodeLine{00013\ \textcolor{comment}{\ \ \ -\/\ Redistributions\ in\ binary\ form\ must\ reproduce\ the\ above\ copyright}}
+\DoxyCodeLine{00014\ \textcolor{comment}{\ \ \ notice,\ this\ list\ of\ conditions\ and\ the\ following\ disclaimer\ in\ the}}
+\DoxyCodeLine{00015\ \textcolor{comment}{\ \ \ documentation\ and/or\ other\ materials\ provided\ with\ the\ distribution.}}
+\DoxyCodeLine{00016\ \textcolor{comment}{}}
+\DoxyCodeLine{00017\ \textcolor{comment}{\ \ \ THIS\ SOFTWARE\ IS\ PROVIDED\ BY\ THE\ COPYRIGHT\ HOLDERS\ AND\ CONTRIBUTORS}}
+\DoxyCodeLine{00018\ \textcolor{comment}{\ \ \ \`{}\`{}AS\ IS''\ AND\ ANY\ EXPRESS\ OR\ IMPLIED\ WARRANTIES,\ INCLUDING,\ BUT\ NOT}}
+\DoxyCodeLine{00019\ \textcolor{comment}{\ \ \ LIMITED\ TO,\ THE\ IMPLIED\ WARRANTIES\ OF\ MERCHANTABILITY\ AND\ FITNESS\ FOR}}
+\DoxyCodeLine{00020\ \textcolor{comment}{\ \ \ A\ PARTICULAR\ PURPOSE\ ARE\ DISCLAIMED.\ IN\ NO\ EVENT\ SHALL\ THE\ COPYRIGHT\ OWNER}}
+\DoxyCodeLine{00021\ \textcolor{comment}{\ \ \ OR\ CONTRIBUTORS\ BE\ LIABLE\ FOR\ ANY\ DIRECT,\ INDIRECT,\ INCIDENTAL,\ SPECIAL,}}
+\DoxyCodeLine{00022\ \textcolor{comment}{\ \ \ EXEMPLARY,\ OR\ CONSEQUENTIAL\ DAMAGES\ (INCLUDING,\ BUT\ NOT\ LIMITED\ TO,}}
+\DoxyCodeLine{00023\ \textcolor{comment}{\ \ \ PROCUREMENT\ OF\ SUBSTITUTE\ GOODS\ OR\ SERVICES;\ LOSS\ OF\ USE,\ DATA,\ OR}}
+\DoxyCodeLine{00024\ \textcolor{comment}{\ \ \ PROFITS;\ OR\ BUSINESS\ INTERRUPTION)\ HOWEVER\ CAUSED\ AND\ ON\ ANY\ THEORY\ OF}}
+\DoxyCodeLine{00025\ \textcolor{comment}{\ \ \ LIABILITY,\ WHETHER\ IN\ CONTRACT,\ STRICT\ LIABILITY,\ OR\ TORT\ (INCLUDING}}
+\DoxyCodeLine{00026\ \textcolor{comment}{\ \ \ NEGLIGENCE\ OR\ OTHERWISE)\ ARISING\ IN\ ANY\ WAY\ OUT\ OF\ THE\ USE\ OF\ THIS}}
+\DoxyCodeLine{00027\ \textcolor{comment}{\ \ \ SOFTWARE,\ EVEN\ IF\ ADVISED\ OF\ THE\ POSSIBILITY\ OF\ SUCH\ DAMAGE.}}
+\DoxyCodeLine{00028\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00035\ \textcolor{preprocessor}{\#ifndef\ OPUS\_CUSTOM\_H}}
+\DoxyCodeLine{00036\ \textcolor{preprocessor}{\#define\ OPUS\_CUSTOM\_H}}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{opus__defines_8h}{opus\_defines.h}}"{}}}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{00041\ \textcolor{keyword}{extern}\ \textcolor{stringliteral}{"{}C"{}}\ \{}
+\DoxyCodeLine{00042\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \textcolor{preprocessor}{\#ifdef\ CUSTOM\_MODES}}
+\DoxyCodeLine{00045\ \textcolor{preprocessor}{\#\ define\ OPUS\_CUSTOM\_EXPORT\ OPUS\_EXPORT}}
+\DoxyCodeLine{00046\ \textcolor{preprocessor}{\#\ define\ OPUS\_CUSTOM\_EXPORT\_STATIC\ OPUS\_EXPORT}}
+\DoxyCodeLine{00047\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00048\ \textcolor{preprocessor}{\#\ define\ OPUS\_CUSTOM\_EXPORT}}
+\DoxyCodeLine{00049\ \textcolor{preprocessor}{\#\ ifdef\ OPUS\_BUILD}}
+\DoxyCodeLine{00050\ \textcolor{preprocessor}{\#\ \ define\ OPUS\_CUSTOM\_EXPORT\_STATIC\ static\ OPUS\_INLINE}}
+\DoxyCodeLine{00051\ \textcolor{preprocessor}{\#\ else}}
+\DoxyCodeLine{00052\ \textcolor{preprocessor}{\#\ \ define\ OPUS\_CUSTOM\_EXPORT\_STATIC}}
+\DoxyCodeLine{00053\ \textcolor{preprocessor}{\#\ endif}}
+\DoxyCodeLine{00054\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00095\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{group__opus__custom_ga7abe6a7afc599667950251c987feb439}{OpusCustomEncoder}}\ \mbox{\hyperlink{group__opus__custom_ga7abe6a7afc599667950251c987feb439}{OpusCustomEncoder}};}
+\DoxyCodeLine{00096\ }
+\DoxyCodeLine{00102\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{group__opus__custom_gacae60f89c5ce7aeea69503451b9e2e6f}{OpusCustomDecoder}}\ \mbox{\hyperlink{group__opus__custom_gacae60f89c5ce7aeea69503451b9e2e6f}{OpusCustomDecoder}};}
+\DoxyCodeLine{00103\ }
+\DoxyCodeLine{00111\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{group__opus__custom_gaf33847c711195b9edef896b73c96ec4f}{OpusCustomMode}}\ \mbox{\hyperlink{group__opus__custom_gaf33847c711195b9edef896b73c96ec4f}{OpusCustomMode}};}
+\DoxyCodeLine{00112\ }
+\DoxyCodeLine{00122\ \mbox{\hyperlink{opus__custom_8h_a92c66b86b701421b674984559e79bbf0}{OPUS\_CUSTOM\_EXPORT}}\ OPUS\_WARN\_UNUSED\_RESULT\ \mbox{\hyperlink{group__opus__custom_gaf33847c711195b9edef896b73c96ec4f}{OpusCustomMode}}\ *\mbox{\hyperlink{group__opus__custom_gac248b6f0c693ba2f4cf99f3487974400}{opus\_custom\_mode\_create}}(\mbox{\hyperlink{opus__types_8h_aa4d309d6f80b99dbabebc8f98879ab9a}{opus\_int32}}\ Fs,\ \textcolor{keywordtype}{int}\ frame\_size,\ \textcolor{keywordtype}{int}\ *error);}
+\DoxyCodeLine{00123\ }
+\DoxyCodeLine{00128\ \mbox{\hyperlink{opus__custom_8h_a92c66b86b701421b674984559e79bbf0}{OPUS\_CUSTOM\_EXPORT}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group__opus__custom_ga1333ad19db2acd8edf558ac6365741de}{opus\_custom\_mode\_destroy}}(\mbox{\hyperlink{group__opus__custom_gaf33847c711195b9edef896b73c96ec4f}{OpusCustomMode}}\ *mode);}
+\DoxyCodeLine{00129\ }
+\DoxyCodeLine{00130\ }
+\DoxyCodeLine{00131\ \textcolor{preprocessor}{\#if\ !defined(OPUS\_BUILD)\ ||\ defined(CELT\_ENCODER\_C)}}
+\DoxyCodeLine{00132\ }
+\DoxyCodeLine{00133\ \textcolor{comment}{/*\ Encoder\ */}}
+\DoxyCodeLine{00139\ \mbox{\hyperlink{opus__custom_8h_a83ea1aac7766a02abc5c666516b2e622}{OPUS\_CUSTOM\_EXPORT\_STATIC}}\ OPUS\_WARN\_UNUSED\_RESULT\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{group__opus__custom_ga42f50e7f2942144c18c321f00f358ba0}{opus\_custom\_encoder\_get\_size}}(}
+\DoxyCodeLine{00140\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{group__opus__custom_gaf33847c711195b9edef896b73c96ec4f}{OpusCustomMode}}\ *mode,}
+\DoxyCodeLine{00141\ \ \ \ \ \textcolor{keywordtype}{int}\ channels}
+\DoxyCodeLine{00142\ )\ OPUS\_ARG\_NONNULL(1);}
+\DoxyCodeLine{00143\ }
+\DoxyCodeLine{00144\ \textcolor{preprocessor}{\#\ ifdef\ CUSTOM\_MODES}}
+\DoxyCodeLine{00157\ \mbox{\hyperlink{opus__custom_8h_a92c66b86b701421b674984559e79bbf0}{OPUS\_CUSTOM\_EXPORT}}\ \textcolor{keywordtype}{int}\ opus\_custom\_encoder\_init(}
+\DoxyCodeLine{00158\ \ \ \ \ \mbox{\hyperlink{group__opus__custom_ga7abe6a7afc599667950251c987feb439}{OpusCustomEncoder}}\ *st,}
+\DoxyCodeLine{00159\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{group__opus__custom_gaf33847c711195b9edef896b73c96ec4f}{OpusCustomMode}}\ *mode,}
+\DoxyCodeLine{00160\ \ \ \ \ \textcolor{keywordtype}{int}\ channels}
+\DoxyCodeLine{00161\ )\ OPUS\_ARG\_NONNULL(1)\ OPUS\_ARG\_NONNULL(2);}
+\DoxyCodeLine{00162\ \textcolor{preprocessor}{\#\ endif}}
+\DoxyCodeLine{00163\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00164\ }
+\DoxyCodeLine{00165\ }
+\DoxyCodeLine{00175\ \mbox{\hyperlink{opus__custom_8h_a92c66b86b701421b674984559e79bbf0}{OPUS\_CUSTOM\_EXPORT}}\ OPUS\_WARN\_UNUSED\_RESULT\ \mbox{\hyperlink{group__opus__custom_ga7abe6a7afc599667950251c987feb439}{OpusCustomEncoder}}\ *\mbox{\hyperlink{group__opus__custom_ga759613361dc3cf5b648b42fa53254d6f}{opus\_custom\_encoder\_create}}(}
+\DoxyCodeLine{00176\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{group__opus__custom_gaf33847c711195b9edef896b73c96ec4f}{OpusCustomMode}}\ *mode,}
+\DoxyCodeLine{00177\ \ \ \ \ \textcolor{keywordtype}{int}\ channels,}
+\DoxyCodeLine{00178\ \ \ \ \ \textcolor{keywordtype}{int}\ *error}
+\DoxyCodeLine{00179\ )\ OPUS\_ARG\_NONNULL(1);}
+\DoxyCodeLine{00180\ }
+\DoxyCodeLine{00181\ }
+\DoxyCodeLine{00185\ \mbox{\hyperlink{opus__custom_8h_a92c66b86b701421b674984559e79bbf0}{OPUS\_CUSTOM\_EXPORT}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group__opus__custom_ga5ed5b55bccdc141632d8ba65b8228e7d}{opus\_custom\_encoder\_destroy}}(\mbox{\hyperlink{group__opus__custom_ga7abe6a7afc599667950251c987feb439}{OpusCustomEncoder}}\ *st);}
+\DoxyCodeLine{00186\ }
+\DoxyCodeLine{00204\ \mbox{\hyperlink{opus__custom_8h_a92c66b86b701421b674984559e79bbf0}{OPUS\_CUSTOM\_EXPORT}}\ OPUS\_WARN\_UNUSED\_RESULT\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{group__opus__custom_ga9403d7a1fc09a0e49692a7f93decee21}{opus\_custom\_encode\_float}}(}
+\DoxyCodeLine{00205\ \ \ \ \ \mbox{\hyperlink{group__opus__custom_ga7abe6a7afc599667950251c987feb439}{OpusCustomEncoder}}\ *st,}
+\DoxyCodeLine{00206\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ *pcm,}
+\DoxyCodeLine{00207\ \ \ \ \ \textcolor{keywordtype}{int}\ frame\_size,}
+\DoxyCodeLine{00208\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ *compressed,}
+\DoxyCodeLine{00209\ \ \ \ \ \textcolor{keywordtype}{int}\ maxCompressedBytes}
+\DoxyCodeLine{00210\ )\ OPUS\_ARG\_NONNULL(1)\ OPUS\_ARG\_NONNULL(2)\ OPUS\_ARG\_NONNULL(4);}
+\DoxyCodeLine{00211\ }
+\DoxyCodeLine{00225\ \mbox{\hyperlink{opus__custom_8h_a92c66b86b701421b674984559e79bbf0}{OPUS\_CUSTOM\_EXPORT}}\ OPUS\_WARN\_UNUSED\_RESULT\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{group__opus__custom_ga21d6b0c4106ed5777a8632eed97d4cdc}{opus\_custom\_encode}}(}
+\DoxyCodeLine{00226\ \ \ \ \ \mbox{\hyperlink{group__opus__custom_ga7abe6a7afc599667950251c987feb439}{OpusCustomEncoder}}\ *st,}
+\DoxyCodeLine{00227\ \ \ \ \ const\ \mbox{\hyperlink{opus__types_8h_acc9ed7cf60479eb81f9648c6ec27dc26}{opus\_int16}}\ *pcm,}
+\DoxyCodeLine{00228\ \ \ \ \ \textcolor{keywordtype}{int}\ frame\_size,}
+\DoxyCodeLine{00229\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ *compressed,}
+\DoxyCodeLine{00230\ \ \ \ \ \textcolor{keywordtype}{int}\ maxCompressedBytes}
+\DoxyCodeLine{00231\ )\ OPUS\_ARG\_NONNULL(1)\ OPUS\_ARG\_NONNULL(2)\ OPUS\_ARG\_NONNULL(4);}
+\DoxyCodeLine{00232\ }
+\DoxyCodeLine{00239\ \mbox{\hyperlink{opus__custom_8h_a92c66b86b701421b674984559e79bbf0}{OPUS\_CUSTOM\_EXPORT}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{group__opus__custom_gacf3d854e681cae3b693ee56b54459226}{opus\_custom\_encoder\_ctl}}(\mbox{\hyperlink{group__opus__custom_ga7abe6a7afc599667950251c987feb439}{OpusCustomEncoder}}\ *\ OPUS\_RESTRICT\ st,\ \textcolor{keywordtype}{int}\ request,\ ...)\ OPUS\_ARG\_NONNULL(1);}
+\DoxyCodeLine{00240\ }
+\DoxyCodeLine{00241\ }
+\DoxyCodeLine{00242\ \textcolor{preprocessor}{\#if\ !defined(OPUS\_BUILD)\ ||\ defined(CELT\_DECODER\_C)}}
+\DoxyCodeLine{00243\ \textcolor{comment}{/*\ Decoder\ */}}
+\DoxyCodeLine{00244\ }
+\DoxyCodeLine{00250\ \mbox{\hyperlink{opus__custom_8h_a83ea1aac7766a02abc5c666516b2e622}{OPUS\_CUSTOM\_EXPORT\_STATIC}}\ OPUS\_WARN\_UNUSED\_RESULT\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{group__opus__custom_gabe5d6f5f85dcad3ce8b88fe4b2642d2b}{opus\_custom\_decoder\_get\_size}}(}
+\DoxyCodeLine{00251\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{group__opus__custom_gaf33847c711195b9edef896b73c96ec4f}{OpusCustomMode}}\ *mode,}
+\DoxyCodeLine{00252\ \ \ \ \ \textcolor{keywordtype}{int}\ channels}
+\DoxyCodeLine{00253\ )\ OPUS\_ARG\_NONNULL(1);}
+\DoxyCodeLine{00254\ }
+\DoxyCodeLine{00267\ \mbox{\hyperlink{opus__custom_8h_a83ea1aac7766a02abc5c666516b2e622}{OPUS\_CUSTOM\_EXPORT\_STATIC}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{group__opus__custom_gad4cb362035313c8f77c24cd29dd0932b}{opus\_custom\_decoder\_init}}(}
+\DoxyCodeLine{00268\ \ \ \ \ \mbox{\hyperlink{group__opus__custom_gacae60f89c5ce7aeea69503451b9e2e6f}{OpusCustomDecoder}}\ *st,}
+\DoxyCodeLine{00269\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{group__opus__custom_gaf33847c711195b9edef896b73c96ec4f}{OpusCustomMode}}\ *mode,}
+\DoxyCodeLine{00270\ \ \ \ \ \textcolor{keywordtype}{int}\ channels}
+\DoxyCodeLine{00271\ )\ OPUS\_ARG\_NONNULL(1)\ OPUS\_ARG\_NONNULL(2);}
+\DoxyCodeLine{00272\ }
+\DoxyCodeLine{00273\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00274\ }
+\DoxyCodeLine{00275\ }
+\DoxyCodeLine{00284\ \mbox{\hyperlink{opus__custom_8h_a92c66b86b701421b674984559e79bbf0}{OPUS\_CUSTOM\_EXPORT}}\ OPUS\_WARN\_UNUSED\_RESULT\ \mbox{\hyperlink{group__opus__custom_gacae60f89c5ce7aeea69503451b9e2e6f}{OpusCustomDecoder}}\ *\mbox{\hyperlink{group__opus__custom_ga6c7daa35f13053844ebc2101fd7ec703}{opus\_custom\_decoder\_create}}(}
+\DoxyCodeLine{00285\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{group__opus__custom_gaf33847c711195b9edef896b73c96ec4f}{OpusCustomMode}}\ *mode,}
+\DoxyCodeLine{00286\ \ \ \ \ \textcolor{keywordtype}{int}\ channels,}
+\DoxyCodeLine{00287\ \ \ \ \ \textcolor{keywordtype}{int}\ *error}
+\DoxyCodeLine{00288\ )\ OPUS\_ARG\_NONNULL(1);}
+\DoxyCodeLine{00289\ }
+\DoxyCodeLine{00293\ \mbox{\hyperlink{opus__custom_8h_a92c66b86b701421b674984559e79bbf0}{OPUS\_CUSTOM\_EXPORT}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group__opus__custom_ga0e59e6389bd6478e9c3be48aff4459e1}{opus\_custom\_decoder\_destroy}}(\mbox{\hyperlink{group__opus__custom_gacae60f89c5ce7aeea69503451b9e2e6f}{OpusCustomDecoder}}\ *st);}
+\DoxyCodeLine{00294\ }
+\DoxyCodeLine{00304\ \mbox{\hyperlink{opus__custom_8h_a92c66b86b701421b674984559e79bbf0}{OPUS\_CUSTOM\_EXPORT}}\ OPUS\_WARN\_UNUSED\_RESULT\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{group__opus__custom_gac2c34002d4f546a535125e2780c81656}{opus\_custom\_decode\_float}}(}
+\DoxyCodeLine{00305\ \ \ \ \ \mbox{\hyperlink{group__opus__custom_gacae60f89c5ce7aeea69503451b9e2e6f}{OpusCustomDecoder}}\ *st,}
+\DoxyCodeLine{00306\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ *data,}
+\DoxyCodeLine{00307\ \ \ \ \ \textcolor{keywordtype}{int}\ len,}
+\DoxyCodeLine{00308\ \ \ \ \ \textcolor{keywordtype}{float}\ *pcm,}
+\DoxyCodeLine{00309\ \ \ \ \ \textcolor{keywordtype}{int}\ frame\_size}
+\DoxyCodeLine{00310\ )\ OPUS\_ARG\_NONNULL(1)\ OPUS\_ARG\_NONNULL(4);}
+\DoxyCodeLine{00311\ }
+\DoxyCodeLine{00321\ \mbox{\hyperlink{opus__custom_8h_a92c66b86b701421b674984559e79bbf0}{OPUS\_CUSTOM\_EXPORT}}\ OPUS\_WARN\_UNUSED\_RESULT\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{group__opus__custom_gafb6d3b90eed41b938009f4a32d633363}{opus\_custom\_decode}}(}
+\DoxyCodeLine{00322\ \ \ \ \ \mbox{\hyperlink{group__opus__custom_gacae60f89c5ce7aeea69503451b9e2e6f}{OpusCustomDecoder}}\ *st,}
+\DoxyCodeLine{00323\ \ \ \ \ const\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ *data,}
+\DoxyCodeLine{00324\ \ \ \ \ \textcolor{keywordtype}{int}\ len,}
+\DoxyCodeLine{00325\ \ \ \ \ \mbox{\hyperlink{opus__types_8h_acc9ed7cf60479eb81f9648c6ec27dc26}{opus\_int16}}\ *pcm,}
+\DoxyCodeLine{00326\ \ \ \ \ \textcolor{keywordtype}{int}\ frame\_size}
+\DoxyCodeLine{00327\ )\ OPUS\_ARG\_NONNULL(1)\ OPUS\_ARG\_NONNULL(4);}
+\DoxyCodeLine{00328\ }
+\DoxyCodeLine{00335\ \mbox{\hyperlink{opus__custom_8h_a92c66b86b701421b674984559e79bbf0}{OPUS\_CUSTOM\_EXPORT}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{group__opus__custom_ga88b9248e497f3c1b894f035011c569a9}{opus\_custom\_decoder\_ctl}}(\mbox{\hyperlink{group__opus__custom_gacae60f89c5ce7aeea69503451b9e2e6f}{OpusCustomDecoder}}\ *\ OPUS\_RESTRICT\ st,\ \textcolor{keywordtype}{int}\ request,\ ...)\ OPUS\_ARG\_NONNULL(1);}
+\DoxyCodeLine{00336\ }
+\DoxyCodeLine{00339\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{00340\ \}}
+\DoxyCodeLine{00341\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00342\ }
+\DoxyCodeLine{00343\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ OPUS\_CUSTOM\_H\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

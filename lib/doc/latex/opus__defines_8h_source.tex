@@ -1,0 +1,279 @@
+\doxysection{opus\+\_\+defines.\+h}
+\hypertarget{opus__defines_8h_source}{}\label{opus__defines_8h_source}\index{opus\_defines.h@{opus\_defines.h}}
+\mbox{\hyperlink{opus__defines_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*\ Copyright\ (c)\ 2010-\/2011\ Xiph.Org\ Foundation,\ Skype\ Limited}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ \ \ Written\ by\ Jean-\/Marc\ Valin\ and\ Koen\ Vos\ */}}
+\DoxyCodeLine{00003\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ \ \ Redistribution\ and\ use\ in\ source\ and\ binary\ forms,\ with\ or\ without}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ \ \ modification,\ are\ permitted\ provided\ that\ the\ following\ conditions}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ \ \ are\ met:}}
+\DoxyCodeLine{00007\ \textcolor{comment}{}}
+\DoxyCodeLine{00008\ \textcolor{comment}{\ \ \ -\/\ Redistributions\ of\ source\ code\ must\ retain\ the\ above\ copyright}}
+\DoxyCodeLine{00009\ \textcolor{comment}{\ \ \ notice,\ this\ list\ of\ conditions\ and\ the\ following\ disclaimer.}}
+\DoxyCodeLine{00010\ \textcolor{comment}{}}
+\DoxyCodeLine{00011\ \textcolor{comment}{\ \ \ -\/\ Redistributions\ in\ binary\ form\ must\ reproduce\ the\ above\ copyright}}
+\DoxyCodeLine{00012\ \textcolor{comment}{\ \ \ notice,\ this\ list\ of\ conditions\ and\ the\ following\ disclaimer\ in\ the}}
+\DoxyCodeLine{00013\ \textcolor{comment}{\ \ \ documentation\ and/or\ other\ materials\ provided\ with\ the\ distribution.}}
+\DoxyCodeLine{00014\ \textcolor{comment}{}}
+\DoxyCodeLine{00015\ \textcolor{comment}{\ \ \ THIS\ SOFTWARE\ IS\ PROVIDED\ BY\ THE\ COPYRIGHT\ HOLDERS\ AND\ CONTRIBUTORS}}
+\DoxyCodeLine{00016\ \textcolor{comment}{\ \ \ \`{}\`{}AS\ IS''\ AND\ ANY\ EXPRESS\ OR\ IMPLIED\ WARRANTIES,\ INCLUDING,\ BUT\ NOT}}
+\DoxyCodeLine{00017\ \textcolor{comment}{\ \ \ LIMITED\ TO,\ THE\ IMPLIED\ WARRANTIES\ OF\ MERCHANTABILITY\ AND\ FITNESS\ FOR}}
+\DoxyCodeLine{00018\ \textcolor{comment}{\ \ \ A\ PARTICULAR\ PURPOSE\ ARE\ DISCLAIMED.\ IN\ NO\ EVENT\ SHALL\ THE\ COPYRIGHT\ OWNER}}
+\DoxyCodeLine{00019\ \textcolor{comment}{\ \ \ OR\ CONTRIBUTORS\ BE\ LIABLE\ FOR\ ANY\ DIRECT,\ INDIRECT,\ INCIDENTAL,\ SPECIAL,}}
+\DoxyCodeLine{00020\ \textcolor{comment}{\ \ \ EXEMPLARY,\ OR\ CONSEQUENTIAL\ DAMAGES\ (INCLUDING,\ BUT\ NOT\ LIMITED\ TO,}}
+\DoxyCodeLine{00021\ \textcolor{comment}{\ \ \ PROCUREMENT\ OF\ SUBSTITUTE\ GOODS\ OR\ SERVICES;\ LOSS\ OF\ USE,\ DATA,\ OR}}
+\DoxyCodeLine{00022\ \textcolor{comment}{\ \ \ PROFITS;\ OR\ BUSINESS\ INTERRUPTION)\ HOWEVER\ CAUSED\ AND\ ON\ ANY\ THEORY\ OF}}
+\DoxyCodeLine{00023\ \textcolor{comment}{\ \ \ LIABILITY,\ WHETHER\ IN\ CONTRACT,\ STRICT\ LIABILITY,\ OR\ TORT\ (INCLUDING}}
+\DoxyCodeLine{00024\ \textcolor{comment}{\ \ \ NEGLIGENCE\ OR\ OTHERWISE)\ ARISING\ IN\ ANY\ WAY\ OUT\ OF\ THE\ USE\ OF\ THIS}}
+\DoxyCodeLine{00025\ \textcolor{comment}{\ \ \ SOFTWARE,\ EVEN\ IF\ ADVISED\ OF\ THE\ POSSIBILITY\ OF\ SUCH\ DAMAGE.}}
+\DoxyCodeLine{00026\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00033\ \textcolor{preprocessor}{\#ifndef\ OPUS\_DEFINES\_H}}
+\DoxyCodeLine{00034\ \textcolor{preprocessor}{\#define\ OPUS\_DEFINES\_H}}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{opus__types_8h}{opus\_types.h}}"{}}}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{00039\ \textcolor{keyword}{extern}\ \textcolor{stringliteral}{"{}C"{}}\ \{}
+\DoxyCodeLine{00040\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00046\ \textcolor{preprocessor}{\#define\ OPUS\_OK\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0}}
+\DoxyCodeLine{00048\ \textcolor{preprocessor}{\#define\ OPUS\_BAD\_ARG\ \ \ \ \ \ \ \ \ \ -\/1}}
+\DoxyCodeLine{00050\ \textcolor{preprocessor}{\#define\ OPUS\_BUFFER\_TOO\_SMALL\ -\/2}}
+\DoxyCodeLine{00052\ \textcolor{preprocessor}{\#define\ OPUS\_INTERNAL\_ERROR\ \ \ -\/3}}
+\DoxyCodeLine{00054\ \textcolor{preprocessor}{\#define\ OPUS\_INVALID\_PACKET\ \ \ -\/4}}
+\DoxyCodeLine{00056\ \textcolor{preprocessor}{\#define\ OPUS\_UNIMPLEMENTED\ \ \ \ -\/5}}
+\DoxyCodeLine{00058\ \textcolor{preprocessor}{\#define\ OPUS\_INVALID\_STATE\ \ \ \ -\/6}}
+\DoxyCodeLine{00060\ \textcolor{preprocessor}{\#define\ OPUS\_ALLOC\_FAIL\ \ \ \ \ \ \ -\/7}}
+\DoxyCodeLine{00066\ \textcolor{preprocessor}{\#ifndef\ OPUS\_EXPORT}}
+\DoxyCodeLine{00067\ \textcolor{preprocessor}{\#\ if\ defined(\_WIN32)}}
+\DoxyCodeLine{00068\ \textcolor{preprocessor}{\#\ \ if\ defined(OPUS\_BUILD)\ \&\&\ defined(DLL\_EXPORT)}}
+\DoxyCodeLine{00069\ \textcolor{preprocessor}{\#\ \ \ define\ OPUS\_EXPORT\ \_\_declspec(dllexport)}}
+\DoxyCodeLine{00070\ \textcolor{preprocessor}{\#\ \ else}}
+\DoxyCodeLine{00071\ \textcolor{preprocessor}{\#\ \ \ define\ OPUS\_EXPORT}}
+\DoxyCodeLine{00072\ \textcolor{preprocessor}{\#\ \ endif}}
+\DoxyCodeLine{00073\ \textcolor{preprocessor}{\#\ elif\ defined(\_\_GNUC\_\_)\ \&\&\ defined(OPUS\_BUILD)}}
+\DoxyCodeLine{00074\ \textcolor{preprocessor}{\#\ \ define\ OPUS\_EXPORT\ \_\_attribute\_\_\ ((visibility\ ("{}default"{}})))}
+\DoxyCodeLine{00075\ \textcolor{preprocessor}{\#\ else}}
+\DoxyCodeLine{00076\ \textcolor{preprocessor}{\#\ \ define\ OPUS\_EXPORT}}
+\DoxyCodeLine{00077\ \textcolor{preprocessor}{\#\ endif}}
+\DoxyCodeLine{00078\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00080\ \textcolor{preprocessor}{\#\ if\ !defined(OPUS\_GNUC\_PREREQ)}}
+\DoxyCodeLine{00081\ \textcolor{preprocessor}{\#\ \ if\ defined(\_\_GNUC\_\_)\&\&defined(\_\_GNUC\_MINOR\_\_)}}
+\DoxyCodeLine{00082\ \textcolor{preprocessor}{\#\ \ \ define\ OPUS\_GNUC\_PREREQ(\_maj,\_min)\ \(\backslash\)}}
+\DoxyCodeLine{00083\ \textcolor{preprocessor}{\ ((\_\_GNUC\_\_<<16)+\_\_GNUC\_MINOR\_\_>=((\_maj)<<16)+(\_min))}}
+\DoxyCodeLine{00084\ \textcolor{preprocessor}{\#\ \ else}}
+\DoxyCodeLine{00085\ \textcolor{preprocessor}{\#\ \ \ define\ OPUS\_GNUC\_PREREQ(\_maj,\_min)\ 0}}
+\DoxyCodeLine{00086\ \textcolor{preprocessor}{\#\ \ endif}}
+\DoxyCodeLine{00087\ \textcolor{preprocessor}{\#\ endif}}
+\DoxyCodeLine{00088\ }
+\DoxyCodeLine{00089\ \textcolor{preprocessor}{\#if\ (!defined(\_\_STDC\_VERSION\_\_)\ ||\ (\_\_STDC\_VERSION\_\_\ <\ 199901L)\ )}}
+\DoxyCodeLine{00090\ \textcolor{preprocessor}{\#\ if\ OPUS\_GNUC\_PREREQ(3,0)}}
+\DoxyCodeLine{00091\ \textcolor{preprocessor}{\#\ \ define\ OPUS\_RESTRICT\ \_\_restrict\_\_}}
+\DoxyCodeLine{00092\ \textcolor{preprocessor}{\#\ elif\ (defined(\_MSC\_VER)\ \&\&\ \_MSC\_VER\ >=\ 1400)}}
+\DoxyCodeLine{00093\ \textcolor{preprocessor}{\#\ \ define\ OPUS\_RESTRICT\ \_\_restrict}}
+\DoxyCodeLine{00094\ \textcolor{preprocessor}{\#\ else}}
+\DoxyCodeLine{00095\ \textcolor{preprocessor}{\#\ \ define\ OPUS\_RESTRICT}}
+\DoxyCodeLine{00096\ \textcolor{preprocessor}{\#\ endif}}
+\DoxyCodeLine{00097\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00098\ \textcolor{preprocessor}{\#\ define\ OPUS\_RESTRICT\ restrict}}
+\DoxyCodeLine{00099\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00100\ }
+\DoxyCodeLine{00101\ \textcolor{preprocessor}{\#if\ (!defined(\_\_STDC\_VERSION\_\_)\ ||\ (\_\_STDC\_VERSION\_\_\ <\ 199901L)\ )}}
+\DoxyCodeLine{00102\ \textcolor{preprocessor}{\#\ if\ OPUS\_GNUC\_PREREQ(2,7)}}
+\DoxyCodeLine{00103\ \textcolor{preprocessor}{\#\ \ define\ OPUS\_INLINE\ \_\_inline\_\_}}
+\DoxyCodeLine{00104\ \textcolor{preprocessor}{\#\ elif\ (defined(\_MSC\_VER))}}
+\DoxyCodeLine{00105\ \textcolor{preprocessor}{\#\ \ define\ OPUS\_INLINE\ \_\_inline}}
+\DoxyCodeLine{00106\ \textcolor{preprocessor}{\#\ else}}
+\DoxyCodeLine{00107\ \textcolor{preprocessor}{\#\ \ define\ OPUS\_INLINE}}
+\DoxyCodeLine{00108\ \textcolor{preprocessor}{\#\ endif}}
+\DoxyCodeLine{00109\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00110\ \textcolor{preprocessor}{\#\ define\ OPUS\_INLINE\ inline}}
+\DoxyCodeLine{00111\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00112\ }
+\DoxyCodeLine{00116\ \textcolor{preprocessor}{\#if\ defined(\_\_GNUC\_\_)\ \&\&\ OPUS\_GNUC\_PREREQ(3,\ 4)}}
+\DoxyCodeLine{00117\ \textcolor{preprocessor}{\#\ define\ OPUS\_WARN\_UNUSED\_RESULT\ \_\_attribute\_\_\ ((\_\_warn\_unused\_result\_\_))}}
+\DoxyCodeLine{00118\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00119\ \textcolor{preprocessor}{\#\ define\ OPUS\_WARN\_UNUSED\_RESULT}}
+\DoxyCodeLine{00120\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00121\ \textcolor{preprocessor}{\#if\ !defined(OPUS\_BUILD)\ \&\&\ defined(\_\_GNUC\_\_)\ \&\&\ OPUS\_GNUC\_PREREQ(3,\ 4)}}
+\DoxyCodeLine{00122\ \textcolor{preprocessor}{\#\ define\ OPUS\_ARG\_NONNULL(\_x)\ \ \_\_attribute\_\_\ ((\_\_nonnull\_\_(\_x)))}}
+\DoxyCodeLine{00123\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00124\ \textcolor{preprocessor}{\#\ define\ OPUS\_ARG\_NONNULL(\_x)}}
+\DoxyCodeLine{00125\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00126\ }
+\DoxyCodeLine{00130\ \textcolor{preprocessor}{\#define\ OPUS\_SET\_APPLICATION\_REQUEST\ \ \ \ \ \ \ \ \ 4000}}
+\DoxyCodeLine{00131\ \textcolor{preprocessor}{\#define\ OPUS\_GET\_APPLICATION\_REQUEST\ \ \ \ \ \ \ \ \ 4001}}
+\DoxyCodeLine{00132\ \textcolor{preprocessor}{\#define\ OPUS\_SET\_BITRATE\_REQUEST\ \ \ \ \ \ \ \ \ \ \ \ \ 4002}}
+\DoxyCodeLine{00133\ \textcolor{preprocessor}{\#define\ OPUS\_GET\_BITRATE\_REQUEST\ \ \ \ \ \ \ \ \ \ \ \ \ 4003}}
+\DoxyCodeLine{00134\ \textcolor{preprocessor}{\#define\ OPUS\_SET\_MAX\_BANDWIDTH\_REQUEST\ \ \ \ \ \ \ 4004}}
+\DoxyCodeLine{00135\ \textcolor{preprocessor}{\#define\ OPUS\_GET\_MAX\_BANDWIDTH\_REQUEST\ \ \ \ \ \ \ 4005}}
+\DoxyCodeLine{00136\ \textcolor{preprocessor}{\#define\ OPUS\_SET\_VBR\_REQUEST\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 4006}}
+\DoxyCodeLine{00137\ \textcolor{preprocessor}{\#define\ OPUS\_GET\_VBR\_REQUEST\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 4007}}
+\DoxyCodeLine{00138\ \textcolor{preprocessor}{\#define\ OPUS\_SET\_BANDWIDTH\_REQUEST\ \ \ \ \ \ \ \ \ \ \ 4008}}
+\DoxyCodeLine{00139\ \textcolor{preprocessor}{\#define\ OPUS\_GET\_BANDWIDTH\_REQUEST\ \ \ \ \ \ \ \ \ \ \ 4009}}
+\DoxyCodeLine{00140\ \textcolor{preprocessor}{\#define\ OPUS\_SET\_COMPLEXITY\_REQUEST\ \ \ \ \ \ \ \ \ \ 4010}}
+\DoxyCodeLine{00141\ \textcolor{preprocessor}{\#define\ OPUS\_GET\_COMPLEXITY\_REQUEST\ \ \ \ \ \ \ \ \ \ 4011}}
+\DoxyCodeLine{00142\ \textcolor{preprocessor}{\#define\ OPUS\_SET\_INBAND\_FEC\_REQUEST\ \ \ \ \ \ \ \ \ \ 4012}}
+\DoxyCodeLine{00143\ \textcolor{preprocessor}{\#define\ OPUS\_GET\_INBAND\_FEC\_REQUEST\ \ \ \ \ \ \ \ \ \ 4013}}
+\DoxyCodeLine{00144\ \textcolor{preprocessor}{\#define\ OPUS\_SET\_PACKET\_LOSS\_PERC\_REQUEST\ \ \ \ 4014}}
+\DoxyCodeLine{00145\ \textcolor{preprocessor}{\#define\ OPUS\_GET\_PACKET\_LOSS\_PERC\_REQUEST\ \ \ \ 4015}}
+\DoxyCodeLine{00146\ \textcolor{preprocessor}{\#define\ OPUS\_SET\_DTX\_REQUEST\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 4016}}
+\DoxyCodeLine{00147\ \textcolor{preprocessor}{\#define\ OPUS\_GET\_DTX\_REQUEST\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 4017}}
+\DoxyCodeLine{00148\ \textcolor{preprocessor}{\#define\ OPUS\_SET\_VBR\_CONSTRAINT\_REQUEST\ \ \ \ \ \ 4020}}
+\DoxyCodeLine{00149\ \textcolor{preprocessor}{\#define\ OPUS\_GET\_VBR\_CONSTRAINT\_REQUEST\ \ \ \ \ \ 4021}}
+\DoxyCodeLine{00150\ \textcolor{preprocessor}{\#define\ OPUS\_SET\_FORCE\_CHANNELS\_REQUEST\ \ \ \ \ \ 4022}}
+\DoxyCodeLine{00151\ \textcolor{preprocessor}{\#define\ OPUS\_GET\_FORCE\_CHANNELS\_REQUEST\ \ \ \ \ \ 4023}}
+\DoxyCodeLine{00152\ \textcolor{preprocessor}{\#define\ OPUS\_SET\_SIGNAL\_REQUEST\ \ \ \ \ \ \ \ \ \ \ \ \ \ 4024}}
+\DoxyCodeLine{00153\ \textcolor{preprocessor}{\#define\ OPUS\_GET\_SIGNAL\_REQUEST\ \ \ \ \ \ \ \ \ \ \ \ \ \ 4025}}
+\DoxyCodeLine{00154\ \textcolor{preprocessor}{\#define\ OPUS\_GET\_LOOKAHEAD\_REQUEST\ \ \ \ \ \ \ \ \ \ \ 4027}}
+\DoxyCodeLine{00155\ \textcolor{comment}{/*\ \#define\ OPUS\_RESET\_STATE\ 4028\ */}}
+\DoxyCodeLine{00156\ \textcolor{preprocessor}{\#define\ OPUS\_GET\_SAMPLE\_RATE\_REQUEST\ \ \ \ \ \ \ \ \ 4029}}
+\DoxyCodeLine{00157\ \textcolor{preprocessor}{\#define\ OPUS\_GET\_FINAL\_RANGE\_REQUEST\ \ \ \ \ \ \ \ \ 4031}}
+\DoxyCodeLine{00158\ \textcolor{preprocessor}{\#define\ OPUS\_GET\_PITCH\_REQUEST\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 4033}}
+\DoxyCodeLine{00159\ \textcolor{preprocessor}{\#define\ OPUS\_SET\_GAIN\_REQUEST\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 4034}}
+\DoxyCodeLine{00160\ \textcolor{preprocessor}{\#define\ OPUS\_GET\_GAIN\_REQUEST\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 4045\ }\textcolor{comment}{/*\ Should\ have\ been\ 4035\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00161\ \textcolor{preprocessor}{\#define\ OPUS\_SET\_LSB\_DEPTH\_REQUEST\ \ \ \ \ \ \ \ \ \ \ 4036}}
+\DoxyCodeLine{00162\ \textcolor{preprocessor}{\#define\ OPUS\_GET\_LSB\_DEPTH\_REQUEST\ \ \ \ \ \ \ \ \ \ \ 4037}}
+\DoxyCodeLine{00163\ \textcolor{preprocessor}{\#define\ OPUS\_GET\_LAST\_PACKET\_DURATION\_REQUEST\ 4039}}
+\DoxyCodeLine{00164\ \textcolor{preprocessor}{\#define\ OPUS\_SET\_EXPERT\_FRAME\_DURATION\_REQUEST\ 4040}}
+\DoxyCodeLine{00165\ \textcolor{preprocessor}{\#define\ OPUS\_GET\_EXPERT\_FRAME\_DURATION\_REQUEST\ 4041}}
+\DoxyCodeLine{00166\ \textcolor{preprocessor}{\#define\ OPUS\_SET\_PREDICTION\_DISABLED\_REQUEST\ 4042}}
+\DoxyCodeLine{00167\ \textcolor{preprocessor}{\#define\ OPUS\_GET\_PREDICTION\_DISABLED\_REQUEST\ 4043}}
+\DoxyCodeLine{00168\ \textcolor{comment}{/*\ Don't\ use\ 4045,\ it's\ already\ taken\ by\ OPUS\_GET\_GAIN\_REQUEST\ */}}
+\DoxyCodeLine{00169\ \textcolor{preprocessor}{\#define\ OPUS\_SET\_PHASE\_INVERSION\_DISABLED\_REQUEST\ 4046}}
+\DoxyCodeLine{00170\ \textcolor{preprocessor}{\#define\ OPUS\_GET\_PHASE\_INVERSION\_DISABLED\_REQUEST\ 4047}}
+\DoxyCodeLine{00171\ \textcolor{preprocessor}{\#define\ OPUS\_GET\_IN\_DTX\_REQUEST\ \ \ \ \ \ \ \ \ \ \ \ \ \ 4049}}
+\DoxyCodeLine{00172\ \textcolor{preprocessor}{\#define\ OPUS\_SET\_DRED\_DURATION\_REQUEST\ 4050}}
+\DoxyCodeLine{00173\ \textcolor{preprocessor}{\#define\ OPUS\_GET\_DRED\_DURATION\_REQUEST\ 4051}}
+\DoxyCodeLine{00174\ \textcolor{preprocessor}{\#define\ OPUS\_SET\_DNN\_BLOB\_REQUEST\ 4052}}
+\DoxyCodeLine{00175\ \textcolor{comment}{/*\#define\ OPUS\_GET\_DNN\_BLOB\_REQUEST\ 4053\ */}}
+\DoxyCodeLine{00176\ }
+\DoxyCodeLine{00178\ \textcolor{preprocessor}{\#define\ OPUS\_HAVE\_OPUS\_PROJECTION\_H}}
+\DoxyCodeLine{00179\ }
+\DoxyCodeLine{00180\ \textcolor{comment}{/*\ Macros\ to\ trigger\ compilation\ errors\ when\ the\ wrong\ types\ are\ provided\ to\ a\ CTL\ */}}
+\DoxyCodeLine{00181\ \textcolor{preprocessor}{\#define\ \_\_opus\_check\_int(x)\ (((void)((x)\ ==\ (opus\_int32)0)),\ (opus\_int32)(x))}}
+\DoxyCodeLine{00182\ }
+\DoxyCodeLine{00183\ \textcolor{preprocessor}{\#ifdef\ DISABLE\_PTR\_CHECK}}
+\DoxyCodeLine{00184\ \textcolor{comment}{/*\ Disable\ checks\ to\ prevent\ ubsan\ from\ complaining\ about\ NULL\ checks}}
+\DoxyCodeLine{00185\ \textcolor{comment}{\ \ \ in\ test\_opus\_api.\ */}}
+\DoxyCodeLine{00186\ \textcolor{preprocessor}{\#define\ \_\_opus\_check\_int\_ptr(ptr)\ (ptr)}}
+\DoxyCodeLine{00187\ \textcolor{preprocessor}{\#define\ \_\_opus\_check\_uint\_ptr(ptr)\ (ptr)}}
+\DoxyCodeLine{00188\ \textcolor{preprocessor}{\#define\ \_\_opus\_check\_uint8\_ptr(ptr)\ (ptr)}}
+\DoxyCodeLine{00189\ \textcolor{preprocessor}{\#define\ \_\_opus\_check\_val16\_ptr(ptr)\ (ptr)}}
+\DoxyCodeLine{00190\ \textcolor{preprocessor}{\#define\ \_\_opus\_check\_void\_ptr(ptr)\ (ptr)}}
+\DoxyCodeLine{00191\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00192\ \textcolor{preprocessor}{\#define\ \_\_opus\_check\_int\_ptr(ptr)\ ((ptr)\ +\ ((ptr)\ -\/\ (opus\_int32*)(ptr)))}}
+\DoxyCodeLine{00193\ \textcolor{preprocessor}{\#define\ \_\_opus\_check\_uint\_ptr(ptr)\ ((ptr)\ +\ ((ptr)\ -\/\ (opus\_uint32*)(ptr)))}}
+\DoxyCodeLine{00194\ \textcolor{preprocessor}{\#define\ \_\_opus\_check\_uint8\_ptr(ptr)\ ((ptr)\ +\ ((ptr)\ -\/\ (opus\_uint8*)(ptr)))}}
+\DoxyCodeLine{00195\ \textcolor{preprocessor}{\#define\ \_\_opus\_check\_val16\_ptr(ptr)\ ((ptr)\ +\ ((ptr)\ -\/\ (opus\_val16*)(ptr)))}}
+\DoxyCodeLine{00196\ \textcolor{preprocessor}{\#define\ \_\_opus\_check\_void\_ptr(x)\ ((void)((void\ *)0\ ==\ (x)),\ (x))}}
+\DoxyCodeLine{00197\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00204\ \textcolor{comment}{/*\ Values\ for\ the\ various\ encoder\ CTLs\ */}}
+\DoxyCodeLine{00205\ \textcolor{preprocessor}{\#define\ OPUS\_AUTO\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ -\/1000\ }}
+\DoxyCodeLine{00206\ \textcolor{preprocessor}{\#define\ OPUS\_BITRATE\_MAX\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ -\/1\ }}
+\DoxyCodeLine{00210\ \textcolor{preprocessor}{\#define\ OPUS\_APPLICATION\_VOIP\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 2048}}
+\DoxyCodeLine{00213\ \textcolor{preprocessor}{\#define\ OPUS\_APPLICATION\_AUDIO\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 2049}}
+\DoxyCodeLine{00216\ \textcolor{preprocessor}{\#define\ OPUS\_APPLICATION\_RESTRICTED\_LOWDELAY\ 2051}}
+\DoxyCodeLine{00217\ }
+\DoxyCodeLine{00218\ \textcolor{preprocessor}{\#define\ OPUS\_SIGNAL\_VOICE\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 3001\ }}
+\DoxyCodeLine{00219\ \textcolor{preprocessor}{\#define\ OPUS\_SIGNAL\_MUSIC\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 3002\ }}
+\DoxyCodeLine{00220\ \textcolor{preprocessor}{\#define\ OPUS\_BANDWIDTH\_NARROWBAND\ \ \ \ \ \ \ \ \ \ \ \ 1101\ }}
+\DoxyCodeLine{00221\ \textcolor{preprocessor}{\#define\ OPUS\_BANDWIDTH\_MEDIUMBAND\ \ \ \ \ \ \ \ \ \ \ \ 1102\ }}
+\DoxyCodeLine{00222\ \textcolor{preprocessor}{\#define\ OPUS\_BANDWIDTH\_WIDEBAND\ \ \ \ \ \ \ \ \ \ \ \ \ \ 1103\ }}
+\DoxyCodeLine{00223\ \textcolor{preprocessor}{\#define\ OPUS\_BANDWIDTH\_SUPERWIDEBAND\ \ \ \ \ \ \ \ \ 1104\ }}
+\DoxyCodeLine{00224\ \textcolor{preprocessor}{\#define\ OPUS\_BANDWIDTH\_FULLBAND\ \ \ \ \ \ \ \ \ \ \ \ \ \ 1105\ }}
+\DoxyCodeLine{00226\ \textcolor{preprocessor}{\#define\ OPUS\_FRAMESIZE\_ARG\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 5000\ }}
+\DoxyCodeLine{00227\ \textcolor{preprocessor}{\#define\ OPUS\_FRAMESIZE\_2\_5\_MS\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 5001\ }}
+\DoxyCodeLine{00228\ \textcolor{preprocessor}{\#define\ OPUS\_FRAMESIZE\_5\_MS\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 5002\ }}
+\DoxyCodeLine{00229\ \textcolor{preprocessor}{\#define\ OPUS\_FRAMESIZE\_10\_MS\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 5003\ }}
+\DoxyCodeLine{00230\ \textcolor{preprocessor}{\#define\ OPUS\_FRAMESIZE\_20\_MS\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 5004\ }}
+\DoxyCodeLine{00231\ \textcolor{preprocessor}{\#define\ OPUS\_FRAMESIZE\_40\_MS\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 5005\ }}
+\DoxyCodeLine{00232\ \textcolor{preprocessor}{\#define\ OPUS\_FRAMESIZE\_60\_MS\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 5006\ }}
+\DoxyCodeLine{00233\ \textcolor{preprocessor}{\#define\ OPUS\_FRAMESIZE\_80\_MS\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 5007\ }}
+\DoxyCodeLine{00234\ \textcolor{preprocessor}{\#define\ OPUS\_FRAMESIZE\_100\_MS\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 5008\ }}
+\DoxyCodeLine{00235\ \textcolor{preprocessor}{\#define\ OPUS\_FRAMESIZE\_120\_MS\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 5009\ }}
+\DoxyCodeLine{00270\ \textcolor{preprocessor}{\#define\ OPUS\_SET\_COMPLEXITY(x)\ OPUS\_SET\_COMPLEXITY\_REQUEST,\ \_\_opus\_check\_int(x)}}
+\DoxyCodeLine{00276\ \textcolor{preprocessor}{\#define\ OPUS\_GET\_COMPLEXITY(x)\ OPUS\_GET\_COMPLEXITY\_REQUEST,\ \_\_opus\_check\_int\_ptr(x)}}
+\DoxyCodeLine{00277\ }
+\DoxyCodeLine{00289\ \textcolor{preprocessor}{\#define\ OPUS\_SET\_BITRATE(x)\ OPUS\_SET\_BITRATE\_REQUEST,\ \_\_opus\_check\_int(x)}}
+\DoxyCodeLine{00297\ \textcolor{preprocessor}{\#define\ OPUS\_GET\_BITRATE(x)\ OPUS\_GET\_BITRATE\_REQUEST,\ \_\_opus\_check\_int\_ptr(x)}}
+\DoxyCodeLine{00298\ }
+\DoxyCodeLine{00312\ \textcolor{preprocessor}{\#define\ OPUS\_SET\_VBR(x)\ OPUS\_SET\_VBR\_REQUEST,\ \_\_opus\_check\_int(x)}}
+\DoxyCodeLine{00323\ \textcolor{preprocessor}{\#define\ OPUS\_GET\_VBR(x)\ OPUS\_GET\_VBR\_REQUEST,\ \_\_opus\_check\_int\_ptr(x)}}
+\DoxyCodeLine{00324\ }
+\DoxyCodeLine{00341\ \textcolor{preprocessor}{\#define\ OPUS\_SET\_VBR\_CONSTRAINT(x)\ OPUS\_SET\_VBR\_CONSTRAINT\_REQUEST,\ \_\_opus\_check\_int(x)}}
+\DoxyCodeLine{00351\ \textcolor{preprocessor}{\#define\ OPUS\_GET\_VBR\_CONSTRAINT(x)\ OPUS\_GET\_VBR\_CONSTRAINT\_REQUEST,\ \_\_opus\_check\_int\_ptr(x)}}
+\DoxyCodeLine{00352\ }
+\DoxyCodeLine{00366\ \textcolor{preprocessor}{\#define\ OPUS\_SET\_FORCE\_CHANNELS(x)\ OPUS\_SET\_FORCE\_CHANNELS\_REQUEST,\ \_\_opus\_check\_int(x)}}
+\DoxyCodeLine{00376\ \textcolor{preprocessor}{\#define\ OPUS\_GET\_FORCE\_CHANNELS(x)\ OPUS\_GET\_FORCE\_CHANNELS\_REQUEST,\ \_\_opus\_check\_int\_ptr(x)}}
+\DoxyCodeLine{00377\ }
+\DoxyCodeLine{00394\ \textcolor{preprocessor}{\#define\ OPUS\_SET\_MAX\_BANDWIDTH(x)\ OPUS\_SET\_MAX\_BANDWIDTH\_REQUEST,\ \_\_opus\_check\_int(x)}}
+\DoxyCodeLine{00395\ }
+\DoxyCodeLine{00407\ \textcolor{preprocessor}{\#define\ OPUS\_GET\_MAX\_BANDWIDTH(x)\ OPUS\_GET\_MAX\_BANDWIDTH\_REQUEST,\ \_\_opus\_check\_int\_ptr(x)}}
+\DoxyCodeLine{00408\ }
+\DoxyCodeLine{00426\ \textcolor{preprocessor}{\#define\ OPUS\_SET\_BANDWIDTH(x)\ OPUS\_SET\_BANDWIDTH\_REQUEST,\ \_\_opus\_check\_int(x)}}
+\DoxyCodeLine{00427\ }
+\DoxyCodeLine{00438\ \textcolor{preprocessor}{\#define\ OPUS\_SET\_SIGNAL(x)\ OPUS\_SET\_SIGNAL\_REQUEST,\ \_\_opus\_check\_int(x)}}
+\DoxyCodeLine{00448\ \textcolor{preprocessor}{\#define\ OPUS\_GET\_SIGNAL(x)\ OPUS\_GET\_SIGNAL\_REQUEST,\ \_\_opus\_check\_int\_ptr(x)}}
+\DoxyCodeLine{00449\ }
+\DoxyCodeLine{00450\ }
+\DoxyCodeLine{00465\ \textcolor{preprocessor}{\#define\ OPUS\_SET\_APPLICATION(x)\ OPUS\_SET\_APPLICATION\_REQUEST,\ \_\_opus\_check\_int(x)}}
+\DoxyCodeLine{00479\ \textcolor{preprocessor}{\#define\ OPUS\_GET\_APPLICATION(x)\ OPUS\_GET\_APPLICATION\_REQUEST,\ \_\_opus\_check\_int\_ptr(x)}}
+\DoxyCodeLine{00480\ }
+\DoxyCodeLine{00494\ \textcolor{preprocessor}{\#define\ OPUS\_GET\_LOOKAHEAD(x)\ OPUS\_GET\_LOOKAHEAD\_REQUEST,\ \_\_opus\_check\_int\_ptr(x)}}
+\DoxyCodeLine{00495\ }
+\DoxyCodeLine{00506\ \textcolor{preprocessor}{\#define\ OPUS\_SET\_INBAND\_FEC(x)\ OPUS\_SET\_INBAND\_FEC\_REQUEST,\ \_\_opus\_check\_int(x)}}
+\DoxyCodeLine{00516\ \textcolor{preprocessor}{\#define\ OPUS\_GET\_INBAND\_FEC(x)\ OPUS\_GET\_INBAND\_FEC\_REQUEST,\ \_\_opus\_check\_int\_ptr(x)}}
+\DoxyCodeLine{00517\ }
+\DoxyCodeLine{00525\ \textcolor{preprocessor}{\#define\ OPUS\_SET\_PACKET\_LOSS\_PERC(x)\ OPUS\_SET\_PACKET\_LOSS\_PERC\_REQUEST,\ \_\_opus\_check\_int(x)}}
+\DoxyCodeLine{00531\ \textcolor{preprocessor}{\#define\ OPUS\_GET\_PACKET\_LOSS\_PERC(x)\ OPUS\_GET\_PACKET\_LOSS\_PERC\_REQUEST,\ \_\_opus\_check\_int\_ptr(x)}}
+\DoxyCodeLine{00532\ }
+\DoxyCodeLine{00542\ \textcolor{preprocessor}{\#define\ OPUS\_SET\_DTX(x)\ OPUS\_SET\_DTX\_REQUEST,\ \_\_opus\_check\_int(x)}}
+\DoxyCodeLine{00551\ \textcolor{preprocessor}{\#define\ OPUS\_GET\_DTX(x)\ OPUS\_GET\_DTX\_REQUEST,\ \_\_opus\_check\_int\_ptr(x)}}
+\DoxyCodeLine{00570\ \textcolor{preprocessor}{\#define\ OPUS\_SET\_LSB\_DEPTH(x)\ OPUS\_SET\_LSB\_DEPTH\_REQUEST,\ \_\_opus\_check\_int(x)}}
+\DoxyCodeLine{00576\ \textcolor{preprocessor}{\#define\ OPUS\_GET\_LSB\_DEPTH(x)\ OPUS\_GET\_LSB\_DEPTH\_REQUEST,\ \_\_opus\_check\_int\_ptr(x)}}
+\DoxyCodeLine{00577\ }
+\DoxyCodeLine{00601\ \textcolor{preprocessor}{\#define\ OPUS\_SET\_EXPERT\_FRAME\_DURATION(x)\ OPUS\_SET\_EXPERT\_FRAME\_DURATION\_REQUEST,\ \_\_opus\_check\_int(x)}}
+\DoxyCodeLine{00618\ \textcolor{preprocessor}{\#define\ OPUS\_GET\_EXPERT\_FRAME\_DURATION(x)\ OPUS\_GET\_EXPERT\_FRAME\_DURATION\_REQUEST,\ \_\_opus\_check\_int\_ptr(x)}}
+\DoxyCodeLine{00619\ }
+\DoxyCodeLine{00629\ \textcolor{preprocessor}{\#define\ OPUS\_SET\_PREDICTION\_DISABLED(x)\ OPUS\_SET\_PREDICTION\_DISABLED\_REQUEST,\ \_\_opus\_check\_int(x)}}
+\DoxyCodeLine{00638\ \textcolor{preprocessor}{\#define\ OPUS\_GET\_PREDICTION\_DISABLED(x)\ OPUS\_GET\_PREDICTION\_DISABLED\_REQUEST,\ \_\_opus\_check\_int\_ptr(x)}}
+\DoxyCodeLine{00639\ }
+\DoxyCodeLine{00642\ \textcolor{preprocessor}{\#define\ OPUS\_SET\_DRED\_DURATION(x)\ OPUS\_SET\_DRED\_DURATION\_REQUEST,\ \_\_opus\_check\_int(x)}}
+\DoxyCodeLine{00645\ \textcolor{preprocessor}{\#define\ OPUS\_GET\_DRED\_DURATION(x)\ OPUS\_GET\_DRED\_DURATION\_REQUEST,\ \_\_opus\_check\_int\_ptr(x)}}
+\DoxyCodeLine{00646\ }
+\DoxyCodeLine{00649\ \textcolor{preprocessor}{\#define\ OPUS\_SET\_DNN\_BLOB(data,\ len)\ OPUS\_SET\_DNN\_BLOB\_REQUEST,\ \_\_opus\_check\_void\_ptr(data),\ \_\_opus\_check\_int(len)}}
+\DoxyCodeLine{00650\ }
+\DoxyCodeLine{00651\ }
+\DoxyCodeLine{00693\ \textcolor{preprocessor}{\#define\ OPUS\_RESET\_STATE\ 4028}}
+\DoxyCodeLine{00694\ }
+\DoxyCodeLine{00703\ \textcolor{preprocessor}{\#define\ OPUS\_GET\_FINAL\_RANGE(x)\ OPUS\_GET\_FINAL\_RANGE\_REQUEST,\ \_\_opus\_check\_uint\_ptr(x)}}
+\DoxyCodeLine{00704\ }
+\DoxyCodeLine{00717\ \textcolor{preprocessor}{\#define\ OPUS\_GET\_BANDWIDTH(x)\ OPUS\_GET\_BANDWIDTH\_REQUEST,\ \_\_opus\_check\_int\_ptr(x)}}
+\DoxyCodeLine{00718\ }
+\DoxyCodeLine{00725\ \textcolor{preprocessor}{\#define\ OPUS\_GET\_SAMPLE\_RATE(x)\ OPUS\_GET\_SAMPLE\_RATE\_REQUEST,\ \_\_opus\_check\_int\_ptr(x)}}
+\DoxyCodeLine{00726\ }
+\DoxyCodeLine{00740\ \textcolor{preprocessor}{\#define\ OPUS\_SET\_PHASE\_INVERSION\_DISABLED(x)\ OPUS\_SET\_PHASE\_INVERSION\_DISABLED\_REQUEST,\ \_\_opus\_check\_int(x)}}
+\DoxyCodeLine{00749\ \textcolor{preprocessor}{\#define\ OPUS\_GET\_PHASE\_INVERSION\_DISABLED(x)\ OPUS\_GET\_PHASE\_INVERSION\_DISABLED\_REQUEST,\ \_\_opus\_check\_int\_ptr(x)}}
+\DoxyCodeLine{00759\ \textcolor{preprocessor}{\#define\ OPUS\_GET\_IN\_DTX(x)\ OPUS\_GET\_IN\_DTX\_REQUEST,\ \_\_opus\_check\_int\_ptr(x)}}
+\DoxyCodeLine{00760\ }
+\DoxyCodeLine{00778\ \textcolor{preprocessor}{\#define\ OPUS\_SET\_GAIN(x)\ OPUS\_SET\_GAIN\_REQUEST,\ \_\_opus\_check\_int(x)}}
+\DoxyCodeLine{00783\ \textcolor{preprocessor}{\#define\ OPUS\_GET\_GAIN(x)\ OPUS\_GET\_GAIN\_REQUEST,\ \_\_opus\_check\_int\_ptr(x)}}
+\DoxyCodeLine{00784\ }
+\DoxyCodeLine{00788\ \textcolor{preprocessor}{\#define\ OPUS\_GET\_LAST\_PACKET\_DURATION(x)\ OPUS\_GET\_LAST\_PACKET\_DURATION\_REQUEST,\ \_\_opus\_check\_int\_ptr(x)}}
+\DoxyCodeLine{00789\ }
+\DoxyCodeLine{00800\ \textcolor{preprocessor}{\#define\ OPUS\_GET\_PITCH(x)\ OPUS\_GET\_PITCH\_REQUEST,\ \_\_opus\_check\_int\_ptr(x)}}
+\DoxyCodeLine{00801\ }
+\DoxyCodeLine{00813\ OPUS\_EXPORT\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{group__opus__libinfo_ga2fa5448b3a51dcef0fcaa1dcdfe56408}{opus\_strerror}}(\textcolor{keywordtype}{int}\ error);}
+\DoxyCodeLine{00814\ }
+\DoxyCodeLine{00823\ OPUS\_EXPORT\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{group__opus__libinfo_ga62285340278e898ae54e0d4b6d451ad4}{opus\_get\_version\_string}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00826\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{00827\ \}}
+\DoxyCodeLine{00828\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00829\ }
+\DoxyCodeLine{00830\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ OPUS\_DEFINES\_H\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

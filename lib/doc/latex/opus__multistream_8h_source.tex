@@ -1,0 +1,177 @@
+\doxysection{opus\+\_\+multistream.\+h}
+\hypertarget{opus__multistream_8h_source}{}\label{opus__multistream_8h_source}\index{opus\_multistream.h@{opus\_multistream.h}}
+\mbox{\hyperlink{opus__multistream_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*\ Copyright\ (c)\ 2011\ Xiph.Org\ Foundation}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ \ \ Written\ by\ Jean-\/Marc\ Valin\ */}}
+\DoxyCodeLine{00003\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ \ \ Redistribution\ and\ use\ in\ source\ and\ binary\ forms,\ with\ or\ without}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ \ \ modification,\ are\ permitted\ provided\ that\ the\ following\ conditions}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ \ \ are\ met:}}
+\DoxyCodeLine{00007\ \textcolor{comment}{}}
+\DoxyCodeLine{00008\ \textcolor{comment}{\ \ \ -\/\ Redistributions\ of\ source\ code\ must\ retain\ the\ above\ copyright}}
+\DoxyCodeLine{00009\ \textcolor{comment}{\ \ \ notice,\ this\ list\ of\ conditions\ and\ the\ following\ disclaimer.}}
+\DoxyCodeLine{00010\ \textcolor{comment}{}}
+\DoxyCodeLine{00011\ \textcolor{comment}{\ \ \ -\/\ Redistributions\ in\ binary\ form\ must\ reproduce\ the\ above\ copyright}}
+\DoxyCodeLine{00012\ \textcolor{comment}{\ \ \ notice,\ this\ list\ of\ conditions\ and\ the\ following\ disclaimer\ in\ the}}
+\DoxyCodeLine{00013\ \textcolor{comment}{\ \ \ documentation\ and/or\ other\ materials\ provided\ with\ the\ distribution.}}
+\DoxyCodeLine{00014\ \textcolor{comment}{}}
+\DoxyCodeLine{00015\ \textcolor{comment}{\ \ \ THIS\ SOFTWARE\ IS\ PROVIDED\ BY\ THE\ COPYRIGHT\ HOLDERS\ AND\ CONTRIBUTORS}}
+\DoxyCodeLine{00016\ \textcolor{comment}{\ \ \ \`{}\`{}AS\ IS''\ AND\ ANY\ EXPRESS\ OR\ IMPLIED\ WARRANTIES,\ INCLUDING,\ BUT\ NOT}}
+\DoxyCodeLine{00017\ \textcolor{comment}{\ \ \ LIMITED\ TO,\ THE\ IMPLIED\ WARRANTIES\ OF\ MERCHANTABILITY\ AND\ FITNESS\ FOR}}
+\DoxyCodeLine{00018\ \textcolor{comment}{\ \ \ A\ PARTICULAR\ PURPOSE\ ARE\ DISCLAIMED.\ IN\ NO\ EVENT\ SHALL\ THE\ COPYRIGHT\ OWNER}}
+\DoxyCodeLine{00019\ \textcolor{comment}{\ \ \ OR\ CONTRIBUTORS\ BE\ LIABLE\ FOR\ ANY\ DIRECT,\ INDIRECT,\ INCIDENTAL,\ SPECIAL,}}
+\DoxyCodeLine{00020\ \textcolor{comment}{\ \ \ EXEMPLARY,\ OR\ CONSEQUENTIAL\ DAMAGES\ (INCLUDING,\ BUT\ NOT\ LIMITED\ TO,}}
+\DoxyCodeLine{00021\ \textcolor{comment}{\ \ \ PROCUREMENT\ OF\ SUBSTITUTE\ GOODS\ OR\ SERVICES;\ LOSS\ OF\ USE,\ DATA,\ OR}}
+\DoxyCodeLine{00022\ \textcolor{comment}{\ \ \ PROFITS;\ OR\ BUSINESS\ INTERRUPTION)\ HOWEVER\ CAUSED\ AND\ ON\ ANY\ THEORY\ OF}}
+\DoxyCodeLine{00023\ \textcolor{comment}{\ \ \ LIABILITY,\ WHETHER\ IN\ CONTRACT,\ STRICT\ LIABILITY,\ OR\ TORT\ (INCLUDING}}
+\DoxyCodeLine{00024\ \textcolor{comment}{\ \ \ NEGLIGENCE\ OR\ OTHERWISE)\ ARISING\ IN\ ANY\ WAY\ OUT\ OF\ THE\ USE\ OF\ THIS}}
+\DoxyCodeLine{00025\ \textcolor{comment}{\ \ \ SOFTWARE,\ EVEN\ IF\ ADVISED\ OF\ THE\ POSSIBILITY\ OF\ SUCH\ DAMAGE.}}
+\DoxyCodeLine{00026\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00033\ \textcolor{preprocessor}{\#ifndef\ OPUS\_MULTISTREAM\_H}}
+\DoxyCodeLine{00034\ \textcolor{preprocessor}{\#define\ OPUS\_MULTISTREAM\_H}}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{opus_8h}{opus.h}}"{}}}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{00039\ \textcolor{keyword}{extern}\ \textcolor{stringliteral}{"{}C"{}}\ \{}
+\DoxyCodeLine{00040\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00047\ \textcolor{preprocessor}{\#define\ \_\_opus\_check\_encstate\_ptr(ptr)\ ((ptr)\ +\ ((ptr)\ -\/\ (OpusEncoder**)(ptr)))}}
+\DoxyCodeLine{00048\ \textcolor{preprocessor}{\#define\ \_\_opus\_check\_decstate\_ptr(ptr)\ ((ptr)\ +\ ((ptr)\ -\/\ (OpusDecoder**)(ptr)))}}
+\DoxyCodeLine{00055\ \textcolor{preprocessor}{\#define\ OPUS\_MULTISTREAM\_GET\_ENCODER\_STATE\_REQUEST\ 5120}}
+\DoxyCodeLine{00056\ \textcolor{preprocessor}{\#define\ OPUS\_MULTISTREAM\_GET\_DECODER\_STATE\_REQUEST\ 5122}}
+\DoxyCodeLine{00086\ \textcolor{preprocessor}{\#define\ OPUS\_MULTISTREAM\_GET\_ENCODER\_STATE(x,y)\ OPUS\_MULTISTREAM\_GET\_ENCODER\_STATE\_REQUEST,\ \_\_opus\_check\_int(x),\ \_\_opus\_check\_encstate\_ptr(y)}}
+\DoxyCodeLine{00087\ }
+\DoxyCodeLine{00099\ \textcolor{preprocessor}{\#define\ OPUS\_MULTISTREAM\_GET\_DECODER\_STATE(x,y)\ OPUS\_MULTISTREAM\_GET\_DECODER\_STATE\_REQUEST,\ \_\_opus\_check\_int(x),\ \_\_opus\_check\_decstate\_ptr(y)}}
+\DoxyCodeLine{00100\ }
+\DoxyCodeLine{00175\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{group__opus__multistream_gae5826674d142fc873ebc1d781c507dd7}{OpusMSEncoder}}\ \mbox{\hyperlink{group__opus__multistream_gae5826674d142fc873ebc1d781c507dd7}{OpusMSEncoder}};}
+\DoxyCodeLine{00176\ }
+\DoxyCodeLine{00183\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{group__opus__multistream_gad3497495deb9a8ace82e76cd4f93e0e4}{OpusMSDecoder}}\ \mbox{\hyperlink{group__opus__multistream_gad3497495deb9a8ace82e76cd4f93e0e4}{OpusMSDecoder}};}
+\DoxyCodeLine{00184\ }
+\DoxyCodeLine{00203\ OPUS\_EXPORT\ OPUS\_WARN\_UNUSED\_RESULT\ \mbox{\hyperlink{opus__types_8h_aa4d309d6f80b99dbabebc8f98879ab9a}{opus\_int32}}\ \mbox{\hyperlink{group__opus__multistream_ga8642aa9cf16115229a655574d832293b}{opus\_multistream\_encoder\_get\_size}}(}
+\DoxyCodeLine{00204\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ streams,}
+\DoxyCodeLine{00205\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ coupled\_streams}
+\DoxyCodeLine{00206\ );}
+\DoxyCodeLine{00207\ }
+\DoxyCodeLine{00208\ OPUS\_EXPORT\ OPUS\_WARN\_UNUSED\_RESULT\ \mbox{\hyperlink{opus__types_8h_aa4d309d6f80b99dbabebc8f98879ab9a}{opus\_int32}}\ \mbox{\hyperlink{group__opus__multistream_ga9bed3af8a080ab97b8af48007758fa14}{opus\_multistream\_surround\_encoder\_get\_size}}(}
+\DoxyCodeLine{00209\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ channels,}
+\DoxyCodeLine{00210\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ mapping\_family}
+\DoxyCodeLine{00211\ );}
+\DoxyCodeLine{00212\ }
+\DoxyCodeLine{00213\ }
+\DoxyCodeLine{00257\ OPUS\_EXPORT\ OPUS\_WARN\_UNUSED\_RESULT\ \mbox{\hyperlink{group__opus__multistream_gae5826674d142fc873ebc1d781c507dd7}{OpusMSEncoder}}\ *\mbox{\hyperlink{group__opus__multistream_gaf0bed32ce40dbca336d98fb3919c1c95}{opus\_multistream\_encoder\_create}}(}
+\DoxyCodeLine{00258\ \ \ \ \ \ \ \mbox{\hyperlink{opus__types_8h_aa4d309d6f80b99dbabebc8f98879ab9a}{opus\_int32}}\ Fs,}
+\DoxyCodeLine{00259\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ channels,}
+\DoxyCodeLine{00260\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ streams,}
+\DoxyCodeLine{00261\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ coupled\_streams,}
+\DoxyCodeLine{00262\ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ *mapping,}
+\DoxyCodeLine{00263\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ application,}
+\DoxyCodeLine{00264\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ *error}
+\DoxyCodeLine{00265\ )\ OPUS\_ARG\_NONNULL(5);}
+\DoxyCodeLine{00266\ }
+\DoxyCodeLine{00267\ OPUS\_EXPORT\ OPUS\_WARN\_UNUSED\_RESULT\ \mbox{\hyperlink{group__opus__multistream_gae5826674d142fc873ebc1d781c507dd7}{OpusMSEncoder}}\ *\mbox{\hyperlink{group__opus__multistream_ga7730ba0a246452972e02de8bfd1f588b}{opus\_multistream\_surround\_encoder\_create}}(}
+\DoxyCodeLine{00268\ \ \ \ \ \ \ \mbox{\hyperlink{opus__types_8h_aa4d309d6f80b99dbabebc8f98879ab9a}{opus\_int32}}\ Fs,}
+\DoxyCodeLine{00269\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ channels,}
+\DoxyCodeLine{00270\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ mapping\_family,}
+\DoxyCodeLine{00271\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ *streams,}
+\DoxyCodeLine{00272\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ *coupled\_streams,}
+\DoxyCodeLine{00273\ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ *mapping,}
+\DoxyCodeLine{00274\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ application,}
+\DoxyCodeLine{00275\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ *error}
+\DoxyCodeLine{00276\ )\ OPUS\_ARG\_NONNULL(4)\ OPUS\_ARG\_NONNULL(5)\ OPUS\_ARG\_NONNULL(6);}
+\DoxyCodeLine{00277\ }
+\DoxyCodeLine{00326\ OPUS\_EXPORT\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{group__opus__multistream_gae7586aa54c322fd9599de24b5c8b8c01}{opus\_multistream\_encoder\_init}}(}
+\DoxyCodeLine{00327\ \ \ \ \ \ \ \mbox{\hyperlink{group__opus__multistream_gae5826674d142fc873ebc1d781c507dd7}{OpusMSEncoder}}\ *st,}
+\DoxyCodeLine{00328\ \ \ \ \ \ \ \mbox{\hyperlink{opus__types_8h_aa4d309d6f80b99dbabebc8f98879ab9a}{opus\_int32}}\ Fs,}
+\DoxyCodeLine{00329\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ channels,}
+\DoxyCodeLine{00330\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ streams,}
+\DoxyCodeLine{00331\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ coupled\_streams,}
+\DoxyCodeLine{00332\ \ \ \ \ \ \ const\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ *mapping,}
+\DoxyCodeLine{00333\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ application}
+\DoxyCodeLine{00334\ )\ OPUS\_ARG\_NONNULL(1)\ OPUS\_ARG\_NONNULL(6);}
+\DoxyCodeLine{00335\ }
+\DoxyCodeLine{00336\ OPUS\_EXPORT\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{group__opus__multistream_ga993bfbae18b2dbfd641e50e51cef4484}{opus\_multistream\_surround\_encoder\_init}}(}
+\DoxyCodeLine{00337\ \ \ \ \ \ \ \mbox{\hyperlink{group__opus__multistream_gae5826674d142fc873ebc1d781c507dd7}{OpusMSEncoder}}\ *st,}
+\DoxyCodeLine{00338\ \ \ \ \ \ \ \mbox{\hyperlink{opus__types_8h_aa4d309d6f80b99dbabebc8f98879ab9a}{opus\_int32}}\ Fs,}
+\DoxyCodeLine{00339\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ channels,}
+\DoxyCodeLine{00340\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ mapping\_family,}
+\DoxyCodeLine{00341\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ *streams,}
+\DoxyCodeLine{00342\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ *coupled\_streams,}
+\DoxyCodeLine{00343\ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ *mapping,}
+\DoxyCodeLine{00344\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ application}
+\DoxyCodeLine{00345\ )\ OPUS\_ARG\_NONNULL(1)\ OPUS\_ARG\_NONNULL(5)\ OPUS\_ARG\_NONNULL(6)\ OPUS\_ARG\_NONNULL(7);}
+\DoxyCodeLine{00346\ }
+\DoxyCodeLine{00377\ OPUS\_EXPORT\ OPUS\_WARN\_UNUSED\_RESULT\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{group__opus__multistream_ga9e1000f220d9872e9f3b6e4f2417b445}{opus\_multistream\_encode}}(}
+\DoxyCodeLine{00378\ \ \ \ \ \mbox{\hyperlink{group__opus__multistream_gae5826674d142fc873ebc1d781c507dd7}{OpusMSEncoder}}\ *st,}
+\DoxyCodeLine{00379\ \ \ \ \ const\ \mbox{\hyperlink{opus__types_8h_acc9ed7cf60479eb81f9648c6ec27dc26}{opus\_int16}}\ *pcm,}
+\DoxyCodeLine{00380\ \ \ \ \ \textcolor{keywordtype}{int}\ frame\_size,}
+\DoxyCodeLine{00381\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ *data,}
+\DoxyCodeLine{00382\ \ \ \ \ \mbox{\hyperlink{opus__types_8h_aa4d309d6f80b99dbabebc8f98879ab9a}{opus\_int32}}\ max\_data\_bytes}
+\DoxyCodeLine{00383\ )\ OPUS\_ARG\_NONNULL(1)\ OPUS\_ARG\_NONNULL(2)\ OPUS\_ARG\_NONNULL(4);}
+\DoxyCodeLine{00384\ }
+\DoxyCodeLine{00422\ OPUS\_EXPORT\ OPUS\_WARN\_UNUSED\_RESULT\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{group__opus__multistream_gaff832211e572536941b9d6094f9f42ce}{opus\_multistream\_encode\_float}}(}
+\DoxyCodeLine{00423\ \ \ \ \ \ \ \mbox{\hyperlink{group__opus__multistream_gae5826674d142fc873ebc1d781c507dd7}{OpusMSEncoder}}\ *st,}
+\DoxyCodeLine{00424\ \ \ \ \ \ \ const\ \textcolor{keywordtype}{float}\ *pcm,}
+\DoxyCodeLine{00425\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ frame\_size,}
+\DoxyCodeLine{00426\ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ *data,}
+\DoxyCodeLine{00427\ \ \ \ \ \ \ \mbox{\hyperlink{opus__types_8h_aa4d309d6f80b99dbabebc8f98879ab9a}{opus\_int32}}\ max\_data\_bytes}
+\DoxyCodeLine{00428\ )\ OPUS\_ARG\_NONNULL(1)\ OPUS\_ARG\_NONNULL(2)\ OPUS\_ARG\_NONNULL(4);}
+\DoxyCodeLine{00429\ }
+\DoxyCodeLine{00434\ OPUS\_EXPORT\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group__opus__multistream_gaec819b8d4b38350aba6959cee7d33f94}{opus\_multistream\_encoder\_destroy}}(\mbox{\hyperlink{group__opus__multistream_gae5826674d142fc873ebc1d781c507dd7}{OpusMSEncoder}}\ *st);}
+\DoxyCodeLine{00435\ }
+\DoxyCodeLine{00448\ OPUS\_EXPORT\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{group__opus__multistream_gae14328330c548dede66c494f51e33707}{opus\_multistream\_encoder\_ctl}}(\mbox{\hyperlink{group__opus__multistream_gae5826674d142fc873ebc1d781c507dd7}{OpusMSEncoder}}\ *st,\ \textcolor{keywordtype}{int}\ request,\ ...)\ OPUS\_ARG\_NONNULL(1);}
+\DoxyCodeLine{00449\ }
+\DoxyCodeLine{00470\ OPUS\_EXPORT\ OPUS\_WARN\_UNUSED\_RESULT\ \mbox{\hyperlink{opus__types_8h_aa4d309d6f80b99dbabebc8f98879ab9a}{opus\_int32}}\ \mbox{\hyperlink{group__opus__multistream_ga38d745963e7903890c80278bc2569c39}{opus\_multistream\_decoder\_get\_size}}(}
+\DoxyCodeLine{00471\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ streams,}
+\DoxyCodeLine{00472\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ coupled\_streams}
+\DoxyCodeLine{00473\ );}
+\DoxyCodeLine{00474\ }
+\DoxyCodeLine{00504\ OPUS\_EXPORT\ OPUS\_WARN\_UNUSED\_RESULT\ \mbox{\hyperlink{group__opus__multistream_gad3497495deb9a8ace82e76cd4f93e0e4}{OpusMSDecoder}}\ *\mbox{\hyperlink{group__opus__multistream_ga2c34d843d1bf3fcad38760ef76313f4c}{opus\_multistream\_decoder\_create}}(}
+\DoxyCodeLine{00505\ \ \ \ \ \ \ \mbox{\hyperlink{opus__types_8h_aa4d309d6f80b99dbabebc8f98879ab9a}{opus\_int32}}\ Fs,}
+\DoxyCodeLine{00506\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ channels,}
+\DoxyCodeLine{00507\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ streams,}
+\DoxyCodeLine{00508\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ coupled\_streams,}
+\DoxyCodeLine{00509\ \ \ \ \ \ \ const\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ *mapping,}
+\DoxyCodeLine{00510\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ *error}
+\DoxyCodeLine{00511\ )\ OPUS\_ARG\_NONNULL(5);}
+\DoxyCodeLine{00512\ }
+\DoxyCodeLine{00547\ OPUS\_EXPORT\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{group__opus__multistream_ga09a4d14fc497d4f6fbe76bd1c5d45436}{opus\_multistream\_decoder\_init}}(}
+\DoxyCodeLine{00548\ \ \ \ \ \ \ \mbox{\hyperlink{group__opus__multistream_gad3497495deb9a8ace82e76cd4f93e0e4}{OpusMSDecoder}}\ *st,}
+\DoxyCodeLine{00549\ \ \ \ \ \ \ \mbox{\hyperlink{opus__types_8h_aa4d309d6f80b99dbabebc8f98879ab9a}{opus\_int32}}\ Fs,}
+\DoxyCodeLine{00550\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ channels,}
+\DoxyCodeLine{00551\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ streams,}
+\DoxyCodeLine{00552\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ coupled\_streams,}
+\DoxyCodeLine{00553\ \ \ \ \ \ \ const\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ *mapping}
+\DoxyCodeLine{00554\ )\ OPUS\_ARG\_NONNULL(1)\ OPUS\_ARG\_NONNULL(6);}
+\DoxyCodeLine{00555\ }
+\DoxyCodeLine{00585\ OPUS\_EXPORT\ OPUS\_WARN\_UNUSED\_RESULT\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{group__opus__multistream_gaa4b89541efe01970cf52e4a336db3ad0}{opus\_multistream\_decode}}(}
+\DoxyCodeLine{00586\ \ \ \ \ \mbox{\hyperlink{group__opus__multistream_gad3497495deb9a8ace82e76cd4f93e0e4}{OpusMSDecoder}}\ *st,}
+\DoxyCodeLine{00587\ \ \ \ \ const\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ *data,}
+\DoxyCodeLine{00588\ \ \ \ \ \mbox{\hyperlink{opus__types_8h_aa4d309d6f80b99dbabebc8f98879ab9a}{opus\_int32}}\ len,}
+\DoxyCodeLine{00589\ \ \ \ \ \mbox{\hyperlink{opus__types_8h_acc9ed7cf60479eb81f9648c6ec27dc26}{opus\_int16}}\ *pcm,}
+\DoxyCodeLine{00590\ \ \ \ \ \textcolor{keywordtype}{int}\ frame\_size,}
+\DoxyCodeLine{00591\ \ \ \ \ \textcolor{keywordtype}{int}\ decode\_fec}
+\DoxyCodeLine{00592\ )\ OPUS\_ARG\_NONNULL(1)\ OPUS\_ARG\_NONNULL(4);}
+\DoxyCodeLine{00593\ }
+\DoxyCodeLine{00623\ OPUS\_EXPORT\ OPUS\_WARN\_UNUSED\_RESULT\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{group__opus__multistream_ga620e67c67872f8ea0b67a200c729630a}{opus\_multistream\_decode\_float}}(}
+\DoxyCodeLine{00624\ \ \ \ \ \mbox{\hyperlink{group__opus__multistream_gad3497495deb9a8ace82e76cd4f93e0e4}{OpusMSDecoder}}\ *st,}
+\DoxyCodeLine{00625\ \ \ \ \ const\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ *data,}
+\DoxyCodeLine{00626\ \ \ \ \ \mbox{\hyperlink{opus__types_8h_aa4d309d6f80b99dbabebc8f98879ab9a}{opus\_int32}}\ len,}
+\DoxyCodeLine{00627\ \ \ \ \ \textcolor{keywordtype}{float}\ *pcm,}
+\DoxyCodeLine{00628\ \ \ \ \ \textcolor{keywordtype}{int}\ frame\_size,}
+\DoxyCodeLine{00629\ \ \ \ \ \textcolor{keywordtype}{int}\ decode\_fec}
+\DoxyCodeLine{00630\ )\ OPUS\_ARG\_NONNULL(1)\ OPUS\_ARG\_NONNULL(4);}
+\DoxyCodeLine{00631\ }
+\DoxyCodeLine{00644\ OPUS\_EXPORT\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{group__opus__multistream_ga4b3dca8d46e5868cc133f3f6d2b57688}{opus\_multistream\_decoder\_ctl}}(\mbox{\hyperlink{group__opus__multistream_gad3497495deb9a8ace82e76cd4f93e0e4}{OpusMSDecoder}}\ *st,\ \textcolor{keywordtype}{int}\ request,\ ...)\ OPUS\_ARG\_NONNULL(1);}
+\DoxyCodeLine{00645\ }
+\DoxyCodeLine{00650\ OPUS\_EXPORT\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group__opus__multistream_gaaec72b484eabc78d7869221c6d2ce080}{opus\_multistream\_decoder\_destroy}}(\mbox{\hyperlink{group__opus__multistream_gad3497495deb9a8ace82e76cd4f93e0e4}{OpusMSDecoder}}\ *st);}
+\DoxyCodeLine{00651\ }
+\DoxyCodeLine{00656\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{00657\ \}}
+\DoxyCodeLine{00658\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00659\ }
+\DoxyCodeLine{00660\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ OPUS\_MULTISTREAM\_H\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}
