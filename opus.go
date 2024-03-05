@@ -1,10 +1,11 @@
 package opus
 
-// #cgo CFLAGS: -I${SRCDIR}/lib/include
-//
 // #include <opus.h>
 import "C"
-import "fmt"
+
+import (
+	"fmt"
+)
 
 func Test() {
 	fmt.Println(C.OPUS_INTERNAL_ERROR)
