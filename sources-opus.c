@@ -1,0 +1,13 @@
+#include "defines.h"
+
+#include "opus.c"
+#include "opus_decoder.c"
+#include "opus_encoder.c"
+#include "extensions.c"
+#include "opus_multistream.c"
+#include "opus_multistream_encoder.c"
+#include "opus_multistream_decoder.c"
+#include "repacketizer.c"
+#include "opus_projection_encoder.c"
+#include "opus_projection_decoder.c"
+#include "mapping_matrix.c"

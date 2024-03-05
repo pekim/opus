@@ -1,0 +1,5 @@
+#include "http.c"
+#include "info.c"
+#include "internal.c"
+#include "opusfile.c"
+#include "stream.c"
