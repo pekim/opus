@@ -1,12 +1,13 @@
 package opus
 
-// #include <opus.h>
 // #include <opusfile.h>
 import "C"
 
 import (
 	"fmt"
 	"os"
+
+	_ "github.com/pekim/opus/c-sources"
 )
 
 func Test() {
