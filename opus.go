@@ -20,6 +20,12 @@ func Test() {
 		panic(err)
 	}
 
+	decoder, err := NewDecoder(data)
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(decoder.channelCount, decoder.duration.Seconds())
+
 	var opusFileErr C.int
 	oggOpusFile := C.op_open_memory((*C.uchar)(&data[0]), C.size_t(len(data)), &opusFileErr)
 	if opusFileErr < 0 {
