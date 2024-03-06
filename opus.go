@@ -13,6 +13,8 @@ import (
 func Test() {
 	// fmt.Println(C.GoString(C.opus_get_version_string()))
 
+	// panic(errorFromOpusFileError(-133))
+
 	data, err := os.ReadFile("/home/mike/Music/The Chicks - Travelin' Soldier (Official Video) [AbfgxznPmZM].opus")
 	if err != nil {
 		panic(err)
@@ -21,7 +23,7 @@ func Test() {
 	var opusFileErr C.int
 	oggOpusFile := C.op_open_memory((*C.uchar)(&data[0]), C.size_t(len(data)), &opusFileErr)
 	if opusFileErr < 0 {
-		panic(errorFromOpusError(opusFileErr))
+		panic(errorFromOpusFileError(opusFileErr))
 	}
 
 	li := C.op_current_link(oggOpusFile)
@@ -29,7 +31,6 @@ func Test() {
 	pcmTotal := C.op_pcm_total(oggOpusFile, li)
 	fmt.Println(pcmTotal, pcmTotal/48_000, pcmTotal/48_000/60, pcmTotal/48_000%60)
 	// bitrate := C.op_bitrate(oggOpusFile, li)
-	// fmt.Println("bitrate", bitrate)
 	fmt.Println()
 
 	var pcm = make([]int16, 20_000)
@@ -39,7 +40,7 @@ func Test() {
 		&li,
 	)
 	if samplesReadPerChannel < 0 {
-		panic(errorFromOpusError(samplesReadPerChannel))
+		panic(errorFromOpusFileError(samplesReadPerChannel))
 	}
 
 	fmt.Println(li, samplesReadPerChannel, samplesReadPerChannel*channel_count)
