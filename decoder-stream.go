@@ -4,10 +4,8 @@ package opus
 import "C"
 
 import (
-	"fmt"
 	"io"
 	"sync"
-	"time"
 	"unsafe"
 )
 
@@ -47,11 +45,7 @@ func NewStreamDecoder(stream io.ReadSeekCloser) (*Decoder, error) {
 		return nil, errorFromOpusFileError(opusFileErr)
 	}
 
-	d.opusFile = opusFile
-	d.link = C.op_current_link(opusFile)
-	d.channelCount = C.op_channel_count(opusFile, d.link)
-	pcmTotal := C.op_pcm_total(opusFile, d.link)
-	d.duration = time.Millisecond * time.Duration((float64(pcmTotal) / 48_000 * 1_000))
+	d.init(opusFile)
 	d.callbacks = callbacks
 
 	return d, nil
@@ -104,6 +98,9 @@ func goFileTell(stream unsafe.Pointer) C.opus_int64 {
 //export goFileClose
 func goFileClose(stream unsafe.Pointer) C.int {
 	d := getDecoderForId(stream)
-	fmt.Println("  ", d)
+	err := d.stream.Close()
+	if err != nil {
+		return -1
+	}
 	return 0
 }

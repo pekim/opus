@@ -25,6 +25,7 @@ func main() {
 
 	fmt.Println("channel count :", decoder.ChannelCount())
 	fmt.Println("duration (seconds) :", decoder.Duration().Seconds())
+	fmt.Println("len :", decoder.Len())
 	fmt.Printf("tags, vendor : %#v\n", decoder.TagsVendor())
 	fmt.Println("tags, user comments :", decoder.TagsUserComments())
 	fmt.Printf("head : %#v\n", decoder.Head())

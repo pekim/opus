@@ -29,22 +29,19 @@ func NewDecoder(data []byte) (*Decoder, error) {
 		return nil, errorFromOpusFileError(opusFileErr)
 	}
 
-	d := newDecoder(opusFile)
+	d := &Decoder{}
+	d.init(opusFile)
 	d.data = data
+
 	return d, nil
 }
 
-func newDecoder(opusFile *C.OggOpusFile) *Decoder {
-	link := C.op_current_link(opusFile)
-	channelCount := C.op_channel_count(opusFile, link)
-	d := &Decoder{
-		opusFile:     opusFile,
-		link:         link,
-		channelCount: channelCount,
-	}
+func (d *Decoder) init(opusFile *C.OggOpusFile) {
+	d.opusFile = opusFile
+	d.opusFile = opusFile
+	d.link = C.op_current_link(opusFile)
+	d.channelCount = C.op_channel_count(opusFile, d.link)
 	d.duration = time.Millisecond * time.Duration((float64(d.Len()) / 48_000 * 1_000))
-
-	return d
 }
 
 func (d *Decoder) Close() {
