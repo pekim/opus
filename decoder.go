@@ -37,15 +37,14 @@ func NewDecoder(data []byte) (*Decoder, error) {
 func newDecoder(opusFile *C.OggOpusFile) *Decoder {
 	link := C.op_current_link(opusFile)
 	channelCount := C.op_channel_count(opusFile, link)
-	pcmTotal := C.op_pcm_total(opusFile, link)
-	duration := time.Millisecond * time.Duration((float64(pcmTotal) / 48_000 * 1_000))
-
-	return &Decoder{
+	d := &Decoder{
 		opusFile:     opusFile,
 		link:         link,
 		channelCount: channelCount,
-		duration:     duration,
 	}
+	d.duration = time.Millisecond * time.Duration((float64(d.Len()) / 48_000 * 1_000))
+
+	return d
 }
 
 func (d *Decoder) Close() {
@@ -66,6 +65,10 @@ func (d *Decoder) ChannelCount() int {
 
 func (d *Decoder) Duration() time.Duration {
 	return d.duration
+}
+
+func (d *Decoder) Len() int {
+	return int(C.op_pcm_total(d.opusFile, d.link))
 }
 
 func (d *Decoder) TagsVendor() string {
