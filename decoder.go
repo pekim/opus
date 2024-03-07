@@ -166,3 +166,23 @@ func (d *Decoder) setErr(err error) {
 		d.err = err
 	}
 }
+
+func (d *Decoder) Seek(pos int64) error {
+	err := C.op_pcm_seek(d.opusFile, C.ogg_int64_t(pos))
+	if err < 0 {
+		err := errorFromOpusFileError(err)
+		d.setErr(err)
+		return err
+	}
+	return nil
+}
+
+func (d *Decoder) Position() (int64, error) {
+	pos := C.op_pcm_tell(d.opusFile)
+	if pos < 0 {
+		err := errorFromOpusFileError(C.int(pos))
+		d.setErr(err)
+		return 0, err
+	}
+	return int64(pos), nil
+}
