@@ -36,21 +36,24 @@ func Temp() {
 	}
 	fmt.Println(samplesReadPerChannel)
 
-	// var i int
-	// for {
-	// 	var pcm = make([]int16, 10_000)
-	// 	samplesReadPerChannel, err := decoder.Read(pcm)
-	// 	if err != nil {
-	// 		panic(err)
-	// 	}
+	samplesReadPerChannel, err = decoder.Read(pcm)
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(samplesReadPerChannel)
 
-	// 	i++
-	// 	fmt.Println(i, samplesReadPerChannel)
-
-	// 	if samplesReadPerChannel == 0 {
-	// 		break
-	// 	}
+	// var pcmFloat = make([]float32, 10_000)
+	// samplesReadPerChannel, err := decoder.ReadFloat(pcmFloat)
+	// if err != nil {
+	// 	panic(err)
 	// }
+	// fmt.Println(samplesReadPerChannel)
+
+	// samplesReadPerChannel, err = decoder.ReadFloat(pcmFloat)
+	// if err != nil {
+	// 	panic(err)
+	// }
+	// fmt.Println(samplesReadPerChannel)
 
 	decoder.Close()
 }

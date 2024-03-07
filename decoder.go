@@ -100,3 +100,18 @@ func (d *Decoder) Read(pcm []int16) (int, error) {
 
 	return int(samplesReadPerChannel), nil
 }
+
+func (d *Decoder) ReadFloat(pcm []float32) (int, error) {
+	samplesReadPerChannel := C.op_read_float(
+		d.file,
+		(*C.float)(&pcm[0]),
+		C.int(cap(pcm)),
+		nil,
+	)
+
+	if samplesReadPerChannel < 0 {
+		return int(samplesReadPerChannel), errorFromOpusFileError(samplesReadPerChannel)
+	}
+
+	return int(samplesReadPerChannel), nil
+}
