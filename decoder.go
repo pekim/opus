@@ -85,3 +85,18 @@ func (d *Decoder) TagsUserComments() []UserComment {
 
 	return splitUserComments
 }
+
+func (d *Decoder) Read(pcm []int16) (int, error) {
+	samplesReadPerChannel := C.op_read(
+		d.file,
+		(*C.opus_int16)(&pcm[0]),
+		C.int(cap(pcm)),
+		nil,
+	)
+
+	if samplesReadPerChannel < 0 {
+		return int(samplesReadPerChannel), errorFromOpusFileError(samplesReadPerChannel)
+	}
+
+	return int(samplesReadPerChannel), nil
+}

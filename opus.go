@@ -29,23 +29,30 @@ func Temp() {
 	fmt.Println(decoder.TagsVendor())
 	fmt.Println(decoder.TagsUserComments())
 
-	decoder.Close()
+	var pcm = make([]int16, 10_000)
+	samplesReadPerChannel, err := decoder.Read(pcm)
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(samplesReadPerChannel)
 
-	// var pcm = make([]int16, 20_000)
-	// samplesReadPerChannel := C.op_read(oggOpusFile,
-	// 	(*C.opus_int16)(&pcm[0]),
-	// 	C.int(cap(pcm)), // / channel_count,
-	// 	&li,
-	// )
-	// if samplesReadPerChannel < 0 {
-	// 	panic(errorFromOpusFileError(samplesReadPerChannel))
+	// var i int
+	// for {
+	// 	var pcm = make([]int16, 10_000)
+	// 	samplesReadPerChannel, err := decoder.Read(pcm)
+	// 	if err != nil {
+	// 		panic(err)
+	// 	}
+
+	// 	i++
+	// 	fmt.Println(i, samplesReadPerChannel)
+
+	// 	if samplesReadPerChannel == 0 {
+	// 		break
+	// 	}
 	// }
 
-	// fmt.Println(li, samplesReadPerChannel, samplesReadPerChannel*channel_count)
-	// fmt.Println(pcm[:100])
-	// i := samplesReadPerChannel * channel_count
-	// fmt.Println(pcm[i-20 : i+20])
-
+	decoder.Close()
 }
 
 func Test(data []byte) error {
