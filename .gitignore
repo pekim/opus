@@ -1,2 +1,4 @@
+# These directories and files from the xiph/opus repository are very large (totalling around 400M),
+# and are not needed in this repo.
 lib/opus/dnn
 lib/opus/opus_data-735117b.tar.gz
