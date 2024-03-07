@@ -86,6 +86,25 @@ func (d *Decoder) TagsUserComments() []UserComment {
 	return splitUserComments
 }
 
+type Head struct {
+	Version         int
+	ChannelCount    int
+	PreSkip         uint
+	InputSampleRate uint32
+	OutputGainDb    int
+}
+
+func (d *Decoder) Head() Head {
+	head := C.op_head(d.file, d.link)
+	return Head{
+		Version:         int(head.version),
+		ChannelCount:    int(head.channel_count),
+		PreSkip:         uint(head.pre_skip),
+		InputSampleRate: uint32(head.input_sample_rate),
+		OutputGainDb:    int(head.output_gain),
+	}
+}
+
 func (d *Decoder) Read(pcm []int16) (int, error) {
 	samplesReadPerChannel := C.op_read(
 		d.file,

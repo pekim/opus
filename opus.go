@@ -28,6 +28,7 @@ func Temp() {
 	fmt.Println(decoder.channelCount, decoder.duration.Seconds())
 	fmt.Println(decoder.TagsVendor())
 	fmt.Println(decoder.TagsUserComments())
+	fmt.Printf("%#v\n", decoder.Head())
 
 	var pcm = make([]int16, 10_000)
 	samplesReadPerChannel, err := decoder.Read(pcm)
