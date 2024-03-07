@@ -2,13 +2,17 @@ package opus
 
 // #include <opusfile.h>
 import "C"
+
 import (
+	"strings"
 	"time"
+	"unsafe"
 )
 
 type Decoder struct {
 	file         *C.OggOpusFile
 	data         []byte
+	link         C.int
 	channelCount C.int
 	duration     time.Duration
 }
@@ -28,6 +32,7 @@ func NewDecoder(data []byte) (*Decoder, error) {
 	d := &Decoder{
 		file:         file,
 		data:         data,
+		link:         link,
 		channelCount: channelCount,
 		duration:     duration,
 	}
@@ -35,6 +40,48 @@ func NewDecoder(data []byte) (*Decoder, error) {
 	return d, nil
 }
 
+func (d *Decoder) Close() {
+	C.op_free(d.file)
+	d.data = nil
+}
+
+func (d *Decoder) ChannelCount() int {
+	return int(d.channelCount)
+}
+
 func (d *Decoder) Duration() time.Duration {
 	return d.duration
+}
+
+func (d *Decoder) TagsVendor() string {
+	tags := C.op_tags(d.file, d.link)
+	return C.GoString(tags.vendor)
+}
+
+type UserComment struct {
+	Tag   string
+	Value string
+}
+
+func (d *Decoder) TagsUserComments() []UserComment {
+	tags := C.op_tags(d.file, d.link)
+	cUserComments := (**C.char)(tags.user_comments)
+	userComments := unsafe.Slice(cUserComments, tags.comments)
+
+	splitUserComments := make([]UserComment, tags.comments)
+	for i, cComment := range userComments {
+		comment := C.GoString(cComment)
+		parts := strings.SplitN(comment, "=", 2)
+		tag := parts[0]
+		value := ""
+		if len(parts) > 1 {
+			value = parts[1]
+		}
+		splitUserComments[i] = UserComment{
+			Tag:   tag,
+			Value: value,
+		}
+	}
+
+	return splitUserComments
 }

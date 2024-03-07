@@ -10,7 +10,7 @@ import (
 	_ "github.com/pekim/opus/c-sources"
 )
 
-func Test() {
+func Temp() {
 	// fmt.Println(C.GoString(C.opus_get_version_string()))
 
 	// panic(errorFromOpusFileError(-133))
@@ -20,11 +20,18 @@ func Test() {
 		panic(err)
 	}
 
+	err = Test(data)
+	if err != nil {
+		panic(err)
+	}
+
 	decoder, err := NewDecoder(data)
 	if err != nil {
 		panic(err)
 	}
 	fmt.Println(decoder.channelCount, decoder.duration.Seconds())
+	fmt.Println(decoder.TagsVendor())
+	fmt.Println(decoder.TagsUserComments())
 
 	var opusFileErr C.int
 	oggOpusFile := C.op_open_memory((*C.uchar)(&data[0]), C.size_t(len(data)), &opusFileErr)
@@ -37,6 +44,8 @@ func Test() {
 	pcmTotal := C.op_pcm_total(oggOpusFile, li)
 	fmt.Println(pcmTotal, pcmTotal/48_000, pcmTotal/48_000/60, pcmTotal/48_000%60)
 	// bitrate := C.op_bitrate(oggOpusFile, li)
+	// fmt.Println("bitrate", bitrate)
+
 	fmt.Println()
 
 	var pcm = make([]int16, 20_000)
@@ -54,28 +63,13 @@ func Test() {
 	i := samplesReadPerChannel * channel_count
 	fmt.Println(pcm[i-20 : i+20])
 
-	// numChannels := C.opus_packet_get_nb_channels((*C.uchar)(&data[0]))
-	// fmt.Println("numChannels", numChannels)
-	// numFrames := C.opus_packet_get_nb_frames((*C.uchar)(&data[0]), C.opus_int32(len(data)))
-	// fmt.Println("numFrames", numFrames)
+	decoder.Close()
+}
 
-	// var error C.int
-	// decoder := C.opus_decoder_create(48000, numChannels, &error)
-	// fmt.Println(error == C.OPUS_OK, decoder)
-
-	// var pcm = make([]int16, 200)
-
-	// numDecodedSamples := C.opus_decode(decoder,
-	// 	(*C.uchar)(&data[0]),
-	// 	C.opus_int32(len(data)),
-	// 	(*C.opus_int16)(&pcm[0]),
-	// 	C.int(cap(pcm))/numChannels,
-	// 	0,
-	// )
-
-	// if numDecodedSamples > 0 {
-	// 	fmt.Println(numDecodedSamples)
-	// } else {
-	// 	fmt.Println(errorToString(numDecodedSamples))
-	// }
+func Test(data []byte) error {
+	result := C.op_test(nil, (*C.uchar)(&data[0]), C.ulong(min(512, len(data))))
+	if result < 0 {
+		return errorFromOpusFileError(result)
+	}
+	return nil
 }

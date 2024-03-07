@@ -1,7 +1,9 @@
 package main
 
-import "github.com/pekim/opus"
+import (
+	"github.com/pekim/opus"
+)
 
 func main() {
-	opus.Test()
+	opus.Temp()
 }
