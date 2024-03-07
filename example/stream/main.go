@@ -51,4 +51,9 @@ func main() {
 	fmt.Printf("read %d float samples (per channel)\n", samplesReadPerChannel)
 
 	decoder.Close()
+
+	err = decoder.Err()
+	if err != nil {
+		panic(err)
+	}
 }

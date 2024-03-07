@@ -19,6 +19,7 @@ type Decoder struct {
 	link         C.int
 	channelCount C.int
 	duration     time.Duration
+	err          error
 }
 
 // NewDecoder creates a new opus Decoder.
@@ -129,7 +130,9 @@ func (d *Decoder) Read(pcm []int16) (int, error) {
 	)
 
 	if samplesReadPerChannel < 0 {
-		return int(samplesReadPerChannel), errorFromOpusFileError(samplesReadPerChannel)
+		err := errorFromOpusFileError(samplesReadPerChannel)
+		d.setErr(err)
+		return int(samplesReadPerChannel), err
 	}
 
 	return int(samplesReadPerChannel), nil
@@ -144,8 +147,22 @@ func (d *Decoder) ReadFloat(pcm []float32) (int, error) {
 	)
 
 	if samplesReadPerChannel < 0 {
-		return int(samplesReadPerChannel), errorFromOpusFileError(samplesReadPerChannel)
+		err := errorFromOpusFileError(samplesReadPerChannel)
+		d.setErr(err)
+		return int(samplesReadPerChannel), err
 	}
 
 	return int(samplesReadPerChannel), nil
+}
+
+// Err returns an error which occurred during streaming. If no error occurred, nil is
+// returned.
+func (d *Decoder) Err() error {
+	return d.err
+}
+
+func (d *Decoder) setErr(err error) {
+	if d.err == nil {
+		d.err = err
+	}
 }

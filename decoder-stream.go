@@ -4,6 +4,7 @@ package opus
 import "C"
 
 import (
+	"fmt"
 	"io"
 	"sync"
 	"unsafe"
@@ -42,7 +43,9 @@ func NewStreamDecoder(stream io.ReadSeekCloser) (*Decoder, error) {
 		&opusFileErr,
 	)
 	if opusFileErr < 0 {
-		return nil, errorFromOpusFileError(opusFileErr)
+		err := errorFromOpusFileError(opusFileErr)
+		d.setErr(err)
+		return nil, err
 	}
 
 	d.init(opusFile)
@@ -59,6 +62,7 @@ func goFileRead(stream unsafe.Pointer, ptr *C.uchar, nbytes C.int) C.int {
 	data := unsafe.Slice(goPtr, nbytes)
 	n, err := d.stream.Read(data)
 	if err != nil {
+		d.setErr(fmt.Errorf("failed to read from stream, %w", err))
 		return -1
 	}
 
@@ -78,10 +82,12 @@ func goFileSeek(stream unsafe.Pointer, offset C.opus_int64, whence C.int) C.int 
 	case C.SEEK_END:
 		goWhence = io.SeekEnd
 	default:
+		d.setErr(fmt.Errorf("seek failed, unrecognised whence value %d", whence))
 		return -1
 	}
 	_, err := d.stream.Seek(int64(offset), goWhence)
 	if err != nil {
+		d.setErr(fmt.Errorf("failed to seek stream, %w", err))
 		return -1
 	}
 
@@ -91,7 +97,10 @@ func goFileSeek(stream unsafe.Pointer, offset C.opus_int64, whence C.int) C.int 
 //export goFileTell
 func goFileTell(stream unsafe.Pointer) C.opus_int64 {
 	d := getDecoderForId(stream)
-	pos, _ := d.stream.Seek(0, io.SeekCurrent)
+	pos, err := d.stream.Seek(0, io.SeekCurrent)
+	if err != nil {
+		d.setErr(fmt.Errorf("failed to seek stream for tell, %w", err))
+	}
 	return C.opus_int64(pos)
 }
 
@@ -100,6 +109,7 @@ func goFileClose(stream unsafe.Pointer) C.int {
 	d := getDecoderForId(stream)
 	err := d.stream.Close()
 	if err != nil {
+		d.setErr(fmt.Errorf("failed to close stream, %w", err))
 		return -1
 	}
 	return 0
