@@ -9,6 +9,7 @@ import (
 	"unsafe"
 )
 
+// Decoder decodes an opus bitstream into PCM.
 type Decoder struct {
 	file         *C.OggOpusFile
 	data         []byte
@@ -17,6 +18,7 @@ type Decoder struct {
 	duration     time.Duration
 }
 
+// NewDecoder creates a new opus Decoder.
 func NewDecoder(data []byte) (*Decoder, error) {
 	var opusFileErr C.int
 	file := C.op_open_memory((*C.uchar)(&data[0]), C.size_t(len(data)), &opusFileErr)
