@@ -10,7 +10,7 @@ import (
 /*
 Test checks to see if some data appears to be the start of an Opus stream.
 
-For good results, you will need at least 57 bytes (for a pure Opus-only stream).
+For good results, at least 57 bytes are needed (for a pure Opus-only stream).
 Something like 512 bytes will give more reliable results for multiplexed streams.
 This function is meant to be a quick-rejection filter.
 Its purpose is not to guarantee that a stream is a valid Opus stream,
