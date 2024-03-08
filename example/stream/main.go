@@ -17,11 +17,13 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
+	defer file.Close()
 
-	decoder, err := opus.NewStreamDecoder(file)
+	decoder, err := opus.NewDecoder(file)
 	if err != nil {
 		panic(err)
 	}
+	defer decoder.Destroy()
 
 	fmt.Println("channel count :", decoder.ChannelCount())
 	fmt.Println("duration (seconds) :", decoder.Duration().Seconds())
@@ -90,8 +92,6 @@ func main() {
 	}
 	fmt.Println("pos", p)
 	fmt.Println(pcmFloat[:10])
-
-	decoder.Close()
 
 	err = decoder.Err()
 	if err != nil {

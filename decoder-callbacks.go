@@ -31,29 +31,6 @@ func getDecoderId(decoder *Decoder) unsafe.Pointer {
 	return intToUnsafePointer(decoderId)
 }
 
-func NewStreamDecoder(stream io.ReadSeekCloser) (*Decoder, error) {
-	d := &Decoder{stream: stream}
-
-	callbacks := C.create_file_callbacks()
-	var opusFileErr C.int
-	opusFile := C.op_open_callbacks(
-		getDecoderId(d),
-		callbacks,
-		nil, 0,
-		&opusFileErr,
-	)
-	if opusFileErr < 0 {
-		err := errorFromOpusFileError(opusFileErr)
-		d.setErr(err)
-		return nil, err
-	}
-
-	d.init(opusFile)
-	d.callbacks = callbacks
-
-	return d, nil
-}
-
 //export goFileRead
 func goFileRead(stream unsafe.Pointer, ptr *C.uchar, nbytes C.int) C.int {
 	d := getDecoderForId(stream)
@@ -105,12 +82,6 @@ func goFileTell(stream unsafe.Pointer) C.opus_int64 {
 }
 
 //export goFileClose
-func goFileClose(stream unsafe.Pointer) C.int {
-	d := getDecoderForId(stream)
-	err := d.stream.Close()
-	if err != nil {
-		d.setErr(fmt.Errorf("failed to close stream, %w", err))
-		return -1
-	}
+func goFileClose(_ unsafe.Pointer) C.int {
 	return 0
 }

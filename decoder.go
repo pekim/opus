@@ -14,8 +14,7 @@ import (
 type Decoder struct {
 	opusFile     *C.OggOpusFile
 	callbacks    *C.OpusFileCallbacks
-	data         []byte
-	stream       io.ReadSeekCloser
+	stream       io.ReadSeeker
 	link         C.int
 	channelCount C.int
 	duration     time.Duration
@@ -23,33 +22,36 @@ type Decoder struct {
 }
 
 // NewDecoder creates a new opus Decoder.
-func NewDecoder(data []byte) (*Decoder, error) {
-	var opusFileErr C.int
-	opusFile := C.op_open_memory((*C.uchar)(&data[0]), C.size_t(len(data)), &opusFileErr)
-	if opusFileErr < 0 {
-		return nil, errorFromOpusFileError(opusFileErr)
+func NewDecoder(stream io.ReadSeeker) (*Decoder, error) {
+	d := &Decoder{
+		stream:    stream,
+		callbacks: C.create_file_callbacks(),
 	}
 
-	d := &Decoder{}
-	d.init(opusFile)
-	d.data = data
+	var opusFileErr C.int
+	opusFile := C.op_open_callbacks(
+		getDecoderId(d),
+		d.callbacks,
+		nil, 0,
+		&opusFileErr,
+	)
+	if opusFileErr < 0 {
+		err := errorFromOpusFileError(opusFileErr)
+		d.setErr(err)
+		return nil, err
+	}
 
-	return d, nil
-}
-
-func (d *Decoder) init(opusFile *C.OggOpusFile) {
-	d.opusFile = opusFile
 	d.opusFile = opusFile
 	d.link = C.op_current_link(opusFile)
 	d.channelCount = C.op_channel_count(opusFile, d.link)
 	d.duration = time.Millisecond * time.Duration((float64(d.Len()) / 48_000 * 1_000))
+
+	return d, nil
 }
 
-func (d *Decoder) Close() {
+func (d *Decoder) Destroy() {
 	C.op_free(d.opusFile)
-	d.data = nil
 	if d.stream != nil {
-		d.stream.Close()
 		d.stream = nil
 	}
 	if d.callbacks != nil {
