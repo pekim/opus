@@ -9,6 +9,8 @@ import (
 	"strings"
 	"time"
 	"unsafe"
+
+	"github.com/pkg/errors"
 )
 
 // SampleRate is number of samples per second in streams.
@@ -42,9 +44,7 @@ func NewDecoder(stream io.ReadSeeker) (*Decoder, error) {
 		&opusFileErr,
 	)
 	if opusFileErr < 0 {
-		err := errorFromOpusFileError(opusFileErr)
-		d.setErr(err)
-		return nil, err
+		return nil, errorFromOpusFileError(opusFileErr)
 	}
 
 	d.opusFile = opusFile
@@ -174,9 +174,7 @@ func (d *Decoder) Read(pcm []int16) (int, error) {
 	)
 
 	if samplesReadPerChannel < 0 {
-		err := errorFromOpusFileError(samplesReadPerChannel)
-		d.setErr(err)
-		return int(samplesReadPerChannel), err
+		return int(samplesReadPerChannel), d.errorFromOpusFileError(samplesReadPerChannel)
 	}
 	if samplesReadPerChannel == 0 {
 		return 0, io.EOF
@@ -198,9 +196,7 @@ func (d *Decoder) ReadFloat(pcm []float32) (int, error) {
 	)
 
 	if samplesReadPerChannel < 0 {
-		err := errorFromOpusFileError(samplesReadPerChannel)
-		d.setErr(err)
-		return int(samplesReadPerChannel), err
+		return int(samplesReadPerChannel), d.errorFromOpusFileError(samplesReadPerChannel)
 	}
 	if samplesReadPerChannel == 0 {
 		return 0, io.EOF
@@ -209,7 +205,7 @@ func (d *Decoder) ReadFloat(pcm []float32) (int, error) {
 	return int(samplesReadPerChannel), nil
 }
 
-// Err returns an error which occurred during streaming.
+// Err returns an error which may have occurred during streaming.
 // If no error has ever occurred, nil is returned.
 func (d *Decoder) Err() error {
 	return d.err
@@ -227,9 +223,7 @@ func (d *Decoder) setErr(err error) {
 func (d *Decoder) Seek(pos int64) error {
 	err := C.op_pcm_seek(d.opusFile, C.ogg_int64_t(pos))
 	if err < 0 {
-		err := errorFromOpusFileError(err)
-		d.setErr(err)
-		return err
+		return d.errorFromOpusFileError(err)
 	}
 	return nil
 }
@@ -242,9 +236,15 @@ func (d *Decoder) Seek(pos int64) error {
 func (d *Decoder) Position() (int64, error) {
 	pos := C.op_pcm_tell(d.opusFile)
 	if pos < 0 {
-		err := errorFromOpusFileError(C.int(pos))
-		d.setErr(err)
-		return 0, err
+		return 0, d.errorFromOpusFileError(C.int(pos))
 	}
 	return int64(pos), nil
+}
+
+func (d *Decoder) errorFromOpusFileError(code C.int) error {
+	if d.err != nil {
+		return errors.Wrap(d.err, errorFromOpusFileError(code).Error())
+	} else {
+		return errorFromOpusFileError(code)
+	}
 }
