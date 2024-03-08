@@ -2,6 +2,7 @@ package opus
 
 import (
 	"bytes"
+	"io"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -76,7 +77,7 @@ func TestRead(t *testing.T) {
 	pcm := make([]int16, samples)
 	n, err := d.Read(pcm)
 	assert.Nil(t, err)
-	assert.Equal(t, samples, n*d.ChannelCount())
+	assert.Equal(t, len(pcm)/d.ChannelCount(), n)
 	assert.Equal(t,
 		[]int16([]int16{81, 13, 41, -42, -55, -99}),
 		pcm[:n*d.ChannelCount()],
@@ -86,13 +87,31 @@ func TestRead(t *testing.T) {
 func TestReadFloat(t *testing.T) {
 	d, _ := NewDecoder(bytes.NewReader(SampleStream))
 
-	samples := 6
-	pcm := make([]float32, samples)
+	pcm := make([]float32, 6)
 	n, err := d.ReadFloat(pcm)
 	assert.Nil(t, err)
-	assert.Equal(t, samples, n*d.ChannelCount())
+	assert.Equal(t, len(pcm)/d.ChannelCount(), n)
 	assert.Equal(t,
 		[]float32([]float32{0.002462285, 0.0003901136, 0.0012744348, -0.0013133116, -0.0017320435, -0.0029684622}),
 		pcm[:n*d.ChannelCount()],
 	)
+}
+
+func TestReadUntilEOF(t *testing.T) {
+	d, _ := NewDecoder(bytes.NewReader(SampleStream))
+
+	samplesBeforeEnd := 100
+	err := d.Seek(int64(d.Len()) - int64(samplesBeforeEnd))
+	assert.Nil(t, err)
+
+	samplesRead := 0
+	pcm := make([]int16, 30)
+	for {
+		n, err := d.Read(pcm)
+		if err == io.EOF {
+			break
+		}
+		samplesRead += n
+	}
+	assert.Equal(t, samplesBeforeEnd, samplesRead)
 }
