@@ -7,7 +7,6 @@ import (
 	"os"
 
 	"github.com/pekim/opus"
-	"github.com/pekim/opus/example"
 )
 
 func main() {
@@ -20,7 +19,7 @@ func main() {
 		}
 		rsc = f
 	} else if len(os.Args) == 1 {
-		rsc = bytes.NewReader(example.SampleFile)
+		rsc = bytes.NewReader(opus.SampleStream)
 	} else {
 		fmt.Fprintf(os.Stderr, "Usage: %s [song.opus]\n", os.Args[0])
 		os.Exit(1)

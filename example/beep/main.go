@@ -12,7 +12,7 @@ import (
 	"github.com/gopxl/beep"
 	"github.com/gopxl/beep/effects"
 	"github.com/gopxl/beep/speaker"
-	"github.com/pekim/opus/example"
+	"github.com/pekim/opus"
 )
 
 func drawTextLine(screen tcell.Screen, x, y int, s string, style tcell.Style) {
@@ -160,7 +160,7 @@ func main() {
 		}
 		rsc = f
 	} else if len(os.Args) == 1 {
-		rsc = NopCloser{bytes.NewReader(example.SampleFile)}
+		rsc = NopCloser{bytes.NewReader(opus.SampleStream)}
 	} else {
 		fmt.Fprintf(os.Stderr, "Usage: %s [song.opus]\n", os.Args[0])
 		os.Exit(1)
