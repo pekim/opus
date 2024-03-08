@@ -11,6 +11,8 @@ import (
 	"unsafe"
 )
 
+const SampleRate = 48_000
+
 // Decoder decodes an opus bitstream into PCM.
 type Decoder struct {
 	opusFile     *C.OggOpusFile
@@ -45,7 +47,7 @@ func NewDecoder(stream io.ReadSeeker) (*Decoder, error) {
 	d.opusFile = opusFile
 	d.link = C.op_current_link(opusFile)
 	d.channelCount = C.op_channel_count(opusFile, d.link)
-	d.duration = time.Millisecond * time.Duration((float64(d.Len()) / 48_000 * 1_000))
+	d.duration = time.Millisecond * time.Duration((float64(d.Len()) / SampleRate * 1_000))
 
 	return d, nil
 }
@@ -138,6 +140,9 @@ func (d *Decoder) Read(pcm []int16) (int, error) {
 		d.setErr(err)
 		return int(samplesReadPerChannel), err
 	}
+	if samplesReadPerChannel == 0 {
+		return 0, io.EOF
+	}
 
 	return int(samplesReadPerChannel), nil
 }
@@ -154,6 +159,9 @@ func (d *Decoder) ReadFloat(pcm []float32) (int, error) {
 		err := errorFromOpusFileError(samplesReadPerChannel)
 		d.setErr(err)
 		return int(samplesReadPerChannel), err
+	}
+	if samplesReadPerChannel == 0 {
+		return 0, io.EOF
 	}
 
 	return int(samplesReadPerChannel), nil

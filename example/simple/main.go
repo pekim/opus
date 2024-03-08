@@ -1,25 +1,32 @@
 package main
 
 import (
+	"bytes"
 	"fmt"
+	"io"
 	"os"
 
 	"github.com/pekim/opus"
+	"github.com/pekim/opus/example"
 )
 
 func main() {
-	if len(os.Args) != 2 {
-		fmt.Println("expected 1 argument, path to an opus file")
+	var rsc io.ReadSeeker
+
+	if len(os.Args) == 2 {
+		f, err := os.Open(os.Args[1])
+		if err != nil {
+			panic(err)
+		}
+		rsc = f
+	} else if len(os.Args) == 1 {
+		rsc = bytes.NewReader(example.SampleFile)
+	} else {
+		fmt.Fprintf(os.Stderr, "Usage: %s [song.opus]\n", os.Args[0])
 		os.Exit(1)
 	}
 
-	file, err := os.Open(os.Args[1])
-	if err != nil {
-		panic(err)
-	}
-	defer file.Close()
-
-	decoder, err := opus.NewDecoder(file)
+	decoder, err := opus.NewDecoder(rsc)
 	if err != nil {
 		panic(err)
 	}
