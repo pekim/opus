@@ -51,12 +51,13 @@ func NewDecoder(stream io.ReadSeeker) (*Decoder, error) {
 }
 
 func (d *Decoder) Destroy() {
-	C.op_free(d.opusFile)
-	if d.stream != nil {
-		d.stream = nil
+	if d.opusFile != nil {
+		C.op_free(d.opusFile)
+		d.opusFile = nil
 	}
 	if d.callbacks != nil {
 		C.free_file_callbacks(d.callbacks)
+		d.callbacks = nil
 	}
 }
 
