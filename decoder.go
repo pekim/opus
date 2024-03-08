@@ -1,6 +1,7 @@
 package opus
 
-// #include "decoder-stream.h"
+// #include "decoder-callbacks.h"
+// #include <opusfile.h>
 import "C"
 
 import (
