@@ -1,16 +1,16 @@
 package opus
 
-// #cgo CFLAGS: -I${SRCDIR}/../lib/opus
-// #cgo CFLAGS: -I${SRCDIR}/../lib/opus/celt
-// #cgo CFLAGS: -I${SRCDIR}/../lib/opus/include
-// #cgo CFLAGS: -I${SRCDIR}/../lib/opus/src
-// #cgo CFLAGS: -I${SRCDIR}/../lib/opus/silk
-// #cgo CFLAGS: -I${SRCDIR}/../lib/opus/silk/float
+// #cgo CFLAGS: -I${SRCDIR}/../xiph.org/opus
+// #cgo CFLAGS: -I${SRCDIR}/../xiph.org/opus/celt
+// #cgo CFLAGS: -I${SRCDIR}/../xiph.org/opus/include
+// #cgo CFLAGS: -I${SRCDIR}/../xiph.org/opus/src
+// #cgo CFLAGS: -I${SRCDIR}/../xiph.org/opus/silk
+// #cgo CFLAGS: -I${SRCDIR}/../xiph.org/opus/silk/float
 //
-// #cgo CFLAGS: -I${SRCDIR}/../lib/opusfile/src
-// #cgo CFLAGS: -I${SRCDIR}/../lib/opusfile/include
+// #cgo CFLAGS: -I${SRCDIR}/../xiph.org/opusfile/src
+// #cgo CFLAGS: -I${SRCDIR}/../xiph.org/opusfile/include
 //
-// #cgo CFLAGS: -I${SRCDIR}/../lib/ogg/src
+// #cgo CFLAGS: -I${SRCDIR}/../xiph.org/ogg/src
 //
 // #cgo LDFLAGS: -lm
 import "C"

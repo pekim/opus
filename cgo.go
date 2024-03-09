@@ -1,5 +1,5 @@
 package opus
 
-// #cgo CFLAGS: -I${SRCDIR}/lib/opus/include
-// #cgo CFLAGS: -I${SRCDIR}/lib/opusfile/include
+// #cgo CFLAGS: -I${SRCDIR}/xiph.org/opus/include
+// #cgo CFLAGS: -I${SRCDIR}/xiph.org/opusfile/include
 import "C"
