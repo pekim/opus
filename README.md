@@ -4,7 +4,7 @@
 
 This Go package provides decoding of streams
 that have been encoded with the
-[opus coded](https://opus-codec.org/).
+[Opus codec](https://opus-codec.org/).
 When provided with an opus stream the raw PCM data
 can be extracted.
 
@@ -58,22 +58,22 @@ will be cached by the Go toolchain.
 There are a couple of examples in the `example` directory.
 
 - `beep`
-  - Uses the [beep](https://github.com/gopxl/beep) package to play an opus file.
+  - Uses the [beep](https://github.com/gopxl/beep) package to play an Opus file.
   - `go run example\beep\*.go [your-file.opus]`
-    - Without an argument, plays an embedded sample opus file.
-    - With an argument that is a path to an opus file, will play the file.
+    - Without an argument, plays an embedded sample Opus file.
+    - With an argument that is a path to an Opus file, will play the file.
 - `simple`
   - Uses various methods of `opus.Decoder` to get and print various information
-    about an opus stream.
+    about an Opus stream.
   - `go run example\simple\*.go [your-file.opus]`
-    - Without an argument, uses an embedded sample opus file.
-    - With an argument that is a path to an opus file, uses the file.
+    - Without an argument, uses an embedded sample Opus file.
+    - With an argument that is a path to an Opus file, uses the file.
 
 ## possible alternatives
 
 ### pion/opus
 
-https://github.com/pion/opus is a pure Go implementation of the opus codec.
+https://github.com/pion/opus is a pure Go implementation of the Opus codec.
 
 - It currently only supports
   the [SILK](https://en.wikipedia.org/wiki/SILK) codec,
@@ -85,7 +85,7 @@ https://github.com/pion/opus is a pure Go implementation of the opus codec.
 https://github.com/hraban/opus provides C bindings to the xiph.org C libraries.
 
 - It is more comprehensive than this library,
-  and supports encoding as well as decoding of opus streams.
+  and supports encoding as well as decoding of Opus streams.
 - It requires libopus and libopusfile development packages to be installed on the system.
 
 ## development
