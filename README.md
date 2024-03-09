@@ -76,7 +76,7 @@ There are a couple of examples in the `example` directory.
 https://github.com/pion/opus is a pure Go implementation of the opus codec.
 
 - It currently only supports
-  the [SILK](https://en.wikipedia.org/wiki/SILK)
+  the [SILK](https://en.wikipedia.org/wiki/SILK) codec,
   not the [CELT](https://celt-codec.org/) codec.
   See [issue #7](https://github.com/pion/opus/issues/7).
 
